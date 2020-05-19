@@ -1,24 +1,81 @@
-# README
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false, unique: true|
+|password|string|null: false, minimum7|
+|birthday|date|null: false|
+|first_name|string|null: false|
+|first_furigana|string|null: false|
+|last_name|string|null: false|
+|last_furigana|string|null: false|
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
+has_many :items
+has_many :cards
+has_many :user_address
 
-Things you may want to cover:
 
-* Ruby version
+## itemsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_name|string|null: false|
+|explanation|string|null: false|
+|price|integer|null: false|
+|brand|string|
+|condition|string|null: false|
+|user_id|references.true|null: false|
+|ship_date|string|null: false|
+|delivery_fee|integer|null: false|
 
-* System dependencies
+### Association
+belongs_to :user
+belongs_to :category
+has_many :images
 
-* Configuration
 
-* Database creation
+## categoryテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false ancestry:string:index|
+|ancestry|string|null: false|
 
-* Database initialization
 
-* How to run the test suite
+### Association
+has_many :items
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_id|integer|null: false|
+|image|string|null: false|
 
-* ...
+### Association
+belongs_to :item
+
+
+## cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references.true|null: false|
+|customer_id|integer|null: false|
+|card_id|integer|null: false|
+
+### Association
+belongs_to :user
+
+
+## user_addressテーブル
+|Column|Type|Options|
+|------|----|-------|
+|post|integer|null: false|
+|preficture|string|null: false|
+|city|string|null: false|
+|block|string|null: false|
+|building|string|
+|tell_number|integer|
+|user_id|references.true|null: false|
+
+### Association
+belongs_to :user
