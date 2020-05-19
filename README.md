@@ -42,9 +42,8 @@ has_many :images
 
 
 ### Association
-belongs_to :item
-has_many item_categories, dependent: :destroy
-has_many items through: :item_categories
+has_many :items
+
 
 ## imagesテーブル
 |Column|Type|Options|
