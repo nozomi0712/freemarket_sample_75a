@@ -1,4 +1,4 @@
-## userテーブル
+## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
@@ -11,18 +11,18 @@
 |last_furigana|string|null: false|
 
 ### Association
-has_many :item
-has_many :card
+has_many :items
+has_many :cards
 has_many :user_address
 
 
-## itemテーブル
+## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item_name|string|null: false|
 |explanation|string|null: false|
 |price|integer|null: false|
-|bland|string|
+|brand|string|
 |condition|string|null: false|
 |user_id|references.true|null: false|
 |ship_date|string|null: false|
@@ -30,22 +30,23 @@ has_many :user_address
 
 ### Association
 belongs_to :user
-has_many :category
-has_many :image
+belongs_to :category
+has_many :images
 
 
 ## categoryテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|null: false ancestry:string:index|
 |ancestry|string|null: false|
-|item_id|references.true|null: false|
+
 
 ### Association
 belongs_to :item
+has_many item_categories, dependent: :destroy
+has_many items through: :item_categories
 
-
-## imageテーブル
+## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item_id|integer|null: false|
@@ -55,7 +56,7 @@ belongs_to :item
 belongs_to :item
 
 
-## cardテーブル
+## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references.true|null: false|
