@@ -1,4 +1,6 @@
 .put-item-page
+  .put-item-page__topimage
+    = image_tag "material/logo/logo.png", height: "50px", width: "200px"
   .put-item-page__form
     .form-data
       .form-data__item
@@ -9,7 +11,9 @@
         .form-condition
           %p 最大4枚までアップロードできます
         .form-input-image
-          %input{type:"file"}
+          %label 
+            %input{type:"file"}
+            .image-post-zone
 
       .form-data__item
         .form-title
