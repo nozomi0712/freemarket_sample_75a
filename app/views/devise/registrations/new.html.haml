@@ -1,0 +1,52 @@
+%h2 新規登録画面
+= form_for @user, url: user_registration_path do |f|
+  = render "devise/shared/error_messages", resource: @user
+  .field
+    = f.label :ニックネーム
+    %br/
+    = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
+ 
+  .field
+    = f.label :メールアドレス
+    %br/
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+ 
+  .field
+    = f.label :生年月日
+    %br/
+    = f.number_field :birthday, autofocus: true, autocomplete: "birthday"
+ 
+  .field
+    = f.label :苗字
+    %br/
+    = f.text_field :first_name, autofocus: true, autocomplete: "first_name"
+ 
+  .field
+    = f.label :苗字カナ
+    %br/
+    = f.text_field :first_furigana, autofocus: true, autocomplete: "first_furigana"
+ 
+  .field
+    = f.label :名前
+    %br/
+    = f.text_field :last_name, autofocus: true, autocomplete: "last_name"
+ 
+  .field
+    = f.label :名前カナ
+    %br/
+    = f.text_field :last_furigana, autofocus: true, autocomplete: "last_furigana"
+ 
+  .field
+    = f.label :パスワード
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} )
+    %br/
+    = f.password_field :password, autocomplete: "new-password"
+  .field
+    = f.label :パスワード確認用
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "new-password"
+  .actions
+    = f.submit "次へ"
+= render "devise/shared/links"
