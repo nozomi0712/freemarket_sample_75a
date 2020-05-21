@@ -1,0 +1,104 @@
+.put-item-page
+  .put-item-page__topimage
+    = image_tag "material/logo/logo.png", height: "50px", width: "200px"
+  .put-item-page__form
+    .form-data
+      .form-data__item
+        .form-title
+          %p 出品画像
+          .form-title__required
+            %p 必須
+        .form-condition
+          %p 最大4枚までアップロードできます
+        .form-input-image
+          %label 
+            %input{type:"file"}
+            .image-post-zone
+
+      .form-data__item
+        .form-title
+          %p 商品名
+          .form-title__required
+            %p 必須
+        .form-input-text
+          %input{type:"text", placeholder: "商品名を入力してください"}
+        .form-title
+          %p 商品の説明
+          .form-title__required
+            %p 必須
+        .form-input-textarea
+          %textarea{placeholder: "商品の説明\n(色、素材、定価など)\n\n例）2010年ごろ購入したセーターです。ライトグレーで、目立った傷や汚れはございません。"}
+
+      .form-data__item
+        .form-group
+          %p 商品詳細
+        .form-title
+          %p カテゴリ
+          .form-title__required
+            %p 必須
+        .form-input-select
+          %select
+            %option{value:""}
+              選択してください
+        .form-title
+          %p ブランド
+          .form-title__any
+            %p 任意
+        .form-input-text
+          %input{type:"text", placeholder: "商品名を入力してください"}
+        .form-title
+          %p 商品の状態
+          .form-title__required
+            %p 必須
+        .form-input-select
+          %select
+            %option{value:""}
+              選択してください
+
+      .form-data__item
+        .form-group
+          %p 配送料について
+        .form-title
+          %p 配送料の負担
+          .form-title__required
+            %p 必須
+        .form-input-select
+          %select
+            %option{value:""}
+              選択してください
+        .form-title
+          %p 発送元の地域
+          .form-title__required
+            %p 必須
+        .form-input-select
+          %select
+            %option{value:""}
+              選択してください
+        .form-title
+          %p 発送までの日数
+          .form-title__required
+            %p 必須
+        .form-input-select
+          %select
+            %option{value:""}
+              選択してください
+
+      .form-data__item.form-data__price
+        .form-group
+          %p 価格(¥300 ~9,999,999)
+        .form-price-flex
+          .form-title
+            %p 販売価格
+            .form-title__required
+              %p 必須
+          %input{type:"number", value: 0, class:"input-price"}
+        .form-price-flex
+          %p 販売手数料
+          %P 1000円
+        .form-price-flex
+          %p 販売利益
+          %p 4000円
+
+      .form-data__submit
+        %input{type: "submit", value: "出品する"}
+
