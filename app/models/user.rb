@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_one :user_address
   has_many :items
+  devise :validatable, password_length: 7..128
 end
