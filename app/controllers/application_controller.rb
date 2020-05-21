@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+  protected
+
   # CSRF対策のため記載↓↓
   # protect_from_forgery with: :null_session
 
