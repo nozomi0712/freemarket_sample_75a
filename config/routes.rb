@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :items
   devise_for :users
-  resource :users
-  resource :items
 
   # あとで確認
   # memberにする
