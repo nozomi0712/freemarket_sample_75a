@@ -6,11 +6,30 @@
   margin-bottom: 20px;
 }
 
+@mixin any-or-require{
+  color: white;
+  padding: 0 5px;
+  border-radius: 5px;
+  margin-left:10px ;
+}
+
+@mixin btn-display{
+  cursor: pointer;
+  display: block;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+}
+
+$default-bg-color: rgb(255,255,255);
+$form-bg-color: rgb(245,245,245);
+$opacity-black: rgba(0,0,0,0.1);
+
 .put-item-page{
   height: 100%;
   width: 100vw;
   padding: 50px;
-  background-color: rgb(245, 245, 245);
+  background-color: $form-bg-color;
   &__topimage{
     height: 50px;
     width: 200px;
@@ -21,11 +40,11 @@
     height: 100%;
     width: 50%;
     margin: 0 auto;
-    background-color: rgb(255,255,255);
+    background-color: $default-bg-color;
     .form-data{
       &__item{
         padding:30px 40px 40px 40px;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
+        border-bottom: 1px solid $opacity-black;
         .form-group{
           p{
             color: grey;
@@ -39,18 +58,12 @@
           display: flex;
           margin: 10px 0 20px 0;
           &__required{
-            color: white;
+            @include any-or-require;
             background-color: red;
-            padding: 0 5px;
-            border-radius: 5px;
-            margin-left:10px ;
           }
           &__any{
-            color: white;
+            @include any-or-require;
             background-color: skyblue;
-            padding: 0 5px;
-            border-radius: 5px;
-            margin-left:10px ;
           }
         }
         .form-condition{
@@ -63,13 +76,13 @@
             height: 150px;
             width: 100%;
             cursor: pointer;
-            border: 1px solid rgba(0,0,0,0.3);
+            border: 1px solid $opacity-black;
             background-image: url("input-item-image.png");
             background-size: 100%;
             margin-bottom: 20px;
           }
           input{
-            color:  rgb(255,255,255);
+            color:  white;
             display: none;
           }
         }
@@ -115,14 +128,11 @@
       &__submit{
         padding: 50px 0;
         input{
-          display: block;
+          @include btn-display;
           height: 50px;
           width: 400px;
-          cursor: pointer;
-          outline: none;
-          border: none;
-          border-radius: 20px;
           color: white;
+          font-weight: bold;
           background-color: red;
           margin: 0 auto;
         }
