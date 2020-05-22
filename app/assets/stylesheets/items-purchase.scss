@@ -1,0 +1,173 @@
+.single{
+  &__container{
+    &--header{
+      background-color:#DDDDDD;
+      width:100vw;
+      height:150px;
+      &__image{
+        background-image:url("material/logo/logo.png");
+        background-size:100%; 
+        width: 200px;
+        height:55px;
+        position:absolute;
+        top:42px;
+        left:calc(100vw / 2.33);
+      }
+    }
+    &--contents{
+      background-color:#DDDDDD;
+      width:100uw;
+      height:800px;
+      position:relative;
+      &__checkpage{
+        position:absolute;
+        left:calc(100vw / 3.92);
+        width:calc(100vw / 2);
+        height:800px;
+        background-color:white;
+        &--1{
+          font-size:25px;
+          height:80px;
+          text-align:center;
+          margin-top:30px;
+          border-bottom:0.8px solid;
+          border-color: #C0C0C0;
+        }
+        &--2{
+          display:flex;
+          &__image{
+            background-image:url("freemarket.jpg");
+            background-size:100%;
+            width:calc(100vw / 8);
+            height:150px;
+            margin-left:calc(100vw / 10.5);
+            margin-top:40px;
+            margin-bottom:40px;
+          }
+          &__text{
+            margin-left:70px;
+            margin-top:80px;
+            font-size:20px;
+          }
+          border-bottom:0.8px solid;
+          border-color: #C0C0C0;
+        }
+        &--3{
+          width:calc(100vw / 2);
+          position:relative;
+          &__fee{
+            display:flex;
+            &--1{
+              margin-left:150px;
+              margin-top:60px;
+              font-size:20px;
+            }
+            &--yen{
+              font-size:26px;
+              margin-top:55px;
+              margin-left:200px;
+            }
+            &--btn{
+              width:calc(100vw / 2);
+            border-bottom:0.8px solid;
+            border-color: #C0C0C0;
+            padding-left:150px;
+            }
+          }
+          &__btn1{
+
+            &--btn{
+              padding-left:70px;
+              padding-top:30px;
+              border-bottom:0.8px solid;
+              border-color: #C0C0C0;
+              padding-bottom:20px;
+            }
+          }
+          &__method{
+            text-align:center;
+            text-decoration: none ;
+            margin-top:20px;
+            border-bottom:0.8px solid;
+            border-color: #C0C0C0;
+            padding-bottom:20px;
+          }
+          &__address{
+            text-align:center;
+            text-decoration: none ;
+            margin-top:20px;
+            border-bottom:0.8px solid;
+            border-color: #C0C0C0;
+            padding-bottom:20px;
+          }
+          &__btn{
+            text-align:center;
+            margin-top:50px;
+            height:100px;
+          }
+        }
+      }
+    }
+    &--footer{
+      background-color:#DDDDDD;
+      width:100vw;
+      height:150px;
+      &__clearfix{
+        text-align:center;
+        padding-top:20px;
+        &--image{
+          background-image:url("logo.png");
+          background-size:100%;
+          width: 200px;
+          height:55px;
+          position:absolute;
+          top:1020px;
+          left:calc(100vw / 2.33);
+        }
+      }
+    }
+  }
+}
+.link{
+  text-decoration:none;
+  color:black;
+}
+// .btn-buy{
+  // text-decoration:none;
+  // height: 40px;
+  // line-height: 40px;
+  // padding: 10px 40px;
+  // margin-top: 10px;
+  // border: solid 1px black;
+  
+  // color:black;
+  
+// }
+
+.single__container--contents__checkpage--3__btn{
+  input{
+    @include btn-display;
+    height: 50px;
+    width: 400px;
+    color: white;
+    font-weight: bold;
+    background-color: red;
+    margin: 0 auto;
+  }
+  input:hover{
+    opacity: 0.6;
+  }
+}
+.btn-1{
+  text-decoration:none;
+  color:black;
+}
+
+.btn-2{
+  text-decoration:none;
+  color:black;
+}
+.btn-3{
+  text-decoration:none;
+  color:black;
+}
