@@ -1,2 +1,59 @@
-%h1 Items#show
-%p Find me in app/views/items/show.html.haml
+.header
+  .header__top
+    .header__top--title
+      FURIMA
+    .header__top--search
+      %input.search-size{:type => "text",:placeholder => "キーワードから探す"}
+    .header__top--search-image
+  .header__bottom
+    .header__bottom--left
+      .category
+        カテゴリーから探す
+      .brand
+        ブランドから探す
+    .header__bottom--right
+      .sign-up
+        = link_to "新規登録", items_path, class: "sign-up-btn"
+      .login
+        = link_to "ログイン", items_path, class: "login-btn"
+
+.item-show-page
+  .item-show-main
+    .item-show-main__item-name
+      %h1 新品レザーケース
+    .item-show-main__item-detail
+      .item-show-main__item-detail--images
+        = image_tag 
+      .item-show-main__item-detail--item-info
+        %table.item-info-table
+          %tr
+            %th 出品者
+            %td あああ
+          %tr
+            %th カテゴリー
+            %td 
+          %tr
+            %th ブランド
+            %td シャネル
+          %tr
+            %th 商品の状態
+            %td 中古
+          %tr
+            %th 配送料の負担
+            %td 送料込み(出品者負担)
+          %tr
+            %th 配送元地域
+            %td 福岡県
+          %tr
+            %th 発送日の目安
+            %td 1-2日で発送
+    .item-show-main__explanation
+      小分けにされているからカードの整理も簡単！クレジットカード、IDカード、ギフトカードなど、すべての標準サイズカードが収まります。
+      %br
+      %br よく使うICカードなどを収納のできる両面ポケット。
+    .item-show-main__price-box
+      %span.item-price ¥690
+      %span.item-tax (税込)
+      %span.item-delivery-fee 送料込み
+    .item-show-main__purchase
+      = link_to "購入画面に進む", items_path, class: "item-purchase-btn"
