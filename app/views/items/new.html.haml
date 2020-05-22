@@ -1,13 +1,28 @@
 .put-item-page
+  =form_with model: @item, local: true do |f|
+    =f.label "商品名"
+    =f.text_field :item_name
+    =f.label "商品説明"
+    =f.text_area :explanation
+    =f.label "ブランド"
+    =f.text_area :brand
+    =f.label "商品の状態"
+    =f.select :condition, ["傷あり","状態はよい","未使用",]
+    =f.label "配送元の地域"
+    =f.label "発送までの日数"
+    =f.select :ship_date,["２日以内","５日以内","１週間程度",]
+    =f.label "販売価格"
+    =f.number_field :price
+
   .put-item-page__topimage
     = image_tag "material/logo/logo.png", height: "50px", width: "200px"
   .put-item-page__form
     .form-data
       .form-data__item
         .form-title
-          %p 出品画像
+          %label 出品画像
           .form-title__required
-            %p 必須
+            %label 必須
         .form-condition
           %p 最大4枚までアップロードできます
         .form-input-image
@@ -17,39 +32,39 @@
 
       .form-data__item
         .form-title
-          %p 商品名
+          %label 商品名
           .form-title__required
-            %p 必須
+            %label 必須
         .form-input-text
           %input{type:"text", placeholder: "商品名を入力してください"}
         .form-title
-          %p 商品の説明
+          %label 商品の説明
           .form-title__required
-            %p 必須
+            %label 必須
         .form-input-textarea
           %textarea{placeholder: "商品の説明\n(色、素材、定価など)\n\n例）2010年ごろ購入したセーターです。ライトグレーで、目立った傷や汚れはございません。"}
 
       .form-data__item
         .form-group
-          %p 商品詳細
+          %label 商品詳細
         .form-title
-          %p カテゴリ
+          %label カテゴリ
           .form-title__required
-            %p 必須
+            %label 必須
         .form-input-select
           %select
             %option{value:""}
               選択してください
         .form-title
-          %p ブランド
+          %label ブランド
           .form-title__any
-            %p 任意
+            %label 任意
         .form-input-text
           %input{type:"text", placeholder: "商品名を入力してください"}
         .form-title
-          %p 商品の状態
+          %label 商品の状態
           .form-title__required
-            %p 必須
+            %label 必須
         .form-input-select
           %select
             %option{value:""}
@@ -57,27 +72,19 @@
 
       .form-data__item
         .form-group
-          %p 配送料について
+          %label 配送料について
         .form-title
-          %p 配送料の負担
+          %label 発送元の地域
           .form-title__required
-            %p 必須
+            %label 必須
         .form-input-select
           %select
             %option{value:""}
               選択してください
         .form-title
-          %p 発送元の地域
+          %label 発送までの日数
           .form-title__required
-            %p 必須
-        .form-input-select
-          %select
-            %option{value:""}
-              選択してください
-        .form-title
-          %p 発送までの日数
-          .form-title__required
-            %p 必須
+            %label 必須
         .form-input-select
           %select
             %option{value:""}
@@ -85,19 +92,19 @@
 
       .form-data__item.form-data__price
         .form-group
-          %p 価格(¥300 ~9,999,999)
+          %label 価格(¥300 ~9,999,999)
         .form-price-flex
           .form-title
-            %p 販売価格
+            %label 販売価格
             .form-title__required
-              %p 必須
+              %label 必須
           %input{type:"number", value: 0, class:"input-price"}
         .form-price-flex
-          %p 販売手数料
-          %P 1000円
+          %label 販売手数料
+          %label 1000円
         .form-price-flex
-          %p 販売利益
-          %p 4000円
+          %label 販売利益
+          %label 4000円
 
       .form-data__submit
         %input{type: "submit", value: "出品する"}

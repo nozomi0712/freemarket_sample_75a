@@ -3,9 +3,14 @@ class UsersController < ApplicationController
   end
 
   def new
+    @item = Item.new
   end
 
   def create
+    @item = Item.create(items_params)
+    if @item.save?
+      @redirect_to root_path
+    end
   end
 
   def show
@@ -19,4 +24,9 @@ class UsersController < ApplicationController
 
   def destroy
   end
+
+  private
+    def items_params
+      params.require(:item).permit(:item_name, :explanation, :price, :brand, :condition, :ship_date, :delivery_fee, :user_id)
+    end
 end
