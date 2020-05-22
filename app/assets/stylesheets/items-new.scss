@@ -1,0 +1,147 @@
+@mixin form-default{
+  height: 40px;
+  width: 100%;
+  font-size: 13px;
+  padding: 5px 5px;
+  margin-bottom: 20px;
+}
+
+@mixin any-or-require{
+  color: white;
+  padding: 0 5px;
+  border-radius: 5px;
+  margin-left:10px ;
+}
+
+@mixin btn-display{
+  cursor: pointer;
+  display: block;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+}
+
+$default-bg-color: rgb(255,255,255);
+$form-bg-color: rgb(245,245,245);
+$opacity-black: rgba(0,0,0,0.1);
+
+.put-item-page{
+  height: 100%;
+  width: 100vw;
+  padding: 50px;
+  background-color: $form-bg-color;
+  &__topimage{
+    height: 50px;
+    width: 200px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+  &__form{
+    height: 100%;
+    width: 50%;
+    margin: 0 auto;
+    background-color: $default-bg-color;
+    .form-data{
+      &__item{
+        padding:30px 40px 40px 40px;
+        border-bottom: 1px solid $opacity-black;
+        .form-group{
+          p{
+            color: grey;
+            padding: 10px 0 30px 0; 
+            font-weight: bold;
+          }
+        }
+        .form-title{
+          font-size: 13px;
+          font-weight: bold;
+          display: flex;
+          margin: 10px 0 20px 0;
+          &__required{
+            @include any-or-require;
+            background-color: red;
+          }
+          &__any{
+            @include any-or-require;
+            background-color: skyblue;
+          }
+        }
+        .form-condition{
+          font-size: 15px;
+          color: grey;
+          margin: 10px 0;
+        }
+        .form-input-image{
+          .image-post-zone{
+            height: 150px;
+            width: 100%;
+            cursor: pointer;
+            border: 1px solid $opacity-black;
+            background-image: url("input-item-image.png");
+            background-size: 100%;
+            margin-bottom: 20px;
+          }
+          input{
+            color:  white;
+            display: none;
+          }
+        }
+        .form-input-text{
+          input{
+            @include form-default;
+          }
+          .input-price{
+            text-align: right;
+          }
+        }
+        .form-input-textarea{
+          textarea{
+            @include form-default;
+            height: 200px;
+            resize: none;
+          }
+        }
+        .form-input-select{
+          select{
+            @include form-default;
+            height: 30px;
+          }
+        }
+      }
+      &__price{
+        .form-price-flex{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom:30px ;
+          input{
+            height: 50px;
+            width: 300px;
+            margin: 10px 0 20px 0;
+            text-align: right;
+          }
+          p{
+            font-size: 13px;
+          }
+        }
+      }
+      &__submit{
+        padding: 50px 0;
+        input{
+          @include btn-display;
+          height: 50px;
+          width: 400px;
+          color: white;
+          font-weight: bold;
+          background-color: red;
+          margin: 0 auto;
+        }
+        input:hover{
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
+
+
