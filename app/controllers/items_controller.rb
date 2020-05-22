@@ -3,9 +3,19 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    @user = User.first
+    @addresses = @user.user_addresses
+    @address = addressArrey(@user)
   end
 
   def create
+    @item = Item.create(items_params)
+    if @item.save
+      redirect_to new_item_path
+    else
+      render :new
+    end
   end
   
   def show
@@ -22,4 +32,16 @@ class ItemsController < ApplicationController
 
   def purchase
   end
+
+  private
+    def items_params
+      params.require(:item).permit(:item_name, :explanation, :price, :brand, :condition, :ship_date, :delivery_fee).merge(user_id: 1)
+    end
+
+    def addressArrey(user)
+      user.user_addresses.each do |user_address|
+        user_address_arrey = ["〒" +user_address.post + " ",user_address.preficture,user_address.city]
+        return user_address_arrey.join
+      end
+    end
 end

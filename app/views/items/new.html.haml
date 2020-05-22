@@ -1,5 +1,5 @@
 .put-item-page
-  =form_with model: @item, action: "create",  local: true do |f|
+  =form_with model: @item,url: items_path(@item), local: true do |f|
     .put-item-page__topimage
       = image_tag "material/logo/logo.png", height: "50px", width: "200px"
     .put-item-page__form
@@ -52,11 +52,12 @@
             .form-title__required
               %label 必須
           .form-input-select
-            =f.select :condition, ["傷あり","状態はよい","未使用",]
+            =f.select :condition, {選択してください:"",傷あり:"傷あり",状態は良い:"状態はよい",未使用:"未使用",}
+
 
         .form-data__item
           .form-group
-            %label 配送料について
+            %label 配送について
           .form-title
             =f.label "配送元の地域"
             .form-title__required
@@ -65,19 +66,20 @@
             %select
               %option{value:""}
                 選択してください
+              %option{value:@address}
+                =@address
           .form-title
             =f.label "発送までの日数"
             .form-title__required
               %label 必須
           .form-input-select
-            =f.select :ship_date,["２日以内","５日以内","１週間程度",]
+            =f.select :ship_date,{選択してください:"",２日以内:"２日以内",５日以内:"５日以内",１週間程度:"１週間程度",}
           .form-title
             =f.label "配送料"
             .form-title__required
               %label 必須
           .form-input-text
-            =f.number_field :price, value: 0
-
+            =f.number_field :delivery_fee, value: 0
         .form-data__item.form-data__price
           .form-group
             %label 価格(¥300 ~9,999,999)
@@ -93,6 +95,5 @@
           .form-price-flex
             %label 販売利益
             %label 4000円
-
         .form-data__submit
           =f.submit value: "出品する"
