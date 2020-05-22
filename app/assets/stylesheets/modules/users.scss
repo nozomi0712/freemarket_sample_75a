@@ -1,0 +1,77 @@
+@mixin btn-display{
+  cursor: pointer;
+  display: block;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+}
+@mixin any-or-require{
+  color: white;
+  padding: 0 5px;
+  border-radius: 5px;
+  margin-left:10px ;
+}
+
+$form-bg-color: rgb(245,245,245);
+$default-bg-color: rgb(255,255,255);
+
+.account-page{
+  height: 100%;
+  width: 100vw;
+  padding: 50px;
+  background-color: $form-bg-color;  
+  &__topimage{
+    height: 20px;
+    width: 200px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+  }
+  &__form{
+    height: 100%;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 20px;
+    background-color: $default-bg-color;
+    &__title{
+      font-size: 40px;
+      font-weight: bold;
+      padding: 50px 25%;
+    }
+  }
+  .field{
+    height: 100%;
+    width: 100%;
+    padding-left: 25%;
+    padding-top: 20px;
+    &__title{
+      font-size: 15px;
+      font-weight: bold;
+      display: flex;
+      margin: 10px 0 20px 0;
+      p{
+        @include any-or-require;
+        background-color: red;
+      }
+      a{
+        @include any-or-require;
+        background-color: skyblue;
+      }
+    }
+  }
+  &__submit{
+    padding: 50px 0;
+    input{
+      @include btn-display;
+      height: 80px;
+      width: 400px;
+      color: white;
+      font-weight: bold;
+      background-color: red;
+      margin: 0 auto;
+    }
+    input:hover{
+      opacity: 0.6;
+    }
+  }
+}
+
