@@ -11,6 +11,11 @@
   border-radius: 5px;
   margin-left:10px ;
 }
+@mixin input-btn{
+  height: 50px;
+  width: 300px;
+  border-radius: 5px;
+}
 
 $form-bg-color: rgb(245,245,245);
 $default-bg-color: rgb(255,255,255);
@@ -48,14 +53,26 @@ $default-bg-color: rgb(255,255,255);
       font-weight: bold;
       display: flex;
       margin: 10px 0 20px 0;
-      p{
-        @include any-or-require;
-        background-color: red;
-      }
       a{
         @include any-or-require;
         background-color: skyblue;
       }
+      p{
+        @include any-or-require;
+        background-color: red;
+      }
+    }
+    input[type="text"]{
+      @include input-btn;
+    }
+    input[type="password"]{
+      @include input-btn;
+    }
+    input[type="number"]{
+      @include input-btn;
+    }
+    input[type="email"]{
+      @include input-btn;
     }
   }
   &__submit{
@@ -74,4 +91,3 @@ $default-bg-color: rgb(255,255,255);
     }
   }
 }
-
