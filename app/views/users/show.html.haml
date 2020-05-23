@@ -1,2 +1,35 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+= render "shared/header"
+
+.user-page
+  = render "shared/side-bar"
+
+  .user-page__main
+    .user-page__main__user
+      = image_tag "material/icon/member_photo_noimage_thumb.png", class: "user-page__main__user__img"
+      .user-page__main__user__name
+        のぞみーる
+      .user-page__main__user__status
+        .reviw.status
+          評価 
+          %span 12
+        .exhibition.status
+          出品数 
+          %span 12
+
+    .user-page__main__info-tag
+      %ul.title-tags
+        %li.title-tag.selected-tag
+          お知らせ
+        %li.title-tag
+          やることリスト
+
+    .user-page__main__info-list.infomation.show-info
+      = render 'shared/user-page-dummy-info'
+      = link_to "#", class: "list__show" do
+        .list__show__card
+          一覧を見る
+
+    .user-page__main__info-list.doing
+      = image_tag "material/logo/logo.png", class: "nothing-img"
+      .doing__nothing-text
+        現在、やることはありません。

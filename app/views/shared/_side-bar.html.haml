@@ -1,0 +1,39 @@
+.user-page__side
+  .user-page__side__title
+    マイページ
+  %ul.user-page__side__contents
+    %li.content
+      = link_to "#", class: "content-link" do
+        .content-link__tag
+          いいね！一覧
+        = icon("fas", "chevron-right", class: "right-icon")
+
+    %li.content
+      = link_to "#", class: "content-link" do
+        .content-link__tag
+          出品する
+        = icon("fas", "chevron-right", class: "right-icon")
+
+    %li.content
+      = link_to "#", class: "content-link" do
+        .content-link__tag
+          発送・お届け先住所変更
+        = icon("fas", "chevron-right", class: "right-icon")
+
+    %li.content
+      = link_to "#", class: "content-link" do
+        .content-link__tag
+          支払い情報変更
+        = icon("fas", "chevron-right", class: "right-icon")
+
+    %li.content
+      = link_to "#", class: "content-link" do
+        .content-link__tag
+          本人情報変更
+        = icon("fas", "chevron-right", class: "right-icon")
+
+    %li.content
+      = link_to "#", class: "content-link" do
+        .content-link__tag
+          ログアウト
+        = icon("fas", "chevron-right", class: "right-icon")
