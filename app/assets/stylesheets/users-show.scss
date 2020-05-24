@@ -18,6 +18,7 @@ $form-bg-color: rgb(245,245,245);
 $tab-bg-color-gray: rgb(238,238,238);
 $tab-bg-color-white: rgb(255,255,255);
 $font-opacity: rgba(0,0,0,0.7);
+$selected-tag-border: solid 2px red;
 
 .user-page{
   height: 100%;
@@ -110,33 +111,13 @@ $font-opacity: rgba(0,0,0,0.7);
       }
       .selected-tag {
         background-color: $tab-bg-color-white;
+        border-top: $selected-tag-border;
       }
     }
 
-    .infomation {
+    .user-page__main__info-list {
       display: none;
-      .info-card {
-        @include info-card-setting;
-      
-        .master-img {
-          height: 50px;
-          width: 50px;
-          margin-right: 15px;
-        }
-
-        &__info__date {
-          color: $font-opacity;
-        }
-
-        .right-icon {
-          position: absolute;
-          right: 15px;
-        }
-      }
-      .info-card:hover{
-        background-color: rgb(250,250,250);
-      }
-      .list__show {
+      .list__index-link {
         @include info-card-setting;
         &__card {
           text-align: center;
@@ -149,24 +130,46 @@ $font-opacity: rgba(0,0,0,0.7);
         }
       }
     }
-    .doing {
-      display: none;
-      padding: 50px;
-      text-align: center;
-      background-color: $tab-bg-color-white;
-      .nothing-img {
-        width: 400px;
-        opacity: 0.2;
-      }
-      &__nothing-text {
-        opacity: 0.2;
-        font-size: 20px;
-        margin-top: 30px;
-      }
-    }
-
     .show-info {
       display: block;
     }
+  }
+}
+
+
+// user-page-dummy-infoのCSS
+.info-card {
+  @include info-card-setting;
+  .master-img {
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
+  }
+  &__info__date {
+    color: $font-opacity;
+  }
+  .right-icon {
+    position: absolute;
+    right: 15px;
+  }
+}
+.info-card:hover{
+  background-color: rgb(250,250,250);
+}
+
+
+// user-page-nothing-imgのCSS
+.nothing {
+  padding: 50px;
+  text-align: center;
+  background-color: $tab-bg-color-white;
+  &__img {
+    width: 400px;
+    opacity: 0.2;
+  }
+  &__nothing-text {
+    opacity: 0.2;
+    font-size: 20px;
+    margin-top: 30px;
   }
 }

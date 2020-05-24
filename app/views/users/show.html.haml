@@ -25,11 +25,11 @@
 
     .user-page__main__info-list.infomation.show-info
       = render 'shared/user-page-dummy-info'
-      = link_to "#", class: "list__show" do
-        .list__show__card
+      = link_to "#", class: "list__index-link" do
+        .list__index-link__card
           一覧を見る
 
     .user-page__main__info-list.doing
-      = image_tag "material/logo/logo.png", class: "nothing-img"
-      .doing__nothing-text
-        現在、やることはありません。
+      = render 'shared/user-page-nothing-img'
+
+
