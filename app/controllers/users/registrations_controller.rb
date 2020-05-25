@@ -30,10 +30,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"]["user"].clear
     sign_in(:user, @user)
   end
+  
+  def edit
+    @user = User.find(current_user.id)
+  end
+
+  def update
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      redirect_to root_path(@user)
+    else
+      render :edit
+    end
+  end
 
   protected
 
   def address_params
     params.require(:user_address).permit(:post, :preficture, :city, :block, :building, :tell_number)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:nickname, :email, :birthday, :first_name, :first_furigana, :last_name, :last_furigana)
   end
 end
