@@ -34,8 +34,7 @@
           %tr
             %th 配送元地域
             %td 
-              - @items.user.user_addresses.each do |address|
-                = address.preficture
+              = @items.user.user_address.preficture
           %tr
             %th 発送日の目安
             %td 
@@ -47,7 +46,13 @@
       %span.item-tax (税込)
       %span.item-delivery-fee
         = @items.delivery_fee
-    .item-show-main__purchase
-      %input{type: "submit", value: "購入画面に進む", class: "item-purchase-btn"}
+    - unless user_signed_in? && current_user.id == @items.user_id then
+      .item-show-main__purchase
+        %input{type: "submit", value: "購入画面に進む", class: "item-purchase-btn"}
     .item-show-main__explanation
       = @items.explanation
+  - if user_signed_in? && current_user.id == @items.user_id then
+    .item-show-login
+      %input{type: "submit",value: "商品の編集", class: "item-edit-btn"}
+      %p or
+      %input{type: "submit",value: "この商品を削除する", class: "item-destroy-btn"}
