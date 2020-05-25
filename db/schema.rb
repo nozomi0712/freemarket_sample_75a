@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_070432) do
     t.string "condition", null: false
     t.bigint "user_id", null: false
     t.string "ship_date", null: false
-    t.integer "delivery_fee", null: false
+    t.string "delivery_fee", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
