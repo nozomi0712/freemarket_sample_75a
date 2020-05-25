@@ -1,0 +1,444 @@
+.contents1{
+  width:100vw;
+  height:550px;
+  &--image{
+  background-image:url("bg-mainVisual-pict_pc.jpg");
+  background-size:100%; 
+  width:100vw;
+  height:550px;
+  &__text1{
+    color:white;
+    font-size:60px;
+    padding-top:200px;
+    padding-left:150px;
+    
+  }
+  &__text2{
+    color:white;
+    font-size:20px;
+    padding-left:150px;
+  }
+  &__image{
+    display:flex;
+    margin-left:150px;
+    &--1{
+      background-image:url("Apple Button.svg");
+      background-size:100%; 
+      width:150px;
+      height:44px;
+      padding-right:20px;
+    }
+    &--2{
+      background-image:url("Google Button.svg");
+      background-size:100%; 
+      width:150px;
+      height:44px;
+      
+    }
+  }
+  }
+}
+.contents2{
+  background-color:#EEEEEE;
+  height:500px;
+  &__top{
+    text-align:center;
+    padding-top:30px;
+    font-size:30px;
+    position:relative;
+    &--bottom{
+      position:absolute;
+      width:70px;
+      height:4px;
+      background-color: #3CCACE;
+      top:80px;
+      left:calc(100vw / 2.15);
+    }
+  }
+  &__bottom{
+    display:flex;
+  &__left{
+    &--top{
+    margin:20px 20px 0px 100px;
+    background-image:url("pict-reason-01.jpg");
+    background-size:100%; 
+    width:306px;
+    height:306px;
+    }
+    &--bottom{
+    margin-left:100px;
+    font-size:20px;
+    margin-top:20px;
+    }
+  }
+  &__middle{
+    &--top{
+      background-image:url("pict-reason-02.jpg");
+      background-size:100%; 
+      width:306px;
+      height:306px;
+      margin:20px 20px 0px 100px;
+    }
+    &--bottom{
+      margin-left:100px;
+      font-size:20px;
+      margin-top:20px;
+    }
+  }
+  &__right{
+    &--top{
+      background-image:url("pict-reason-03.jpg");
+      background-size:100%; 
+      width:306px;
+      height:306px;
+      margin:20px 20px 0px 100px;
+    }
+    &--bottom{
+      margin-left:100px;
+      font-size:20px;
+      margin-top:20px;
+    }
+  }
+  }
+}
+.contents3{
+  width:100vw;
+  height:400px;
+  background-image:url("bg-topMiddleDl-pict.jpg");
+  background-size:100%;   
+  &__top{
+    font-size:30px;
+    padding:80px 0px 10px 100px;
+    color:white;
+  }
+  &__middle{
+    color:white;
+    padding:0px 0px 10px 100px;
+    font-size:15px;
+  }
+  &__bottom{
+    display:flex;
+    &--left{
+      background-image:url("Apple Button.svg");
+      background-size:100%; 
+      width:150px;
+      height:44px;
+      margin-left:100px;
+      margin-top:30px
+    }
+    &--right{
+      background-image:url("Google Button.svg");
+      background-size:100%; 
+      width:150px;
+      height:44px;
+      margin-top:30px;
+    }
+  }
+}
+.contents4{
+  background-color:#EEEEEE;
+  height:500px;
+  &__top{
+    text-align:center;
+    padding-top:30px;
+    font-size:30px;
+    position:relative;
+    &--bottom{
+      position:absolute;
+      width:70px;
+      height:4px;
+      background-color: #3CCACE;
+      top:80px;
+      left:calc(100vw / 2.15);
+    }
+  }
+  &__bottom{
+    display:flex;
+  &__left{
+    &--top{
+    margin:20px 20px 0px 100px;
+    background-image:url("pict-reason-01.jpg");
+    background-size:100%; 
+    width:306px;
+    height:306px;
+    }
+    &--bottom{
+    margin-left:100px;
+    font-size:20px;
+    margin-top:20px;
+    text-align:center;
+    }
+  }
+  &__middle{
+    &--top{
+      background-image:url("pict-reason-02.jpg");
+      background-size:100%; 
+      width:306px;
+      height:306px;
+      margin:20px 20px 0px 100px;
+    }
+    &--bottom{
+      margin-left:100px;
+      font-size:20px;
+      margin-top:20px;
+      text-align:center;
+    }
+  }
+  &__right{
+    &--top{
+      background-image:url("pict-reason-03.jpg");
+      background-size:100%; 
+      width:306px;
+      height:306px;
+      margin:20px 20px 0px 100px;
+    }
+    &--bottom{
+      margin-left:100px;
+      font-size:20px;
+      margin-top:20px;
+      text-align:center;
+    }
+  }
+  }
+}
+.senditem{
+  position:fixed;
+  right:50px;
+  bottom:50px;
+  line-height: 40px;
+  padding: 0px 41px;
+  margin-top: 30px;
+  color:white;
+  background-color:#3CCACE;
+  height:120px;
+  width:150px;
+  &__image{
+    margin-top:5px;
+    background-image:url("camera.svg");
+    background-size:100%; 
+    width:60px;
+    height:60px;
+  }
+}
+.contents5{
+  background-color:#EEEEEE;
+  width:100vw;
+  height:400px;
+  &--top{
+    text-align:center;
+    font-size:30px;
+    margin-bottom:15px;
+  }
+  &--middle{
+    text-align:center;
+    color:blue;
+    font-size:25px;
+  }
+  &--bottom{
+    display:flex;
+    &__left{
+      &--image{
+      margin:0 40px 0 290px;
+      background-image:url("freemarket.jpg");
+      background-size:100%; 
+      width:220px;
+      height:245px;
+      }
+      &--price{
+        width:220px;
+        height:50px;
+        background-color:white;
+        margin-left:290px;
+        text-decoration:none;
+      }
+    }
+    &__middle{
+      &--image{
+      margin:0 40px 0 40px;
+      background-image:url("freemarket.jpg");
+      background-size:100%; 
+      width:220px;
+      height:245px;
+      }
+      &--price{
+        width:220px;
+        height:50px;
+        background-color:white;
+        margin-left:40px;
+      }
+    }
+    &__right{
+      &--image{
+      margin:0 40px 0 40px;
+      background-image:url("freemarket.jpg");
+      background-size:100%; 
+      width:220px;
+      height:245px;
+      }
+      &--price{
+        width:220px;
+        height:50px;
+        background-color:white;
+        margin-left:40px;
+      }
+    }
+  }
+
+}
+.middlebutton{
+  text-decoration:none;
+}
+.middlebutton1{
+  text-decoration:none;
+}
+.left{
+  text-align:center;
+  text-decoration:none;
+  color:black;
+}
+.middle{
+  text-align:center;
+  text-decoration:none;
+  color:black;
+}
+.right{
+  text-align:center;
+  text-decoration:none;
+  color:black;
+}
+.contents6{
+  background-color:#EEEEEE;
+  width:100vw;
+  height:500px;
+  &--top{
+    padding-top:40px;
+    text-align:center;
+    font-size:30px;
+  }
+  &--middle{
+    text-align:center;
+    color:blue;
+    font-size:25px;
+  }
+  &--bottom1{
+    display:flex;
+    &__left1{
+      &--image{
+      margin:0 40px 0 290px;
+      background-image:url("freemarket.jpg");
+      background-size:100%; 
+      width:220px;
+      height:245px;
+      }
+      &--price1{
+        text-decoration:none;
+        width:220px;
+        height:50px;
+        background-color:white;
+        margin-left:290px;
+        text-align:center;
+        color:black;
+      }
+    }
+    &__middle1{
+      &--image{
+      margin:0 40px 0 40px;
+      background-image:url("freemarket.jpg");
+      background-size:100%; 
+      width:220px;
+      height:245px;
+      }
+      &--price1{
+        text-decoration:none;
+        width:220px;
+        height:50px;
+        background-color:white;
+        margin-left:40px;
+        text-align:center;
+        color:black;
+      }
+    }
+    &__right1{
+      &--image{
+      margin:0 40px 0 40px;
+      background-image:url("freemarket.jpg");
+      background-size:100%; 
+      width:220px;
+      height:245px;
+      }
+      &--price1{
+        text-decoration:none;
+        width:220px;
+        height:50px;
+        background-color:white;
+        margin-left:40px;
+        text-align:center;
+        color:black;
+      }
+    }
+  }
+
+}
+.left1{
+  text-align:center;
+  text-decoration:none;
+  color:black;
+}
+.middle1{
+  text-align:center;
+  text-decoration:none;
+  color:black;
+}
+.right1{
+  text-align:center;
+  text-decoration:none;
+  color:black;
+}
+.contents7{
+  background-image:url("bg-topMiddleDl-pict.jpg");
+  background-size:100%; 
+  width:100vw;
+  height:400px;
+  &--top{
+    text-align:center;
+    color:white;
+    font-size:25px;
+    padding-top:110px;
+  }
+  &--middle{
+    text-align:center;
+    color:white;
+    padding-top:15px;
+    font-size:30px;
+  }
+  &--bottom{
+    display:flex;
+    &--left{
+      background-image:url("Apple Button.svg");
+      background-size:100%;
+      width:150px;
+      height:44px;
+      margin:30px 0px 0px 535px;
+    }
+    &--right{
+      background-image:url("Google Button.svg");
+      background-size:100%;
+      width:150px;
+      height:44px;
+      margin-top:30px;
+    }
+  }
+}
+.contents8{
+  background-color:#808080;
+  width:100vw;
+  height:100px;
+  padding-left:calc(100vw / 2.25);
+  padding-top:30px;
+  &--image{
+    background-image:url("material/logo/logo-white.png");
+    background-size: 100%;
+    width:120px;
+    height:35px;
+  }
+}
