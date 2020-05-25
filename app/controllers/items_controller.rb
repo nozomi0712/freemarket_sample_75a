@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @image = @item.images.new
     @user = User.first
     @addresses = @user.user_addresses
     @address = addressArrey(@user)
@@ -12,7 +13,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(items_params)
     if @item.save
-      redirect_to new_item_path
+      redirect_to root_path
     else
       render :new
     end
@@ -35,7 +36,7 @@ class ItemsController < ApplicationController
 
   private
     def items_params
-      params.require(:item).permit(:item_name, :explanation, :price, :brand, :condition, :ship_date, :delivery_fee).merge(user_id: 1)
+      params.require(:item).permit(:item_name, :explanation, :price, :brand, :condition, :ship_date, :delivery_fee,images_attributes: [:image]).merge(user_id: 1)
     end
 
     def addressArrey(user)
