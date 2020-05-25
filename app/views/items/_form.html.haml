@@ -3,9 +3,9 @@
     .put-item-page__topimage
       = image_tag "material/logo/logo.png", height: "50px", width: "200px"
     .put-item-page__form
-      = f.fields_for :images do |img|
-        .form-data
-          .form-data__item
+      .form-data
+        .form-data__item
+          = f.fields_for :images do |img|
             .form-title
               =img.label "出品画像"
               .form-title__required
@@ -13,9 +13,10 @@
             .form-condition
               %p 最大4枚までアップロードできます
             .form-input-image
-              %label 
-                =img.file_field :image
-                .image-post-zone
+              %div{"data-index": "#{img.index}" ,class:"js-file_group"}
+              =img.file_field :image, class: 'js-file'
+              .js-remove
+                削除
 
         .form-data__item
           .form-title
