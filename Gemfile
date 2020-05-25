@@ -83,5 +83,5 @@ gem 'jquery-rails'
 gem 'ancestry'
 gem 'active_hash'
 gem 'erb2haml'
-gem 'font-awesome-sass'
+gem "font-awesome-sass"
 
