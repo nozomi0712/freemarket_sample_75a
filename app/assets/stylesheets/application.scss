@@ -3,9 +3,13 @@
 }
 
 @import 'reset';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import 'modules/header';
+@import 'modules/users'
 @import 'items-index';
 @import 'items-show';
 @import 'items-new';
 @import 'items-edit';
 @import 'items-purchase';
-@import 'modules/users'
+@import 'users-show';

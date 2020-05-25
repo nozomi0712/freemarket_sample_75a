@@ -6,12 +6,10 @@ Rails.application.routes.draw do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
   end
-
   root to: 'items#index'
+  get 'items/purchase', to: 'items#purchase'
   resources :items
   resources :users
   # あとで確認
   # memberにする
-  get 'items/purchase', to: 'items#purchase'
-
 end

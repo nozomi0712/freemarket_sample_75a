@@ -1,2 +1,40 @@
-%h1 Items#show
-%p Find me in app/views/items/show.html.haml
+= render "shared/header"
+
+.item-show-page
+  .item-show-main
+    .item-show-main__item-name
+      %h1 まこなりバッグ
+    .item-show-main__item-detail
+      .item-show-main__item-detail--images
+        = image_tag "boroboro.jpeg"
+      .item-show-main__item-detail--item-info
+        %table.item-info-table
+          %tr
+            %th 出品者
+            %td まこなり
+          %tr
+            %th カテゴリー
+            %td 
+          %tr
+            %th ブランド
+            %td MakoStyle
+          %tr
+            %th 商品の状態
+            %td 中古
+          %tr
+            %th 配送料の負担
+            %td 送料込み(出品者負担)
+          %tr
+            %th 配送元地域
+            %td 福岡県
+          %tr
+            %th 発送日の目安
+            %td 1-2日で発送
+    .item-show-main__price-box
+      %span.item-price ¥690
+      %span.item-tax (税込)
+      %span.item-delivery-fee 送料込み
+    .item-show-main__purchase
+      %input{type: "submit", value: "購入画面に進む", class: "item-purchase-btn"}
+    .item-show-main__explanation
+      １０年間使っていたバッグです。思い出がたくさん詰まっていますが、容量はいっぱい入ると思います。
