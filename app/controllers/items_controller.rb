@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @image = @item.images.new
     @user = User.first
-    # @addresses = @user.user_addresses
+    # @addresses = @user.user_address
     # @address = addressArrey(@user)
   end
 
