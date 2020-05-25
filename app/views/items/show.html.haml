@@ -3,38 +3,56 @@
 .item-show-page
   .item-show-main
     .item-show-main__item-name
-      %h1 まこなりバッグ
+      %h1
+        = @items.item_name
     .item-show-main__item-detail
       .item-show-main__item-detail--images
-        = image_tag "boroboro.jpeg"
+        - @items.images.each do |image|
+          = image_tag image.image.to_s, size:"300x300"
       .item-show-main__item-detail--item-info
         %table.item-info-table
           %tr
             %th 出品者
-            %td まこなり
+            %td 
+              = @items.user.nickname
           %tr
             %th カテゴリー
             %td 
+              /カテゴリー実装後に記述
           %tr
             %th ブランド
-            %td MakoStyle
+            %td 
+              = @items.brand
           %tr
             %th 商品の状態
-            %td 中古
+            %td 
+              = @items.condition
           %tr
             %th 配送料の負担
-            %td 送料込み(出品者負担)
+            %td 
+              = @items.delivery_fee
           %tr
             %th 配送元地域
-            %td 福岡県
+            %td 
+              = @items.user.user_address.preficture
           %tr
             %th 発送日の目安
-            %td 1-2日で発送
+            %td 
+              = @items.ship_date
+
     .item-show-main__price-box
-      %span.item-price ¥690
+      %span.item-price
+        = "¥#{@items.price}"
       %span.item-tax (税込)
-      %span.item-delivery-fee 送料込み
-    .item-show-main__purchase
-      %input{type: "submit", value: "購入画面に進む", class: "item-purchase-btn"}
+      %span.item-delivery-fee
+        = @items.delivery_fee
+    - unless user_signed_in? && current_user.id == @items.user_id then
+      .item-show-main__purchase
+        %input{type: "submit", value: "購入画面に進む", class: "item-purchase-btn"}
     .item-show-main__explanation
-      １０年間使っていたバッグです。思い出がたくさん詰まっていますが、容量はいっぱい入ると思います。
+      = @items.explanation
+  - if user_signed_in? && current_user.id == @items.user_id then
+    .item-show-login
+      %input{type: "submit",value: "商品の編集", class: "item-edit-btn"}
+      %p or
+      %input{type: "submit",value: "この商品を削除する", class: "item-destroy-btn"}

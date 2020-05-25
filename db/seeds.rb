@@ -26,13 +26,13 @@ Item.create(
   brand: "MakoStyle",
   condition: "中古",
   user_id: 1,
-  ship_date: "2000/05/30",
-  delivery_fee: 500,
+  ship_date: "1〜2日で発送",
+  delivery_fee: "送料込み(出品者負担)",
 )
 
 Image.create(
   item_id: 1,
-  image: "https://www.google.com/aclk?sa=l&ai=DChcSEwi90vfs6sHpAhVM2JYKHXbSCoYYABAEGgJ0bA&sig=AOD64_2MQrKVP-x7-Mq0rfNWqH9vDS-DoA&adurl&ctype=5&ved=2ahUKEwjdru7s6sHpAhUJ1JQKHWt8B4kQvhd6BQgBEPAB",
+  image: "https://images-na.ssl-images-amazon.com/images/I/61acr0glFHL._AC_UY500_.jpg",
 )
 
 
