@@ -6,8 +6,8 @@ class ItemsController < ApplicationController
     @item = Item.new
     @image = @item.images.new
     @user = User.first
-    @addresses = @user.user_addresses
-    @address = addressArrey(@user)
+    # @addresses = @user.user_addresses
+    # @address = addressArrey(@user)
   end
 
   def create
