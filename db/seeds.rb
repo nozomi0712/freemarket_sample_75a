@@ -28,6 +28,7 @@ Item.create(
   user_id: 1,
   ship_date: "1〜2日で発送",
   delivery_fee: "送料込み(出品者負担)",
+  category_id: 268,
 )
 
 Image.create(

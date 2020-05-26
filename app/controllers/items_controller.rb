@@ -21,6 +21,9 @@ class ItemsController < ApplicationController
   
   def show
     @items = Item.find(params[:id])
+    @categories = Category.find(@items.category_id)
+    @categories2 = @categories.parent
+    @categories3 = @categories2.parent
   end
 
   def edit

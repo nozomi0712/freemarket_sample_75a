@@ -18,7 +18,18 @@
           %tr
             %th カテゴリー
             %td 
-              /カテゴリー実装後に記述
+              %ul
+                %li
+                  = link_to "" do
+                    = @categories3.name
+                %li
+                  = link_to "" do
+                    = icon("fas", "angle-right")
+                    = @categories2.name
+                %li
+                  = link_to "" do
+                    = icon("fas", "angle-double-right")
+                    = @categories.name
           %tr
             %th ブランド
             %td 
