@@ -5,5 +5,5 @@ class User < ApplicationRecord
   has_many  :items
   has_one   :user_address
   devise    :validatable, password_length: 7..128
-  validates :nickname, :first_name, :first_furigana, :last_name, :last_furigana ,presence: true
+  validates :nickname, :birthday, :first_name, :first_furigana, :last_name, :last_furigana ,presence: true
 end

@@ -16,13 +16,13 @@
         .field
           .field__title
             = f.label :メールアドレス
-            %a 任意
+            %p 必須
           .field__input
             = f.email_field :email, placeholder: "  PC,スマホどちらでも可"
         .field
           .field__title
             = f.label :生年月日
-            %a 任意
+            %p 必須
           .field__input
             = f.number_field :birthday, placeholder: "  例）20200101"
         .field

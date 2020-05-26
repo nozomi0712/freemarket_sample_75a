@@ -26,6 +26,7 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
         nickname: ニックネーム
+        birthday: 誕生日
         first_name: お名前
         first_furigana: お名前(カナ)
         last_name: お名前
