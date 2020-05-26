@@ -4,7 +4,7 @@
       = image_tag "material/logo/logo.png", height: "50px", width: "200px"
     .put-item-page__form
       .form-data
-        .form-data__item
+        .form-data__item.form-data__image
           = f.fields_for :images do |img|
             .form-title
               =img.label "出品画像"
@@ -14,6 +14,10 @@
               %p 最大4枚までアップロードできます
             .form-input-image
               %div{"data-index": "#{img.index}" ,class:"js-file_group"}
+              #previews
+                -if @item.persisted? 
+                  -@item.images.each_with_index do |image, i| 
+                    = image_tag image.image.url, data: { index: i }, width: "100", height: '100' 
               =img.file_field :image, class: 'js-file'
               .js-remove
                 削除
@@ -40,9 +44,7 @@
             .form-title__required
               %label 必須
           .form-input-select
-            %select
-              %option{value:""}
-                選択してください
+            = f.select :category, @category_parent_array
           .form-title
             =f.label "ブランド"
             .form-title__any

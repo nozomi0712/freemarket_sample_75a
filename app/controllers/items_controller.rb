@@ -7,6 +7,10 @@ class ItemsController < ApplicationController
     @image = @item.images.new
     @user = User.first
     @address = addressArrey(@user.user_address)
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
   end
 
   def create
