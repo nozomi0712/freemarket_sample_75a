@@ -23,7 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user_address = UserAddress.new(address_params)
     unless @user_address.valid?
       flash.now[:alert] = @user_address.errors.full_messages
-      render :new_address and return
+      render :new_users_address and return
     end
     @user.build_user_address(@user_address.attributes)
     @user.save
@@ -31,16 +31,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     sign_in(:user, @user)
   end
 
-  def edit
-    @user = User.find(current_user.id)
+  def edit_user
+      @user = User.find(params[:id])
   end
   
   def edit_user_addresses
-    @user_address = UserAddress.find(current_user.id)
+    @user_address = UserAddress.find(params[:id])
   end
   
-  def update
-    @user = User.find(current_user.id)
+  def update_user
+    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to root_path(@user)
     else
@@ -49,11 +49,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update_user_addresses
-    @user_address = UserAddress.find(current_user.id)
+    @user_address = UserAddress.find(params[:id])
     if @user_address.update(address_params)
       redirect_to root_path(@user_address)
     else
-      render :edit
+      render :edit_user_addresses
     end
   end
 

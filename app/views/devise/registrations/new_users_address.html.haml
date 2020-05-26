@@ -2,46 +2,46 @@
   .account-page__topimage
     = image_tag "material/logo/logo.png",height: "50px", width: "200px"
   .account-page__form
-    .account-page__form__title
-      = "住所情報入力"
     = form_for @user_address, url:addresses_path do |f|
-      = render "devise/shared/error_messages", resource: @user_address
-      .field
-        .field__title
-          = f.label "郵便番号（数字）"
-          %p 必須
-        .field__input
-          = f.number_field :post, placeholder: "例）0000000" 
-      .field
-        .field__title
-          = f.label :都道府県
-          %p 必須
-        .field__input
-          = f.text_field :preficture, placeholder: "例）東京都" 
-      .field
-        .field__title
-          = f.label :住所
-          %p 必須
-        .field__input
-          = f.text_field :city, placeholder: "例）渋谷区" 
-      .field
-        .field__title
-          = f.label :市区町村
-          %p 必須
-        .field__input
-          = f.text_field :block, placeholder: "例）道玄坂1-1-1" 
-      .field
-        .field__title
-          = f.label :建物名
-          %a 任意
-        .field__input
-          = f.text_field :building, placeholder: "例）◯◯マンション" 
-      .field
-        .field__title
-          = f.label :電話番号
-          %a 任意
-        .field__input
-          = f.number_field :tell_number, placeholder: "例）08011112222" 
-      .account-page__submit
-        = f.submit "会員登録"
+      .account-page__form__title
+        住所情報入力
+        = render "devise/shared/error_messages", resource: @user_address
+        .field
+          .field__title
+            = f.label "郵便番号（数字）"
+            %p 必須
+          .field__input
+            = f.number_field :post, placeholder: "例）0000000" 
+        .field
+          .field__title
+            = f.label :都道府県
+            %p 必須
+          .field__input
+            = f.text_field :preficture, placeholder: "例）東京都" 
+        .field
+          .field__title
+            = f.label :住所
+            %p 必須
+          .field__input
+            = f.text_field :city, placeholder: "例）渋谷区" 
+        .field
+          .field__title
+            = f.label :市区町村
+            %p 必須
+          .field__input
+            = f.text_field :block, placeholder: "例）道玄坂1-1-1" 
+        .field
+          .field__title
+            = f.label :建物名
+            %a 任意
+          .field__input
+            = f.text_field :building, placeholder: "例）◯◯マンション" 
+        .field
+          .field__title
+            = f.label :電話番号
+            %a 任意
+          .field__input
+            = f.number_field :tell_number, placeholder: "例）08011112222" 
+        .account-page__submit
+          = f.submit "会員登録"
 
