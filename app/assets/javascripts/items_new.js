@@ -10,11 +10,15 @@ $(window).on('load', ()=> {
     return html;
   }
   const buildImg = (index, url)=> {
-    const html = `<img data-index="${index}" image="${url}" width="100px" height="100px">`;
+    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
     return html;
   }
   
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  lastIndex = $('.js-file_group:last').data('index');
+  fileIndex.splice(0, lastIndex);
+
+  $('.hidden-destroy').hide();
   
     $('.form-data__image').on('change', '.js-file', function(e) {
       const targetIndex = $(this).parent().data('index');
@@ -25,6 +29,7 @@ $(window).on('load', ()=> {
         img.setAttribute('image', blobUrl);
       } else {  
         $('#previews').append(buildImg(targetIndex, blobUrl));
+        $('.js-remove').css("display","block");
         $('.form-data__image').append(buildFileField(fileIndex[0]));
         fileIndex.shift();
         fileIndex.push(fileIndex[fileIndex.length - 1] + 1);

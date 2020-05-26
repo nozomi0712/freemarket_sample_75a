@@ -15,9 +15,7 @@
             .form-input-image
               %div{"data-index": "#{img.index}" ,class:"js-file_group"}
               #previews
-                -if @item.persisted? 
-                  -@item.images.each_with_index do |image, i| 
-                    = image_tag image.image.url, data: { index: i }, width: "100", height: '100' 
+                =choosed_image(@item)
               =img.file_field :image, class: 'js-file'
               .js-remove
                 削除
@@ -58,7 +56,6 @@
           .form-input-select
             =f.select :condition, {選択してください:"",傷あり:"傷あり",状態は良い:"状態はよい",未使用:"未使用",}
 
-
         .form-data__item
           .form-group
             %label 配送について
@@ -79,11 +76,12 @@
           .form-input-select
             =f.select :ship_date,{選択してください:"",２日以内:"２日以内",５日以内:"５日以内",１週間程度:"１週間程度",}
           .form-title
-            =f.label "配送料"
+            =f.label "配送料の負担について"
             .form-title__required
               %label 必須
-          .form-input-text
-            =f.number_field :delivery_fee, value: 0
+          .form-input-select
+            =f.select :delivery_fee,{選択してください:"",出品者負担:"出品者負担",購入者負担:"購入者負担"}
+            
         .form-data__item.form-data__price
           .form-group
             %label 価格(¥300 ~9,999,999)

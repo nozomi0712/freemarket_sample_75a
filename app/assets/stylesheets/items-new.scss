@@ -81,9 +81,8 @@ $opacity-black: rgba(0,0,0,0.1);
             background-size: 100%;
             margin-bottom: 20px;
           }
-          input{
-            // color:  white;
-            // display: none;
+          img{
+            margin: 10px;
           }
         }
         .form-input-text{
@@ -142,6 +141,18 @@ $opacity-black: rgba(0,0,0,0.1);
       }
     }
   }
+}
+.js-remove{
+  width: 50px;
+  margin: 10px 0;
+  padding: 0 5px;
+  border: 1px solid black;
+  text-align: center;
+  cursor: pointer;
+  display: none;
+}
+.js-remove:hover{
+  opacity: 0.7;
 }
 
 

@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @item = Item.create(items_params)
     if @item.save
       redirect_to root_path
@@ -41,7 +40,7 @@ class ItemsController < ApplicationController
 
   private
     def items_params
-      params.require(:item).permit(:item_name, :explanation, :price, :brand, :condition, :ship_date, :delivery_fee,images_attributes: [:image]).merge(user_id: 1, category_id: 24)
+      params.require(:item).permit(:item_name, :explanation, :price, :brand, :condition, :ship_date, :delivery_fee,:category_id, images_attributes: [:image]).merge(user_id: 1, category_id: 24)
     end
 
     def addressArrey(user_address)
