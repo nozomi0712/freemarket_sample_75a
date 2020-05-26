@@ -30,6 +30,7 @@ $table-border-color: #f5f5f5;
         .item-info-table{
           width: 100%;
           border: 1px solid $table-border-color;
+          font-size: 14px;
           th{
             width: 40%;
             background: #fafafa;
@@ -40,6 +41,13 @@ $table-border-color: #f5f5f5;
             width: 60%;
             padding : 20px 10px;
             border: 1px solid $table-border-color;
+            ul li{
+              line-height: 16px;
+            }
+            a{
+              text-decoration: none;
+              color: #00bfff;
+            }
           }
         }
       }
@@ -72,10 +80,47 @@ $table-border-color: #f5f5f5;
           color: #fff;
           text-decoration:none;
           outline: 0;
+          width: 100%;
       }
       .item-purchase-btn:hover{
         opacity: 0.8;
       }
     }
   }
+  .item-show-login{
+    width: 700px;
+    padding: 24px 40px 24px 40px;
+    margin: 20px auto;
+    text-align: center;
+    background: #fff;
+    .item-edit-btn{
+      font-size: 24px;
+      margin-top: 16px;
+      padding: 20px 200px;
+      background: #ea352d;
+      color: #fff;
+      text-decoration:none;
+      outline: 0;
+      width: 100%;
+    }
+    .item-edit-btn:hover{
+      opacity: 0.8;
+    }
+    p{
+      margin:10px 0 10px 0;
+    }
+    .item-destroy-btn{
+      font-size: 24px;
+      padding: 20px 200px;
+      background: #808080;
+      color: #fff;
+      text-decoration:none;
+      outline: 0;
+      width: 100%;
+    }
+    .item-destroy-btn:hover{
+      opacity: 0.8;
+    }
 }
+}
+

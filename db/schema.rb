@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_05_25_033439) do
     t.string "condition", null: false
     t.bigint "user_id", null: false
     t.string "ship_date", null: false
-    t.integer "delivery_fee", null: false
+    t.string "delivery_fee", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
