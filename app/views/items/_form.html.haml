@@ -3,9 +3,10 @@
     .put-item-page__topimage
       = image_tag "material/logo/logo.png", height: "50px", width: "200px"
     .put-item-page__form
+      =render "items/items_error_list", {item: @item}
       .form-data
         .form-data__item.form-data__image
-          = f.fields_for :images do |img|
+          = f.fields_for :images, @item.images.build do |img|
             .form-title
               =img.label "出品画像"
               .form-title__required
