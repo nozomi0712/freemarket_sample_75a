@@ -6,8 +6,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @image = @item.images.new
     @user = User.first
-    # @addresses = @user.user_addresses
-    # @address = addressArrey(@user)
+    @address = addressArrey(@user.user_address)
   end
 
   def create
@@ -23,7 +22,6 @@ class ItemsController < ApplicationController
     @items = Item.find(params[:id])
     @categories = Category.find(@items.category_id)
     @categories2 = @categories.parent
-    @categories3 = @categories2.parent
   end
 
   def edit
@@ -43,10 +41,9 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:item_name, :explanation, :price, :brand, :condition, :ship_date, :delivery_fee,images_attributes: [:image]).merge(user_id: 1)
     end
 
-    def addressArrey(user)
-      user.user_addresses.each do |user_address|
-        user_address_arrey = ["〒" +user_address.post + " ",user_address.preficture,user_address.city]
-        return user_address_arrey.join
-      end
+    def addressArrey(user_address)
+      user_address_arrey = ["〒" +user_address.post + " ",user_address.preficture,user_address.city]
+      return user_address_arrey.join
     end
+
 end
