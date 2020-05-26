@@ -3,61 +3,49 @@
     = image_tag "material/logo/logo.png",height: "50px", width: "200px"
   .account-page__form
     .account-page__form__title
-      = "発送元・お届け先住所変更"
+      = "個人情報変更"
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       = render "devise/shared/error_messages", resource: resource
-      
       .field
         .field__title
           = f.label :ニックネーム
           %p 必須
         .field__input
           = f.text_field :nickname, placeholder: "  例）フリマ太郎" 
-
       .field
         .field__title
           = f.label :メールアドレス
           %a 任意
         .field__input
           = f.email_field :email, placeholder: "  PC,スマホどちらでも可"
-
       .field
         .field__title
           = f.label :生年月日
           %a 任意
         .field__input
           = f.number_field :birthday, placeholder: "  例）20200101"
-
       .field
         .field__title
           = f.label :お名前：（全角）
           %p 必須
         .field__input
           = f.text_field :first_name, placeholder: "  例）田中"
-   
       .field
         .field__input
           = f.text_field :last_name, placeholder: "  例）太郎"
-
       .field
         .field__title
           = f.label :お名前：カナ（全角）
           %p 必須
         .field__input
           = f.text_field :first_furigana, placeholder: "  例）タナカ"
-
-
       .field
         .field__input
           = f.text_field :last_furigana, placeholder: "  例）タロウ"
-
-          
-          
-
-      .field
-        = f.label :current_password
-        %br/
-        = f.password_field :current_password, autocomplete: "current-password"
+      -# .field
+      -#   = f.label :current_password
+      -#   %br/
+      -#   = f.password_field :current_password, autocomplete: "current-password"
 
       .account-page__submit
         = f.submit "変更する"

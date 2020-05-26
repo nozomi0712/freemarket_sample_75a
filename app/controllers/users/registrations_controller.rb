@@ -50,7 +50,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def update_user_addresses
     @user_address = UserAddress.find(current_user.id)
-    if @user_address.update(user_address_params)
+    if @user_address.update(address_params)
       redirect_to root_path(@user_address)
     else
       render :edit
@@ -58,19 +58,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
 
-  protected
+  # protected
+  private
 
   def address_params
     params.require(:user_address).permit(:post, :preficture, :city, :block, :building, :tell_number)
   end
 
-  private
 
   def user_params
-    params.require(:user).permit(:nickname, :email, :birthday, :first_name, :first_furigana, :last_name, :last_furigana, :post,)
+    params.require(:user).permit(:nickname, :email, :birthday, :first_name, :first_furigana, :last_name, :last_furigana, )
   end
   
-  def user_address_params
-    params.require(:user).permit(:post, :preficture, :city, :block, :building, :tell_number)
-  end
+  # def user_address_params
+  #   params.require(:user_address).permit(:post, :preficture, :city, :block, :building, :tell_number)
+  # end
 end
