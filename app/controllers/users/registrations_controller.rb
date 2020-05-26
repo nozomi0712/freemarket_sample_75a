@@ -30,11 +30,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"]["user"].clear
     sign_in(:user, @user)
   end
-  
+
   def edit
     @user = User.find(current_user.id)
   end
-
+  
+  def edit_user_addresses
+    @user_address = UserAddress.find(current_user.id)
+  end
+  
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
@@ -43,6 +47,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :edit
     end
   end
+
+  def update_user_addresses
+    @user_address = UserAddress.find(current_user.id)
+    if @user_address.update(user_address_params)
+      redirect_to root_path(@user_address)
+    else
+      render :edit
+    end
+  end
+
 
   protected
 
@@ -53,6 +67,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :email, :birthday, :first_name, :first_furigana, :last_name, :last_furigana)
+    params.require(:user).permit(:nickname, :email, :birthday, :first_name, :first_furigana, :last_name, :last_furigana, :post,)
+  end
+  
+  def user_address_params
+    params.require(:user).permit(:post, :preficture, :city, :block, :building, :tell_number)
   end
 end
