@@ -30,9 +30,18 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    @image = @item.images
+    @user = User.first
   end
-
+  
   def update
+    @item = Item.find(params[:id])
+    if @item.update(items_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def delete
@@ -43,7 +52,7 @@ class ItemsController < ApplicationController
 
   private
     def items_params
-      params.require(:item).permit(:item_name, :explanation, :price, :brand, :condition, :ship_date, :delivery_fee,:category_id, images_attributes: [:image]).merge(user_id: 1, category_id: 24)
+      params.require(:item).permit(:item_name, :explanation, :price, :brand, :condition, :ship_date, :delivery_fee,:category_id, images_attributes: [:image,:_destroy, :id]).merge(user_id: 1, category_id: 24)
     end
 
     def addressArrey(user_address)

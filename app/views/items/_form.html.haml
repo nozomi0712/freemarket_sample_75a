@@ -1,11 +1,13 @@
 .put-item-page
-  =form_with model: @item,url: items_path(@item), local: true do |f|
+  =form_with model: @item, local: true do |f|
     .put-item-page__topimage
       = image_tag "material/logo/logo.png", height: "50px", width: "200px"
     .put-item-page__form
       =render "items/items_error_list", {item: @item}
       .form-data
         .form-data__item.form-data__image
+          #previews
+            =choosed_image(@item)
           = f.fields_for :images, @item.images.build do |img|
             .form-title
               =img.label "出品画像"
@@ -15,11 +17,16 @@
               %p 最大4枚までアップロードできます
             .form-input-image
               %div{"data-index": "#{img.index}" ,class:"js-file_group"}
-              #previews
-                =choosed_image(@item)
               =img.file_field :image, class: 'js-file'
               .js-remove
                 削除
+              - if @item.persisted?
+                = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy' 
+              - if @item.persisted? 
+                %div{"data-index": "#{@item.images.count}", class:"js-file_group"}
+                  = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file' 
+                  .js-remove
+                    削除
 
         .form-data__item
           .form-title
