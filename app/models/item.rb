@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   has_many :images
   accepts_nested_attributes_for :images, allow_destroy: true
 
+  validates :images, length: { minimum: 1 },{ maximum: 10}
   validates :item_name, presence: true
   validates :explanation, presence: true
   validates :price, presence: true
