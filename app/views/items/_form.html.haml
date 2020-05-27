@@ -103,3 +103,6 @@
             %label 4000円
         .form-data__submit
           =f.submit value: "出品する"
+        - if @item.persisted?
+          .form-data__delete
+            =link_to "出品を取り消す",  item_path(@item), method: :delete, data: { confirm: "削除してよろしいですか？"}

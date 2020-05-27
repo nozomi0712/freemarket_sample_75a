@@ -33,12 +33,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # @image = @item.images
     @user = @item.user
   end
   
   def update
-    # binding.pry
+    @user = @item.user
     if @item.update(items_params)
       flash[:success] = "内容を更新しました"
       redirect_to root_path
@@ -50,6 +49,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
+    flash[:alert] = "出品を取り消しました"
     redirect_to root_path
   end
 
@@ -66,7 +66,7 @@ class ItemsController < ApplicationController
     end
 
     def check_login_user
-      unless @user == current_user
+      unless @user == @current_user
         flash[:alert] = "アクセス権限がありません"
         redirect_to root_path
       end
