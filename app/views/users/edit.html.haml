@@ -1,2 +1,72 @@
-%h1 Users#edit
-%p Find me in app/views/users/edit.html.haml
+- if user_signed_in? && current_user.id == @user.id
+ .account-page
+  .account-page__topimage
+    = image_tag "material/logo/logo.png",height: "50px", width: "200px"
+  .account-page__form
+    = form_for @user, url: user_registration_path do |f|
+      .account-page__form__title
+        会員情報入力
+        = render "devise/shared/error_messages", resource: @user
+      .field
+        .field__title
+          = f.label :ニックネーム
+          %p 必須
+        .field__input
+          = f.text_field :nickname, placeholder: "  例）フリマ太郎" 
+      .field
+        .field__title
+          = f.label :メールアドレス
+          %p 必須
+        .field__input
+          = f.email_field :email, placeholder: "  PC,スマホどちらでも可"
+      .field
+        .field__title
+          = f.label :パスワード
+          %p 必須
+        .field__input
+          = f.password_field :password, placeholder: "  ※英数字7文字以上"
+      .field
+        .field__title
+          = f.label :パスワード確認用
+        .field__input
+          = f.password_field :password_confirmation
+        .field__title
+          %br
+          ご本人様確認
+          %br
+          %br
+          ※プライバシーポリシー
+          %br
+          安心安全にご利用いただくために
+          %br
+          お客さまの本人情報の登録にご協力ください。
+          %br
+          他にお客様に公開されることはありません。
+      .field
+        .field__title
+          = f.label :生年月日
+          %p 必須
+        .field__input
+          = f.number_field :birthday, placeholder: "  例）20200101"
+      .field
+        .field__title
+          = f.label :お名前：（全角）
+          %p 必須
+        .field__input
+          = f.text_field :first_name, placeholder: "  例）田中"
+      .field
+        .field__input
+          = f.text_field :last_name, placeholder: "  例）太郎"
+      .field
+        .field__title
+          = f.label :お名前：セイ（全角）
+          %p 必須
+        .field__input
+          = f.text_field :first_furigana, placeholder: "  例）タナカ"
+      .field
+        .field__input
+          = f.text_field :last_furigana, placeholder: "  例）タロウ"
+      .account-page__submit
+        = f.submit "次へ進む"
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete
+

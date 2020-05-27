@@ -31,20 +31,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
     sign_in(:user, @user)
   end
 
-  def edit_user
-      @user = User.find(params[:id])
-  end
+  # def edit_user
+  #   @user = User.find(params[:id])
+  # end
   
   def edit_user_addresses
     @user_address = UserAddress.find(params[:id])
   end
   
-  def update_user
-    @user = User.find(params[:id])
+  def update
+    @user = User.find(current_user.id)
     if @user.update(user_params)
       redirect_to root_path(@user)
     else
-      render :edit_user
+      render :edit
     end
   end
 

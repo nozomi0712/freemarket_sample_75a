@@ -49,10 +49,13 @@
           = f.number_field :birthday, placeholder: "  例）20200101"
       .field
         .field__title
-          = f.label :お名前：姓（全角）
+          = f.label :お名前：（全角）
           %p 必須
         .field__input
           = f.text_field :first_name, placeholder: "  例）田中"
+      .field
+        .field__input
+          = f.text_field :last_name, placeholder: "  例）太郎"
       .field
         .field__title
           = f.label :お名前：セイ（全角）
@@ -60,15 +63,6 @@
         .field__input
           = f.text_field :first_furigana, placeholder: "  例）タナカ"
       .field
-        .field__title
-          = f.label :お名前：名（全角）
-          %p 必須
-        .field__input
-          = f.text_field :last_name, placeholder: "  例）太郎"
-      .field
-        .field__title
-          = f.label :お名前：メイ（全角）
-          %p 必須
         .field__input
           = f.text_field :last_furigana, placeholder: "  例）タロウ"
       .account-page__submit
