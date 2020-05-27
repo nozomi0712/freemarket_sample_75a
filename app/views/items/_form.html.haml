@@ -61,15 +61,9 @@
           .form-group
             %label 配送について
           .form-title
-            =f.label "配送元の地域"
-            .form-title__required
-              %label 必須
+            %label 配送元の地域
           .form-input-select
-            %select
-              %option{value:""}
-                選択してください
-              %option{value:@address}
-                =@address
+            =@address
           .form-title
             =f.label "発送までの日数"
             .form-title__required
