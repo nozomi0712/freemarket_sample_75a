@@ -6,6 +6,7 @@
       = form_for @user_address, url:"/user_addresses/#{@user_address.id}" do |f|
         .account-page__form__title
           住所情報変更
+        .error_explanation
           = render "devise/shared/error_messages", resource: @user_address
         .field
           .field__title
