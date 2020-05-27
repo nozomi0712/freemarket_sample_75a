@@ -1,11 +1,13 @@
 class ItemsController < ApplicationController
+  before_action :set_item, except: [:index, :new, :create]
+  before_action :check_login_user, except: [:index,:show, :new, :create]
   def index
   end
 
   def new
     @item = Item.new
     @image = @item.images.new
-    @user = User.first
+    @user = current_user
     @address = addressArrey(@user.user_address)
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
@@ -17,34 +19,38 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(items_params)
     if @item.save
+      flash[:success] = "出品しました"
       redirect_to root_path
     else
+      flash.now[:alert] = "内容を確認してください"
       render new_item_path
     end
   end
   
   def show
-    @items = Item.find(params[:id])
     @categories = Category.find(@items.category_id)
     @categories2 = @categories.parent
   end
 
   def edit
-    @item = Item.find(params[:id])
-    @image = @item.images
-    @user = User.first
+    # @image = @item.images
+    @user = @item.user
   end
   
   def update
-    @item = Item.find(params[:id])
+    # binding.pry
     if @item.update(items_params)
+      flash[:success] = "内容を更新しました"
       redirect_to root_path
     else
+      flash.now[:alert] = "編集内容を確認してください"
       render :edit
     end
   end
 
-  def delete
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   def purchase
@@ -52,7 +58,18 @@ class ItemsController < ApplicationController
 
   private
     def items_params
-      params.require(:item).permit(:item_name, :explanation, :price, :brand, :condition, :ship_date, :delivery_fee,:category_id, images_attributes: [:image,:_destroy, :id]).merge(user_id: 1, category_id: 24)
+      params.require(:item).permit(:item_name, :explanation, :price, :brand, :condition, :ship_date, :delivery_fee,:category_id, images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id,category_id: 24)
+    end
+
+    def set_item
+      @item = Item.find(params[:id])
+    end
+
+    def check_login_user
+      unless @user == current_user
+        flash[:alert] = "アクセス権限がありません"
+        redirect_to root_path
+      end
     end
 
     def addressArrey(user_address)

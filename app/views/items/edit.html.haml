@@ -1,1 +1,4 @@
 = render 'items/form'
+.form-data__delete
+  - if @item.user == current_user
+    =link_to "出品を取り消す",  item_path(@item), method: :delete

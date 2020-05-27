@@ -11,7 +11,9 @@
             .form-title__required
               %label 必須
           #previews
-            =choosed_image(@item)
+            -if @item.persisted? 
+              -@item.images.each_with_index do |image, i| 
+                =image_tag image.image.url, data: { index: i }, width: "100", height: '100' 
           = f.fields_for :images, @item.images.build do |img|
             .form-condition
               %p 最大4枚までアップロードできます
