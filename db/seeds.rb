@@ -31,6 +31,7 @@ UserAddress.create(
 #   category_id: 24
 # )
 
+
 # Image.create(
 #   item_id: 1,
 #   image: "https://images-na.ssl-images-amazon.com/images/I/61acr0glFHL._AC_UY500_.jpg",

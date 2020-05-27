@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
+
   end
 
   def create
@@ -24,6 +25,8 @@ class ItemsController < ApplicationController
   
   def show
     @items = Item.find(params[:id])
+    @categories = Category.find(@items.category_id)
+    @categories2 = @categories.parent
   end
 
   def edit
@@ -47,4 +50,5 @@ class ItemsController < ApplicationController
       user_address_arrey = ["〒" +user_address.post + " ",user_address.preficture,user_address.city]
       return user_address_arrey.join
     end
+
 end
