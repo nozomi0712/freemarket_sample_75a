@@ -7,8 +7,11 @@
         = @items.item_name
     .item-show-main__item-detail
       .item-show-main__item-detail--images
-        - @items.images.each do |image|
-          = image_tag image.image.to_s, size:"300x300"
+        .slides
+          - @items.images.each do |image|
+            %ul
+              %li
+                = image_tag image.image.to_s, size: "300x300"
       .item-show-main__item-detail--item-info
         %table.item-info-table
           %tr
@@ -76,3 +79,5 @@
       %input{type: "submit",value: "商品の編集", class: "item-edit-btn"}
       %p or
       %input{type: "submit",value: "この商品を削除する", class: "item-destroy-btn"}
+
+
