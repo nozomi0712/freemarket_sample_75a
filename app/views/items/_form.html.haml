@@ -6,13 +6,13 @@
       =render "items/items_error_list", {item: @item}
       .form-data
         .form-data__item.form-data__image
+          .form-title
+            %label 出品画像
+            .form-title__required
+              %label 必須
           #previews
             =choosed_image(@item)
           = f.fields_for :images, @item.images.build do |img|
-            .form-title
-              =img.label "出品画像"
-              .form-title__required
-                %label 必須
             .form-condition
               %p 最大4枚までアップロードできます
             .form-input-image
