@@ -5,6 +5,7 @@
     = form_for @user, url: user_registration_path do |f|
       .account-page__form__title
         会員情報入力
+      .error_explanation
         = render "devise/shared/error_messages", resource: @user
       .field
         .field__title
