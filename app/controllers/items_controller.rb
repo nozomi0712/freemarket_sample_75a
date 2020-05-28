@@ -6,16 +6,16 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @image = @item.images.new
+    @images = @item.images.new
     @user = current_user
     @address = addressArrey(@user.user_address)
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
-
+    
   end
-
+  
   def create
     @item = Item.create(items_params)
     if @item.save
@@ -31,9 +31,10 @@ class ItemsController < ApplicationController
     @categories = Category.find(@items.category_id)
     @categories2 = @categories.parent
   end
-
+  
   def edit
     @user = @item.user
+    @images = @item.images
   end
   
   def update
