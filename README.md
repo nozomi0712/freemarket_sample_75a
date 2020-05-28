@@ -9,7 +9,6 @@
 |first_furigana|string|null: false|
 |last_name|string|null: false|
 |last_furigana|string|null: false|
-
 ### Association
 has_many :items
 has_many :cards
@@ -27,11 +26,22 @@ has_many :user_address
 |user_id|references.true|null: false|
 |ship_date|string|null: false|
 |delivery_fee|integer|null: false|
-
+|items status|string|null: false|
 ### Association
 belongs_to :user
 belongs_to :category
 has_many :images
+
+
+## tradeテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_id|references.true|null: false|
+|seler_id|references.true|null: false|
+|buyer_id|references.true|null: false|
+### Association
+belongs_to :user
+belongs_to :items
 
 
 ## categoryテーブル
@@ -39,8 +49,6 @@ has_many :images
 |------|----|-------|
 |name|string|null: false ancestry:string:index|
 |ancestry|string|null: false|
-
-
 ### Association
 has_many :items
 
@@ -50,7 +58,6 @@ has_many :items
 |------|----|-------|
 |item_id|integer|null: false|
 |image|string|null: false|
-
 ### Association
 belongs_to :item
 
@@ -61,7 +68,6 @@ belongs_to :item
 |user_id|references.true|null: false|
 |customer_id|integer|null: false|
 |card_id|integer|null: false|
-
 ### Association
 belongs_to :user
 
@@ -76,6 +82,5 @@ belongs_to :user
 |building|string|
 |tell_number|integer|
 |user_id|references.true|null: false|
-
 ### Association
 belongs_to :user
