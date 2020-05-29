@@ -1,7 +1,9 @@
 .goods{
   background-color:#DDDDDD;
   width:100vw;
-  height:1500px;
+  height:5
+  
+  00px;
   &--category{
     font-size:30px;
     height:80px;
@@ -9,6 +11,36 @@
     padding:20px 0px 0px 30px;
   }
   &--list{
-    
+    height:auto;
+    flex-wrap:wrap;
+    align-content: flex-start;
   }
+}
+.goods1{
+  margin:20px 20px 20px 40px;
+  width:200px;
+  height:300px;
+  &--image{
+    width:200px;
+    height:200px;
+  }
+  &--price-and-name{
+    height:80px;
+    width:200px;
+    background-color:white;
+    font-size:17px;
+    color:black;
+  }
+}
+.pagenation{
+  background-color:#DDDDDD;
+  text-align:center;
+}
+.current_page {
+	background-color: #58A9EF !important; /* 背景色を変える */
+	border: 1px solid #58A9EF; /* ボーダーの色を変える */
+}
+.pagination li a {
+	background-color: #fff; /* 背景色を変える */
+	color: #58A9EF !important; /* 数字の色を変える */
 }
