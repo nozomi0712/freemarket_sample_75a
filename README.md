@@ -23,10 +23,12 @@ has_many :user_address
 |price|integer|null: false|
 |brand|string|
 |condition|string|null: false|
-|user_id|references.true|null: false|
+|status|string|null: false|
 |ship_date|string|null: false|
 |delivery_fee|integer|null: false|
 |items status|string|null: false|
+|user_id|references.true|null: false|
+|category_id|references.true|null: false|
 ### Association
 belongs_to :user
 belongs_to :category
