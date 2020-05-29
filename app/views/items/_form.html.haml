@@ -10,24 +10,27 @@
             %label 出品画像
             .form-title__required
               %label 必須
+          .form-condition
+            %p 最大10枚までアップロードできます
           #previews
             -if @item.persisted? 
               -@item.images.each_with_index do |image, i| 
                 =image_tag image.image.url, data: { index: i }, width: "100", height: '100' 
-          .form-condition
-            %p 最大4枚までアップロードできます
           .form-input-image
             = f.fields_for :images, @images do |img|
               %div{"data-index": "#{img.index}" ,class:"js-file_group"}
-                =img.file_field :image, class: 'js-file'
+                %label
+                  =img.file_field :image, class: 'js-file'
+                  %span 画像選択
                 %span{class:"js-remove"}
                   削除
-                - if @item.persisted?
-                  -# = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'  
-                  = img.check_box :_destroy, data:{ index: img.index }  
+              - if @item.persisted?
+                = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'  
             - if @item.persisted? 
               %div{"data-index": "#{@item.images.count}", class:"js-file_group"}
-                = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file'  
+                %label
+                  = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]",id: "item_images_attributes_#{@item.images.count}_id", class: 'js-file'  
+                  %span 画像選択
                 %span{class:"js-remove"}
                   削除
 

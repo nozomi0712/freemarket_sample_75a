@@ -43,6 +43,9 @@ $opacity-black: rgba(0,0,0,0.1);
     background-color: $default-bg-color;
     .form-data{
       &__image{
+        .js-file{
+          display: none;
+        }
         .form-input-image{
           .image-post-zone{
             height: 150px;

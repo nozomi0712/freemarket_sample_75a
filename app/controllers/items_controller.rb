@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
   
   def edit
     @user = @item.user
+    @address = addressArrey(@user.user_address)
     @images = @item.images
   end
   

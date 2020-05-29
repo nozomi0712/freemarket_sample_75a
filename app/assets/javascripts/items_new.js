@@ -2,7 +2,10 @@ $(window).on('load', ()=> {
   // 画像用のinputを生成する関数
   const buildFileField = (num)=> {
     const html = `<div data-index="${num}" class="js-file_group">
-                    <input class="js-file" type="file" name="item[images_attributes][${num}][image]" id="item_images_attributes_${num}_image">
+                    <label>
+                      <input class="js-file" type="file" name="item[images_attributes][${num}][image]" id="item_images_attributes_${num}_image">
+                      <span>画像選択</span>
+                      </label>
                     <span class="js-remove">
                       削除
                     </span>
@@ -26,14 +29,10 @@ $(window).on('load', ()=> {
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
 
-    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-      img.setAttribute('src', blobUrl);
-    } else {  
-      $('#previews').append(buildImg(targetIndex, blobUrl));
-      $('.form-data__image').append(buildFileField(fileIndex[0]));
-      fileIndex.shift();
-      fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
-    }
+    $('#previews').append(buildImg(targetIndex, blobUrl));
+    $('.form-data__image').append(buildFileField(fileIndex[0]));
+    fileIndex.shift();
+    fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
   });
 
   $('.form-data__image').on('click', '.js-remove', function() {
