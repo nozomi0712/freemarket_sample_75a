@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @images = @item.images.new
+    @images = @item.images.build
     @user = current_user
     @address = addressArrey(@user.user_address)
     @category_parent_array = ["---"]
@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.create(items_params)
+    @images = @item.images.build
     if @item.save
       flash[:success] = "出品しました"
       redirect_to root_path
@@ -60,7 +61,7 @@ class ItemsController < ApplicationController
 
   private
     def items_params
-      params.require(:item).permit(:item_name, :explanation, :price, :brand, :condition, :ship_date, :delivery_fee,:category_id, images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id,category_id: 24)
+      params.require(:item).permit(:item_name, :explanation, :price, :brand, :condition_id, :ship_date, :delivery_fee,:category_id, images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id,category_id: 24)
     end
 
     def set_item

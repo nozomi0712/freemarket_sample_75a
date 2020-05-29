@@ -68,7 +68,7 @@
             .form-title__required
               %label 必須
           .form-input-select
-            =f.select :condition, {選択してください:"",傷あり:"傷あり",状態は良い:"状態はよい",未使用:"未使用",}
+            =f.collection_select :condition_id, Condition.all, :id, :condition, include_blank: "選択してください"
 
         .form-data__item
           .form-group
