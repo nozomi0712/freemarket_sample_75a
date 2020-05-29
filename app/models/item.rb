@@ -4,6 +4,9 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :category
   belongs_to_active_hash :condition
+  belongs_to_active_hash :delivery_fee
+  belongs_to_active_hash :ship_date
+  belongs_to_active_hash :brand
   
   has_many :images
   accepts_nested_attributes_for :images, allow_destroy: true

@@ -62,7 +62,7 @@
             .form-title__any
               %label 任意
           .form-input-text
-            =f.text_field :brand, placeholder:"ブランドを入力してください"
+            =f.collection_select :brand_id, Brand.all, :id, :brand, include_blank: "選択してください"
           .form-title
             =f.label "商品の状態"
             .form-title__required
@@ -82,13 +82,14 @@
             .form-title__required
               %label 必須
           .form-input-select
-            =f.select :ship_date,{選択してください:"",２日以内:"２日以内",５日以内:"５日以内",１週間程度:"１週間程度",}
+            =f.collection_select :ship_date_id, ShipDate.all, :id, :ship_date, include_blank: "選択してください"
           .form-title
             =f.label "配送料の負担について"
             .form-title__required
               %label 必須
           .form-input-select
-            =f.select :delivery_fee,{選択してください:"",出品者負担:"出品者負担",購入者負担:"購入者負担"}
+            =f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :delivery_fee, include_blank: "選択してください"
+
             
         .form-data__item.form-data__price
           .form-group

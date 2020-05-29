@@ -31,11 +31,11 @@ ActiveRecord::Schema.define(version: 2020_05_27_151259) do
     t.string "item_name", null: false
     t.string "explanation", null: false
     t.integer "price", null: false
-    t.string "brand"
+    t.integer "brand_id"
     t.integer "condition_id", null: false
     t.bigint "user_id", null: false
-    t.string "ship_date", null: false
-    t.string "delivery_fee", null: false
+    t.integer "ship_date_id", null: false
+    t.integer "delivery_fee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"

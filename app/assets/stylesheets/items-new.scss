@@ -64,6 +64,10 @@ $opacity-black: rgba(0,0,0,0.1);
       &__item{
         padding:30px 40px 40px 40px;
         border-bottom: 1px solid $opacity-black;
+        select{
+          @include form-default;
+          height: 30px;
+        }
         .form-group{
           label{
             color: grey;
