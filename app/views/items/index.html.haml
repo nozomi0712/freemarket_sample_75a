@@ -65,267 +65,34 @@
         %h 簡単に売り買いできる
     .contents4__bottom__middle
       .contents4__bottom__middle--top
-
       .contents4__bottom__middle--bottom
         %h 売上金は即日振込みに対応
     .contents4__bottom__right
       .contents4__bottom__right--top
       .contents4__bottom__right--bottom
         %h 様々な支払いに対応
-
-- 1.upto(13) do |i|
+- @categories.each do |category|
   .contents 
     .contents--category
-      -if i==1
-        =link_to "#",class:'button' do
-          レディース  
-        .goods
-          .goods--list 
-            
-            -@ladies.each do |item|
-              =link_to "#" ,class:'button1'do
-                .list1 
-                  .list1--top
-                    -item.images.each do |image|
-                      =image_tag image.image.url,size:'200x200'
-                      - break
-                  .list1--bottom
-                    =item.item_name 
-                    %br 
-                    値段(税込)
-                    %br
-                    =item.price 
-                    円
-      -if i==2 
-        =link_to "#",class:'button' do
-          メンズ
-        .goods
-          .goods--list 
-            -@mens.each do |item|
-              =link_to "#" ,class:'button1'do
-                .list1 
-                  .list1--top
-                    -item.images.each do |image|
-                      =image_tag image.image.url,size:"200x200"
-                      - break
-                  .list1--bottom
-                    =item.item_name 
-                    %br 
-                    値段(税込)
-                    %br
-                    =item.price
-                    円
-      -if i==3 
-        =link_to "#",class:'button' do
-          ベビー/キッズ
-        .goods
-          .goods--list 
-            -@babykids.each do |item|
-              =link_to "#" ,class:'button1'do
-                .list1 
-                  .list1--top
-                    -item.images.each do |image|
-                      =image_tag image.image.url,size:"200x200"
-                      - break
-                  .list1--bottom
-                    =item.item_name 
-                    %br 
-                    値段(税込)
-                    %br
-                    =item.price
-                    円
-      -if i==4
-        =link_to "#",class:'button' do
-          インテリア/住まい/小物
-        .goods
-          .goods--list 
-            -@interias.each do |item|
-              =link_to "#" ,class:'button1'do
-                .list1 
-                  .list1--top
-                    -item.images.each do |image|
-                      =image_tag image.image.url,size:"200x200"
-                      - break
-                  .list1--bottom
-                    =item.item_name 
-                    %br 
-                    値段(税込)
-                    %br
-                    =item.price
-                    円
-      -if i==5
-        =link_to "#",class:'button' do
-          本/音楽/ゲーム 
-        .goods
-          .goods--list 
-            -@books.each do |item|
-              =link_to "#" ,class:'button1'do
-                .list1 
-                  .list1--top
-                    -item.images.each do |image|
-                      =image_tag image.image.url,size:"200x200"
-                      - break
-                  .list1--bottom
-                    =item.item_name 
-                    %br 
-                    値段(税込)
-                    %br
-                    =item.price
-                    円
-      -if i==6 
-        =link_to "#",class:'button' do
-          おもちゃ/ホビー/グッズ
-        .goods
-          .goods--list 
-            -@toys.each do |item|
-              =link_to "#" ,class:'button1'do
-                .list1 
-                  .list1--top
-                    -item.images.each do |image|
-                      =image_tag image.image.url,size:"200x200"
-                      - break
-                  .list1--bottom
-                    =item.item_name 
-                    %br 
-                    値段(税込)
-                    %br
-                    =item.price
-                    円
-      -if i==7 
-        =link_to "#",class:'button' do
-          コスメ/香水/美容
-        .goods
-          .goods--list 
-            -@perfumes.each do |item|
-              =link_to "#" ,class:'button1'do
-                .list1 
-                  .list1--top
-                    -item.images.each do |image|
-                      =image_tag image.image.url,size:"200x200"
-                      - break
-                  .list1--bottom
-                    =item.item_name 
-                    %br 
-                    値段(税込)
-                    %br
-                    =item.price
-                    円
-      -if i==8
-        =link_to "#",class:'button' do
-          家電/スマホ/カメラ
-        .goods
-          .goods--list 
-            -@cameras.each do |item|
-              =link_to "#" ,class:'button1'do
-                .list1 
-                  .list1--top
-                    -item.images.each do |image|
-                      =image_tag image.image.url,size:"200x200"
-                      - break
-                  .list1--bottom
-                    =item.item_name 
-                    %br 
-                    値段(税込)
-                    %br
-                    =item.price
-                    円
-      -if i==9
-        =link_to "#",class:'button' do
-          スポーツ/レジャー
-        .goods
-          .goods--list 
-            -@sports.each do |item|
-              =link_to "#" ,class:'button1'do
-                .list1 
-                  .list1--top
-                    -item.images.each do |image|
-                      =image_tag image.image.url,size:"200x200"
-                      - break
-                  .list1--bottom
-                    =item.item_name 
-                    %br 
-                    値段(税込)
-                    %br
-                    =item.price
-                    円
-      -if i==10
-        =link_to "#",class:'button' do
-          ハンドメイド
-        .goods
-          .goods--list 
-            -@handmades.each do |item|
-              =link_to "#" ,class:'button1'do
-                .list1 
-                  .list1--top
-                    -item.images.each do |image|
-                      =image_tag image.image.url,size:"200x200"
-                      - break
-                  .list1--bottom
-                    =item.item_name 
-                    %br 
-                    値段(税込)
-                    %br
-                    =item.price
-                    円
-      -if i==11
-        =link_to "#",class:'button' do
-          チケット
-        .goods
-          .goods--list 
-            -@tickets.each do |item|
-              =link_to "#" ,class:'button1'do
-                .list1 
-                  .list1--top
-                    -item.images.each do |image|
-                      =image_tag image.image.url,size:"200x200"
-                      - break
-                  .list1--bottom
-                    =item.item_name 
-                    %br 
-                    値段(税込)
-                    %br
-                    =item.price
-                    円
-      -if i==12
-        =link_to "#",class:'button' do
-          自動車/オートバイ
-        .goods
-          .goods--list 
-            -@automobiles.each do |item|
-              =link_to "#" ,class:'button1'do
-                .list1 
-                  .list1--top
-                    -item.images.each do |image|
-                      =image_tag image.image.url,size:"200x200"
-                      - break
-                  .list1--bottom
-                    =item.item_name 
-                    %br 
-                    値段(税込)
-                    %br
-                    =item.price
-                    円
-      -if i==13
-        =link_to "#",class:'button' do
-          その他
-        .goods
-          .goods--list 
-            -@others.each do |item|
-              =link_to "#" ,class:'button1'do
-                .list1 
-                  .list1--top
-                    -item.images.each do |image|
-                      =image_tag image.image.url,size:"200x200"
-                      - break
-                  .list1--bottom
-                    =item.item_name 
-                    %br 
-                    値段(税込)
-                    %br
-                    =item.price
-                    円
-      
-
+      =link_to category_path(category.id),class:'category_name' do
+        =category.name
+    .contents--goods
+      .contents--goods--list 
+        - @goods=Item.where(category_id: category.id).order("created_at DESC").limit(5)
+        - @goods.each do |item|
+          =link_to "#" ,class:'button1'do
+            .list1 
+              .list1--top
+                -item.images.each do |image|
+                  =image_tag image.image.url,size:'200x200'
+                  - break
+              .list1--bottom
+                =item.item_name 
+                %br 
+                値段(税込)
+                %br
+                =item.price 
+                円
 .contents18
   .contents18--top
     だれでもかんたん、人生を変えるフリマアプリ

@@ -1,18 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @ladies=Item.where(category_id:1).order("created_at DESC").limit(5)
-    @mens=Item.where(category_id:2).order("created_at DESC").limit(5)
-    @babykids=Item.where(category_id:3).order("created_at DESC").limit(5)
-    @interias=Item.where(category_id:4).order("created_at DESC").limit(5)
-    @books=Item.where(category_id:5).order("created_at DESC").limit(5)
-    @toys=Item.where(category_id:6).order("created_at DESC").limit(5)
-    @perfumes=Item.where(category_id:7).order("created_at DESC").limit(5)
-    @cameras=Item.where(category_id:8).order("created_at DESC").limit(5)
-    @sports=Item.where(category_id:9).order("created_at DESC").limit(5)
-    @handmades=Item.where(category_id:10).order("created_at DESC").limit(5)
-    @tickets=Item.where(category_id:11).order("created_at DESC").limit(5)
-    @automobiles=Item.where(category_id:12).order("created_at DESC").limit(5)
-    @others=Item.where(category_id:13).order("created_at DESC").limit(5)
+    @categories=Category.all 
   end
 
   def new

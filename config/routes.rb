@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :users
   # あとで確認
   # memberにする
+  resources :categories ,only: [:show] 
 end
