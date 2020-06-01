@@ -31,11 +31,17 @@ ja:
         first_furigana: お名前(カナ)
         last_name: お名前
         last_furigana: お名前(カナ)
+        
+
       user_address: 
         post: 郵便番号
         preficture: 都道府県
         city: 住所
         block: 市区町村
+        first_name: お名前
+        first_furigana: お名前(カナ)
+        Last_name: お名前
+        Last_furigana: お名前(カナ)
     models:
       user: お客様の情報
       user_address: 住所情報

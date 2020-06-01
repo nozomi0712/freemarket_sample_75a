@@ -63,4 +63,5 @@
           = f.number_field :tell_number, placeholder: "例）08011112222" 
       .account-page__submit
         = f.submit "会員登録"
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete
 
