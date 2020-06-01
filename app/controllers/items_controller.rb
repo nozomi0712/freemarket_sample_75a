@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
   before_action :check_login_user, except: [:index,:show, :new, :create]
   def index
   end
@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
+  end
 
   def get_category_children
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
@@ -23,6 +24,11 @@ class ItemsController < ApplicationController
   end
   
   def create
+    binding.pry
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
     @item = Item.create(items_params)
     if @item.save
       flash[:success] = "出品しました"
@@ -67,7 +73,7 @@ class ItemsController < ApplicationController
 
   private
     def items_params
-      params.require(:item).permit(:item_name, :explanation, :price, :brand_id, :condition_id, :ship_date_id, :delivery_fee_id,:category_id, images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id,category_id: 24)
+      params.require(:item).permit(:item_name, :explanation, :price, :brand_id, :condition_id, :ship_date_id, :delivery_fee_id,:category_id, images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
     end
 
     def set_item

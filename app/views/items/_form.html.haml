@@ -112,4 +112,5 @@
           =f.submit value: "出品する"
         - if @item.persisted?
           .form-data__delete
+            = hidden_field :category_id, 
             =link_to "出品を取り消す",  item_path(@item), method: :delete, data: { confirm: "削除してよろしいですか？"}

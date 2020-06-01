@@ -19,23 +19,26 @@ UserAddress.create(
   user_id: 1,
 )
 
-# Item.create(
-#   item_name: "まこなりのバッグ",
-#   explanation: "１０年間使っていたバッグです。思い出がたくさん詰まっていますが、容量はいっぱい入ると思います。",
-#   price: 200,
-#   brand: "MakoStyle",
-#   condition: "中古",
-#   user_id: 1,
-#   ship_date: "1〜2日で発送",
-#   delivery_fee: 200,
-#   category_id: 24
-# )
+Image.create(
+  item_id: 1,
+  image: Faker::Avatar.image,
+)
+
+Item.create(
+  item_name: Faker::Name.name,
+  explanation: "１０年間使っていたバッグです。思い出がたくさん詰まっていますが、容量はいっぱい入ると思います。",
+  price: 200,
+  brand_id: 1,
+  condition_id: 1,
+  user_id: 1,
+  ship_date_id: 1,
+  delivery_fee_id: 200,
+  category_id: 24,
+  status: 1,
+)
 
 
-# Image.create(
-#   item_id: 1,
-#   image: "https://images-na.ssl-images-amazon.com/images/I/61acr0glFHL._AC_UY500_.jpg",
-# )
+
 
 
 # レディース
