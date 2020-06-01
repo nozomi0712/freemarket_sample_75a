@@ -36,11 +36,44 @@
   background-color:#DDDDDD;
   text-align:center;
 }
-.current_page {
-	background-color: #58A9EF !important; /* 背景色を変える */
-	border: 1px solid #58A9EF; /* ボーダーの色を変える */
+.first,.prev,.page,.page.current{
+  width:50px;
+  height:50px;
+  color:black;
+  font-size:24px;
+  margin:2px;
+  line-height:50px;
+  text-align:center;
+  font-weight:bold;
+  text-decoration:none;
+  background-color:#fff;
+  padding-left:4.6px;
 }
-.pagination li a {
-	background-color: #fff; /* 背景色を変える */
-	color: #58A9EF !important; /* 数字の色を変える */
+.page.current{
+  text-align:center;
+  color:red;
+  border-radius:100%;
+  padding-left:7.1px;
 }
+.first,.prev{
+  color:blue;
+}
+.last,.next{
+  text-decoration:none;
+  font-size:24px;
+  width:50px;
+  height:50px;
+  margin:2px;
+  line-height:50px;
+  text-align:center;
+  font-weight:bold;
+  text-decoration:none;
+  background:#fff;
+  color:#222;
+  transition:.3s;
+  color:blue;
+}
+.next{
+  padding-left:3.2px;
+}
+
