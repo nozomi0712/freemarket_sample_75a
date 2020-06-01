@@ -56,7 +56,7 @@
             .form-title__required
               %label 必須
           .form-input-select
-            = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+            = f.select :category_id3, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
           .listing-product-detail__category
 
           .form-title
@@ -77,8 +77,9 @@
             %label 配送について
           .form-title
             %label 配送元の地域
-          .form-input-select
-            =@address
+          .form-input-select 
+            %p
+              =@address
           .form-title
             =f.label "発送までの日数"
             .form-title__required
@@ -101,7 +102,7 @@
               =f.label "販売価格"
               .form-title__required
                 %label 必須
-            =f.number_field :price, value: 0
+            =f.number_field :price
           .form-price-flex
             %label 販売手数料
             %label 1000円
@@ -112,5 +113,4 @@
           =f.submit value: "出品する"
         - if @item.persisted?
           .form-data__delete
-            = hidden_field :category_id, 
             =link_to "出品を取り消す",  item_path(@item), method: :delete, data: { confirm: "削除してよろしいですか？"}

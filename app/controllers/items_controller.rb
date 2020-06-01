@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
   end
   
   def create
-    binding.pry
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
@@ -49,10 +48,30 @@ class ItemsController < ApplicationController
     @user = @item.user
     @address = addressArrey(@user.user_address)
     @images = @item.images
+    @category_grandchildren = Category.find(@item[:category_id])
+    @category_children = @category_grandchildren.parent
+    @category_parent_array = ["#{@category_children.parent.name}"]
+    Category.where(ancestry: nil).each_with_index do |parent, index|
+      index += 1
+      @category_parent_array << parent.name
+      if index == 13
+        break
+      end
+    end
   end
   
   def update
     @user = @item.user
+    @category_grandchildren = Category.find(@item[:category_id])
+    @category_children = @category_grandchildren.parent
+    @category_parent_array = ["#{@category_children.parent.name}"]
+    Category.where(ancestry: nil).each_with_index do |parent, index|
+      index += 1
+      @category_parent_array << parent.name
+      if index == 13
+        break
+      end
+    end
     if @item.update(items_params)
       flash[:success] = "内容を更新しました"
       redirect_to root_path
@@ -73,7 +92,7 @@ class ItemsController < ApplicationController
 
   private
     def items_params
-      params.require(:item).permit(:item_name, :explanation, :price, :brand_id, :condition_id, :ship_date_id, :delivery_fee_id,:category_id, images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id)
+      params.require(:item).permit(:item_name, :explanation, :price, :brand_id, :condition_id, :ship_date_id, :delivery_fee_id,:category_id,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id )
     end
 
     def set_item

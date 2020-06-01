@@ -42,6 +42,7 @@ $opacity-black: rgba(0,0,0,0.1);
     margin: 0 auto;
     background-color: $default-bg-color;
     .form-data{
+      padding: 30px;
       &__image{
         .js-file{
           display: none;
@@ -64,6 +65,10 @@ $opacity-black: rgba(0,0,0,0.1);
       &__item{
         padding:30px 40px 40px 40px;
         border-bottom: 1px solid $opacity-black;
+        p{
+          padding: 5px 5px;
+          margin-bottom: 30px;
+        }
         select{
           @include form-default;
           height: 30px;
@@ -152,6 +157,14 @@ $opacity-black: rgba(0,0,0,0.1);
           opacity: 0.6;
         }
       }
+    &__delete{
+      a{
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        color: black;
+      }
+    }
     }
   }
 }

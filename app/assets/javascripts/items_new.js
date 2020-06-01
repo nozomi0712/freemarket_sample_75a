@@ -54,7 +54,7 @@ $(window).on('load', ()=> {
     var childSelectHtml = '';
     childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
                         <div class='listing-select-wrapper__box'>
-                          <select class="listing-select-wrapper__box--select" id="child_category" name="category_id">
+                          <select class="listing-select-wrapper__box--select" id="child_category" name="item[category_id2]">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           <select>
@@ -66,7 +66,7 @@ $(window).on('load', ()=> {
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
                               <div class='listing-select-wrapper__box'>
-                                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="category_id">
+                                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
                                 </select>
