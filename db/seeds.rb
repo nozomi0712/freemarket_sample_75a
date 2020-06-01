@@ -1,6 +1,6 @@
 User.create(
   nickname: "makonari", 
-  email: Faker::Internet.email,
+  email: "aaa@gmail.com",
   password: "aaaaaaaa",
   birthday: "2000/03/01",
   first_name: "成",
