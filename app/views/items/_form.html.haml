@@ -39,11 +39,13 @@
           .form-group
             %label 商品詳細
           .form-title
-            %label カテゴリ
+            =f.label "カテゴリ"
             .form-title__required
               %label 必須
           .form-input-select
-            -# = f.select :category, @category_parent_array
+            = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+          .listing-product-detail__category
+
           .form-title
             =f.label "ブランド"
             .form-title__any

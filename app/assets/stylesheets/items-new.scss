@@ -106,6 +106,10 @@ $opacity-black: rgba(0,0,0,0.1);
             height: 30px;
           }
         }
+        .listing-select-wrapper__box--select {
+          @include form-default;
+          height: 30px;
+        }
       }
       &__price{
         .form-price-flex{

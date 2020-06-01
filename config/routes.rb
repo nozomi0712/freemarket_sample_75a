@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   end
   root to: 'items#index'
   get 'items/purchase', to: 'items#purchase'
-  resources :items
+  resources :items do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
   resources :users
   # あとで確認
   # memberにする
