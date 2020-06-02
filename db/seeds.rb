@@ -8,7 +8,6 @@ User.create(
   last_name: "真子",
   last_furigana: "まこ",
 )
-
 UserAddress.create(
   post: "1112111",
   preficture: "東京都",
