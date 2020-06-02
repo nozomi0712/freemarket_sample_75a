@@ -2,9 +2,10 @@
   .account-page__topimage
     = image_tag "material/logo/logo.png",height: "50px", width: "200px"
   .account-page__form
-    .account-page__form__title
-      = "ログイン画面"
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .account-page__form__title
+        ログイン画面
+        = render "devise/shared/error_messages"
       .field
         .field__title
           = f.email_field :email, placeholder: "  メールアドレス"
@@ -14,6 +15,5 @@
           = f.password_field :password, autocomplete: "current-password", placeholder: "  パスワード"
       
       .account-page__submit
-        %input{type: "submit", value: "ログイン"}
-      .field
-        = render "devise/shared/links"
+        = f.submit "次へ進む"
+      
