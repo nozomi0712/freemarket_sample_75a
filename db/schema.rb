@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2020_05_26_030809) do
     t.datetime "updated_at", null: false
   end
 
-ActiveRecord::Schema.define(version: 2020_05_20_070432) do
 
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
