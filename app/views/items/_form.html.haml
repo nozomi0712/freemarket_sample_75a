@@ -56,14 +56,10 @@
             .form-title__required
               %label 必須
           .form-input-select
+            - if @item.persisted?
+              %p
+                = "現在のカテゴリ: #{@current_item_category}"
             = f.select :category_id3, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-          - if @item.persisted?
-            %div{class: 'listing-select-wrapper__added', id: 'children_wrapper'}
-              %div{class:'listing-select-wrapper__box'}
-                =f.select :category_id2, @category_children_array, {}, {class:"listing-select-wrapper__box--select", id:"child_category"}
-            %div{class: 'listing-select-wrapper__added', id: 'grandchildren_wrapper'}
-              %div{class:'listing-select-wrapper__box'}
-                =f.select :category_id, @category_grandchildren_array, {}, {class:"listing-select-wrapper__box--select", id: "grandchild_category"}
           .listing-product-detail__category
 
           .form-title

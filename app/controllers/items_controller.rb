@@ -10,8 +10,11 @@ class ItemsController < ApplicationController
     @user = current_user
     @address = addressArrey(@user.user_address)
     @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
+    Category.where(ancestry: nil).each_with_index do |parent, index|
       @category_parent_array << parent.name
+      if index == 12
+        break
+      end
     end
   end
 
@@ -24,6 +27,8 @@ class ItemsController < ApplicationController
   end
   
   def create
+    @user = current_user
+    @address = addressArrey(@user.user_address)
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each_with_index do |parent, index|
       @category_parent_array << parent.name
@@ -51,18 +56,9 @@ class ItemsController < ApplicationController
     @user = @item.user
     @address = addressArrey(@user.user_address)
     @category_grandchildren = Category.find(@item[:category_id])
-    @category_grandchildren_array = ["#{@category_grandchildren.name}"]
-    @category_grandchildren.siblings.each do |sibling|
-      @category_grandchildren_array << sibling.name
-    end
-
     @category_children = @category_grandchildren.parent
-    @category_children_array = ["#{@category_children.name}"]
-    @category_children.siblings.each do |sibling|
-      @category_children_array << sibling.name
-    end
-
     @category_parent_array = ["#{@category_children.parent.name}"]
+    @current_item_category = "#{@category_children.parent.name}/#{@category_children.name}/#{@category_grandchildren.name}"
     Category.where(ancestry: nil).each_with_index do |parent, index|
       index += 1
       @category_parent_array << parent.name
@@ -76,18 +72,9 @@ class ItemsController < ApplicationController
     @user = @item.user
     @address = addressArrey(@user.user_address)
     @category_grandchildren = Category.find(@item[:category_id])
-    @category_grandchildren_array = ["#{@category_grandchildren.name}"]
-    @category_grandchildren.siblings.each do |sibling|
-      @category_grandchildren_array << sibling.name
-    end
-
     @category_children = @category_grandchildren.parent
-    @category_children_array = ["#{@category_children.name}"]
-    @category_children.siblings.each do |sibling|
-      @category_children_array << sibling.name
-    end
-
     @category_parent_array = ["#{@category_children.parent.name}"]
+    @current_item_category = "#{@category_children.parent.name}/#{@category_children.name}/#{@category_grandchildren.name}"
     Category.where(ancestry: nil).each_with_index do |parent, index|
       index += 1
       @category_parent_array << parent.name
