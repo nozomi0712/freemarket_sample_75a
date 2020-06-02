@@ -4,7 +4,7 @@ $table-border-color: #f5f5f5;
   background: #f5f5f5;
   padding: 40px 0 40px 0;
   .item-show-main{
-    width: 700px;
+    width: 800px;
     padding: 24px 40px 24px 40px;
     margin: 0 auto;
     background: #fff;
@@ -22,7 +22,68 @@ $table-border-color: #f5f5f5;
       &--images{
         width: 50%;
         height: 300px;
+        outline: none;
         margin: auto;
+        .slides{
+          width: 360px;
+          margin: 0 auto;
+          .slider-arrow {
+            position: absolute;
+            top: 50%;
+            height: 36px;
+            margin-top: -18px;
+            color: #00bfff;
+            line-height: 36px;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 1;
+          }
+          .slider-prev {
+            left: 0;
+            font-size: 40px;
+          }
+          .slider-next {
+            right: 0;
+            font-size: 40px;
+          }
+          button{
+            margin: 0;
+            padding: 0;
+            background: none;
+            border: none;
+            border-radius: 0;
+            outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+          }
+          .slides-dots{
+            text-align: center;
+            li{
+              display: inline-block;
+              margin: 0 13px;
+              button{
+                position: relative;
+                text-indent: -9999px;
+                &:before{
+                  content: '□';
+                  font-size: 25px;
+                  text-indent: 0px;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  color: #00bfff;
+                }
+            }
+            &.slick-active{
+              button:before{
+                content: '■';
+                color: #00bfff;
+              }
+            }
+            }
+          }
+        }
       }
       &--item-info{
         width: 50%;
@@ -30,6 +91,7 @@ $table-border-color: #f5f5f5;
         .item-info-table{
           width: 100%;
           border: 1px solid $table-border-color;
+          font-size: 14px;
           th{
             width: 40%;
             background: #fafafa;
@@ -40,6 +102,13 @@ $table-border-color: #f5f5f5;
             width: 60%;
             padding : 20px 10px;
             border: 1px solid $table-border-color;
+            ul li{
+              line-height: 16px;
+            }
+            a{
+              text-decoration: none;
+              color: #00bfff;
+            }
           }
         }
       }
@@ -72,10 +141,46 @@ $table-border-color: #f5f5f5;
           color: #fff;
           text-decoration:none;
           outline: 0;
+          width: 100%;
       }
       .item-purchase-btn:hover{
         opacity: 0.8;
       }
+    }
+  }
+  .item-show-login{
+    width: 700px;
+    padding: 24px 40px 24px 40px;
+    margin: 20px auto;
+    text-align: center;
+    background: #fff;
+    .item-edit-btn{
+      font-size: 24px;
+      margin-top: 16px;
+      padding: 20px 200px;
+      background: #ea352d;
+      color: #fff;
+      text-decoration:none;
+      outline: 0;
+      width: 100%;
+    }
+    .item-edit-btn:hover{
+      opacity: 0.8;
+    }
+    p{
+      margin:10px 0 10px 0;
+    }
+    .item-destroy-btn{
+      font-size: 24px;
+      padding: 20px 200px;
+      background: #808080;
+      color: #fff;
+      text-decoration:none;
+      outline: 0;
+      width: 100%;
+    }
+    .item-destroy-btn:hover{
+      opacity: 0.8;
     }
   }
 }

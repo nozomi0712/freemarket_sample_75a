@@ -9,11 +9,44 @@
   .header__bottom
     .header__bottom--left
       .category
-        カテゴリーから探す
+        .category__image
+          = image_tag "material/icon/icon_category.png", size: "25x25"
+        .category__text
+          %nav#dd
+            %ul.level0
+              %li.position-setting
+                %a{href: ""} カテゴリーから探す
+                %ul.level1
+                  - @parents.each do |parent|
+                    %li
+                      %a{href: ""}
+                        = parent.name
+                      %ul.level2
+                        - parent.children.each do |child|
+                          %li
+                            %a{href: ""} 
+                              = child.name
+                            %ul.level3
+                              - child.children.each do |grandchild|
+                                %li
+                                  %a{href: ""}
+                                    = grandchild.name
+                  %li
+                    %a{href: ""}
+                      カテゴリー一覧
       .brand
-        ブランドから探す
+        .brand__image
+          = image_tag "material/icon/icon_brand.png", size: "25x25"
+        .brand__text
+          ブランドから探す
     .header__bottom--right
-      .sign-up
-        = link_to "新規登録", new_user_registration_path, class: "sign-up-btn"
-      .login
-        = link_to "ログイン", new_user_session_path, class: "login-btn"
+      - if user_signed_in?
+        .user-name
+          = link_to "#{current_user.nickname}さんのマイページ", user_path(current_user.id), class: "user-name-btn"
+        .logout
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout-btn"
+      - else
+        .sign-up
+          = link_to "新規登録", new_user_registration_path, class: "sign-up-btn"
+        .login
+          = link_to "ログイン", new_user_session_path, class: "login-btn"
