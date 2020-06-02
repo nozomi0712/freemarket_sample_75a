@@ -17,8 +17,11 @@ UserAddress.create(
   building: "フォンティスビル7F",
   tell_number: "05031873522",
   user_id: 1,
+  first_name: "成",
+  first_furigana: "なり",
+  last_name: "真子",
+  last_furigana: "まこ",
 )
-
 # Item.create(
 #   item_name: "まこなりのバッグ",
 #   explanation: "１０年間使っていたバッグです。思い出がたくさん詰まっていますが、容量はいっぱい入ると思います。",
