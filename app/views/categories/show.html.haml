@@ -6,7 +6,7 @@
   .goods--list
     -@goods.each do |good|
       .goods1
-        =link_to "#" ,class:'goods-link'do
+        =link_to item_path(good.id),class:'goods-link'do
           .goods1--image 
             - good.images.each do |image|
               =image_tag image.image.url,size:'200x200'

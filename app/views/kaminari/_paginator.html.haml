@@ -6,13 +6,10 @@
 -#    remote:        data-remote
 -#    paginator:     the paginator that renders the pagination tags inside
 = paginator.render do
-  %nav.pagination
-    = first_page_tag 
-    = prev_page_tag
+  %nav.pagination1
     - each_page do |page|
       - if page.display_tag?
         = page_tag page
       - elsif !page.was_truncated?
         = gap_tag
-    = next_page_tag 
-    = last_page_tag
+    

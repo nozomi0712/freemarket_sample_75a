@@ -361,10 +361,10 @@
   color:black;
 }
 .list1{
-  padding:0px 160px 0px 90px;
-  padding-top:-20px;
+  margin:0px 20px 0px 40px;
   height:280px;
   width:200px;
+  position:relative;
   &--top{
     width:200px;
     height:200px;
@@ -376,8 +376,7 @@
     background-color:white;
     font-size:18px;
     box-shadow:0 0 5px rgba(0, 0, 0, 0.4);
-    position:relative;
-  
+    
     &--price{
       align-items: center;
       background: rgba(0,0,0,.4);
@@ -391,10 +390,9 @@
       letter-spacing: .02em;
       margin: 0;
       padding: 0 12px;
-      position: absolute;
+      position:absolute;
       z-index: 2;
-      top:-50px;
-
+      top:145px;
     }
   }
 }

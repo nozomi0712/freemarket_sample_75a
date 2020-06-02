@@ -53,31 +53,37 @@
 .pagenation{
   background-color:#DDDDDD;
   text-align:center;
+
 }
 .first,.prev,.page,.page.current{
-  width:50px;
-  height:50px;
-  color:black;
-  font-size:18px;
-  margin:2px;
-  line-height:50px;
-  text-align:center;
+  
+  height:30px;
+  color:#00bfff;
+  font-size:10px;
+  line-height:30px;
   font-weight:bold;
   text-decoration:none;
   background-color:#fff;
-  padding-left:4.6px;
-  margin-right:3px;
+  width:30px;
+  display:inline-block;
+
+  a{
+    text-align:center;
+    border :solid 1px#00bfff;
+    
+  }
 }
 .page.current{
   text-align:center;
-  color:red;
-  border-radius:100%;
-  padding-left:7.1px;
+  color:white;
+  border :solid 1px lighten(#00bfff, 5%);
+  display:inline-block;
+  background-color:#00bfff;
 }
-.first,.prev{
+/*.first,.prev{
   color:#11FFFF;
-}
-.last,.next{
+}*/
+/*.last,.next{
   text-decoration:none;
   font-size:18px;
   width:50px;
@@ -92,6 +98,7 @@
   transition:.3s;
   color:#11FFFF;
 }
+*/
 .next{
   padding-left:3.2px;
 }
