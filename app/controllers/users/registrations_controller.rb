@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Users::RegistrationsController < Devise::RegistrationsController
   def new
     @user = User.new
@@ -31,14 +29,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     sign_in(:user, @user)
   end
 
-  # def edit_user
-  #   @user = User.find(params[:id])
-  # end
-  
   def edit_user_addresses
     @user_address = UserAddress.find(params[:id])
   end
-  
+
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
@@ -57,20 +51,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-
-  # protected
   private
 
   def address_params
     params.require(:user_address).permit(:post, :preficture, :city, :block, :building, :tell_number, :first_name, :first_furigana, :last_name, :last_furigana)
   end
 
-
   def user_params
     params.require(:user).permit(:nickname, :email, :birthday, :first_name, :first_furigana, :last_name, :last_furigana, )
   end
-  
-  # def user_address_params
-  #   params.require(:user_address).permit(:post, :preficture, :city, :block, :building, :tell_number)
-  # end
+
 end

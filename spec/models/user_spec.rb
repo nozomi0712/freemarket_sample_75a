@@ -1,7 +1,4 @@
 require 'rails_helper'
-# RSpec.describe User, type: :model do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
 describe User do
   describe '#create' do
     it "nickname、email、password、password_confirmation、birthday, first_name, :first_furigana, :last_name, :last_furigana が存在すれば登録できること" do
@@ -68,8 +65,6 @@ describe User do
       user.valid?
       expect(user.errors[:password]).to include("は7文字以上で入力してください")
     end
-
-
     it "first_nameが全角漢字以外は登録できないこと" do
       user = build(:user, first_name: "ﾎﾟｰﾙ")
       user.valid?
@@ -90,8 +85,5 @@ describe User do
       user.valid?
       expect(user.errors[:last_furigana]).to include("には全角で入力してください。")
     end
-
-
-
   end
 end

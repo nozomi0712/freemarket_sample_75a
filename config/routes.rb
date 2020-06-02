@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/:id/edit', to: 'users#edit'
     patch '/user/:id', to: 'users/registrations#update'
-
-
     get 'addresses', to: 'users/registrations#new_address'
     get '/user_addresses/:id/edit', to: 'users/registrations#edit_user_addresses'
     patch '/user_addresses/:id', to: 'users/registrations#update_user_addresses'
