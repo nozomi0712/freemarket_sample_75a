@@ -12,12 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2020_05_27_084540) do
 
+
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+ActiveRecord::Schema.define(version: 2020_05_20_070432) do
+
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
@@ -38,9 +42,18 @@ ActiveRecord::Schema.define(version: 2020_05_27_084540) do
     t.integer "delivery_fee", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
-    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "trades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "buyer_id"
+    t.bigint "seller_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_trades_on_buyer_id"
+    t.index ["item_id"], name: "index_trades_on_item_id"
+    t.index ["seller_id"], name: "index_trades_on_seller_id"
   end
 
   create_table "user_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -50,6 +63,10 @@ ActiveRecord::Schema.define(version: 2020_05_27_084540) do
     t.string "block", null: false
     t.string "building"
     t.string "tell_number"
+    t.string "first_name", default: "", null: false
+    t.string "first_furigana", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "last_furigana", default: "", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,4 +93,8 @@ ActiveRecord::Schema.define(version: 2020_05_27_084540) do
   end
 
   add_foreign_key "items", "categories"
+  add_foreign_key "trades", "items"
+  add_foreign_key "trades", "users", column: "buyer_id"
+  add_foreign_key "trades", "users", column: "seller_id"
+
 end
