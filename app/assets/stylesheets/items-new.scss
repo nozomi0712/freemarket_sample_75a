@@ -46,7 +46,7 @@ $opacity-black: rgba(0,0,0,0.1);
         padding:30px 40px 40px 40px;
         border-bottom: 1px solid $opacity-black;
         .form-group{
-          p{
+          label{
             color: grey;
             padding: 10px 0 30px 0; 
             font-weight: bold;
@@ -80,10 +80,6 @@ $opacity-black: rgba(0,0,0,0.1);
             background-image: url("input-item-image.png");
             background-size: 100%;
             margin-bottom: 20px;
-          }
-          input{
-            color:  white;
-            display: none;
           }
         }
         .form-input-text{
