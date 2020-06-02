@@ -25,8 +25,11 @@ class ItemsController < ApplicationController
   
   def create
     @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
+    Category.where(ancestry: nil).each_with_index do |parent, index|
       @category_parent_array << parent.name
+      if index == 13
+        break
+      end
     end
     @item = Item.create(items_params)
     if @item.save
@@ -47,9 +50,18 @@ class ItemsController < ApplicationController
   def edit
     @user = @item.user
     @address = addressArrey(@user.user_address)
-    @images = @item.images
     @category_grandchildren = Category.find(@item[:category_id])
+    @category_grandchildren_array = ["#{@category_grandchildren.name}"]
+    @category_grandchildren.siblings.each do |sibling|
+      @category_grandchildren_array << sibling.name
+    end
+
     @category_children = @category_grandchildren.parent
+    @category_children_array = ["#{@category_children.name}"]
+    @category_children.siblings.each do |sibling|
+      @category_children_array << sibling.name
+    end
+
     @category_parent_array = ["#{@category_children.parent.name}"]
     Category.where(ancestry: nil).each_with_index do |parent, index|
       index += 1
@@ -62,8 +74,19 @@ class ItemsController < ApplicationController
   
   def update
     @user = @item.user
+    @address = addressArrey(@user.user_address)
     @category_grandchildren = Category.find(@item[:category_id])
+    @category_grandchildren_array = ["#{@category_grandchildren.name}"]
+    @category_grandchildren.siblings.each do |sibling|
+      @category_grandchildren_array << sibling.name
+    end
+
     @category_children = @category_grandchildren.parent
+    @category_children_array = ["#{@category_children.name}"]
+    @category_children.siblings.each do |sibling|
+      @category_children_array << sibling.name
+    end
+
     @category_parent_array = ["#{@category_children.parent.name}"]
     Category.where(ancestry: nil).each_with_index do |parent, index|
       index += 1
@@ -78,6 +101,7 @@ class ItemsController < ApplicationController
     else
       flash.now[:alert] = "編集内容を確認してください"
       render :edit
+      # redirect_to edit_item_path(@item)
     end
   end
 
