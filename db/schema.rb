@@ -50,6 +50,10 @@ ActiveRecord::Schema.define(version: 2020_05_25_033439) do
     t.string "block", null: false
     t.string "building"
     t.string "tell_number"
+    t.string "first_name", default: "", null: false
+    t.string "first_furigana", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "last_furigana", default: "", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
