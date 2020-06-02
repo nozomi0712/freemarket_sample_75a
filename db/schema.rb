@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_064207) do
+ActiveRecord::Schema.define(version: 2020_05_20_070432) do
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
@@ -41,13 +41,13 @@ ActiveRecord::Schema.define(version: 2020_06_01_064207) do
     t.string "block", null: false
     t.string "building"
     t.string "tell_number"
+    t.string "first_name", default: "", null: false
+    t.string "first_furigana", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "last_furigana", default: "", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "first_furigana"
-    t.string "Last_name"
-    t.string "Last_furigana"
     t.index ["user_id"], name: "index_user_addresses_on_user_id"
   end
 
