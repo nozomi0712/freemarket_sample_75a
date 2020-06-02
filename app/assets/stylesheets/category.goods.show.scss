@@ -1,14 +1,12 @@
 .goods{
   background-color:#DDDDDD;
   width:100vw;
-  height:5
-  
-  00px;
+  height:500px;
   &--category{
     font-size:30px;
     height:80px;
     width:100vw;
-    padding:20px 0px 0px 30px;
+    padding:20px 0px 0px 270px;
   }
   &--list{
     height:auto;
@@ -23,13 +21,33 @@
   &--image{
     width:200px;
     height:200px;
+    box-shadow:0 0 5px  rgba(0, 0, 0, 0.4);
   }
   &--price-and-name{
-    height:80px;
+    height:63px;
     width:200px;
     background-color:white;
     font-size:17px;
     color:black;
+    box-shadow:0 0 5px  rgba(0, 0, 0, 0.4);
+    position:absolute;
+    &--price{
+      align-items: center;
+      background: rgba(0,0,0,.4);
+      border-radius: 0 14px 14px 0;
+      bottom: 8px;
+      box-sizing: border-box;
+      color: #fff;
+      display: inline-flex;
+      font-size: 17px;
+      height: 28px;
+      letter-spacing: .02em;
+      margin: 0;
+      padding: 0 12px;
+      position: absolute;
+      z-index: 2;
+      top:-50px;
+    }
   }
 }
 .pagenation{
@@ -40,7 +58,7 @@
   width:50px;
   height:50px;
   color:black;
-  font-size:24px;
+  font-size:18px;
   margin:2px;
   line-height:50px;
   text-align:center;
@@ -48,6 +66,7 @@
   text-decoration:none;
   background-color:#fff;
   padding-left:4.6px;
+  margin-right:3px;
 }
 .page.current{
   text-align:center;
@@ -56,11 +75,11 @@
   padding-left:7.1px;
 }
 .first,.prev{
-  color:blue;
+  color:#11FFFF;
 }
 .last,.next{
   text-decoration:none;
-  font-size:24px;
+  font-size:18px;
   width:50px;
   height:50px;
   margin:2px;
@@ -71,9 +90,11 @@
   background:#fff;
   color:#222;
   transition:.3s;
-  color:blue;
+  color:#11FFFF;
 }
 .next{
   padding-left:3.2px;
 }
-
+.goods-link{
+  text-decoration:none;
+}

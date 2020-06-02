@@ -80,8 +80,8 @@
       .contents--goods--list 
         - @goods=Item.where(category_id: category.id).order("created_at DESC").limit(5)
         - @goods.each do |item|
-          =link_to "#" ,class:'button1'do
-            .list1 
+          .list1
+            =link_to "#" ,class:'button1'do
               .list1--top
                 -item.images.each do |image|
                   =image_tag image.image.url,size:'200x200'
@@ -91,6 +91,7 @@
                 %br 
                 値段(税込)
                 %br
+              .list1--bottom--price
                 =item.price 
                 円
 .contents18
