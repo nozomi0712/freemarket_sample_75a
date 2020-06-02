@@ -27,10 +27,10 @@ ja:
         updated_at: 更新日
         nickname: ニックネーム
         birthday: 誕生日
-        first_name: お名前
-        first_furigana: お名前(カナ)
-        last_name: お名前
-        last_furigana: お名前(カナ)
+        # first_name: お名前
+        # first_furigana: お名前(カナ)
+        # last_name: お名前
+        # last_furigana: お名前(カナ)
         
 
       user_address: 
@@ -40,8 +40,8 @@ ja:
         block: 市区町村
         first_name: お名前
         first_furigana: お名前(カナ)
-        Last_name: お名前
-        Last_furigana: お名前(カナ)
+        last_name: お名前
+        last_furigana: お名前(カナ)
     models:
       user: お客様の情報
       user_address: 住所情報

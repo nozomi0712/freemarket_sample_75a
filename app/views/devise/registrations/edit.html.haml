@@ -44,10 +44,10 @@
         .field
           .field__input
             = f.text_field :last_furigana, placeholder: "  例）タロウ"
-        .field
-          = f.label :current_password
-          %br/
-          = f.password_field :current_password, autocomplete: "current-password"
+        -# .field
+        -#   = f.label :current_password
+        -#   %br/
+        -#   = f.password_field :current_password, autocomplete: "current-password"
 
         .account-page__submit
           = f.submit "変更する" 
