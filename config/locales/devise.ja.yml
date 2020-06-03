@@ -27,8 +27,8 @@ ja:
         updated_at: 更新日
         nickname: ニックネーム
         birthday: 誕生日
-        first_name: お名前
-        first_furigana: お名前ふりがな
+        first_name: 苗字
+        first_furigana: 苗字(ふりがな)
         last_name: お名前
         last_furigana: お名前ふりがな
         
@@ -38,8 +38,8 @@ ja:
         preficture: 都道府県
         city: 住所
         block: 市区町村
-        first_name: お名前
-        first_furigana: お名前ふりがな
+        first_name: 苗字
+        first_furigana: 苗字(ふりがな)
         last_name: お名前
         last_furigana: お名前ふりがな
     models:
