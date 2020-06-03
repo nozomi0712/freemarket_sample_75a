@@ -28,8 +28,11 @@ $default-bg-color: rgb(255,255,255);
 .account-page{
   height: 100%;
   width: 100%;
-  padding: 50px;
-  background-color: $form-bg-color;  
+  // padding: 50px;
+  background-color: $form-bg-color;
+  // .new_user{
+  //   height: ;
+  // }
   &__topimage{
     height: 20px;
     width: 200px;
