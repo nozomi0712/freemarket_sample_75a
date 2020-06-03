@@ -110,12 +110,14 @@ $default-bg-color: rgb(255,255,255);
       background-color: #FFC0CB;
     }
     ul{
-      width: 200px;
+      padding-top: 10px;
+      width: 300px;
       font-size: 15px;
       margin: 0 auto;
       color: red;
+      text-align: center;
       li{
-        padding-top: 10px;
+        padding-top: 5px;
         margin-bottom: 10px;
       }
     }

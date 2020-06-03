@@ -30,9 +30,7 @@ ja:
         first_name: 苗字
         first_furigana: 苗字(ふりがな)
         last_name: お名前
-        last_furigana: お名前ふりがな
-        
-
+        last_furigana: お名前(ふりがな)
       user_address: 
         post: 郵便番号
         preficture: 都道府県
@@ -41,7 +39,7 @@ ja:
         first_name: 苗字
         first_furigana: 苗字(ふりがな)
         last_name: お名前
-        last_furigana: お名前ふりがな
+        last_furigana: お名前(ふりがな)
     models:
       user: お客様の情報
       user_address: 住所情報
