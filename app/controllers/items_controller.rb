@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.create(items_params)
-    @images = @item.images.new
+    @images = @item.images
     if @item.save
       flash[:success] = "出品しました"
       redirect_to root_path
