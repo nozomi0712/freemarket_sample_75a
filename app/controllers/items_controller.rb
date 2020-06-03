@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :check_login_user, except: :index
   before_action :check_correct_user, only: [:edit, :update, :destroy]
   before_action :set_caegory_for_new_create, only: [:new, :create]
-  before_action :set_user_for_new_create, only: [:new, :create]
+  before_action :set_user_address_for_new_create, only: [:new, :create]
   before_action :set_category_for_edit_update, only: [:edit, :update]
   before_action :set_user_for_edit_update_destroy, only: [:edit, :update, :destroy]
   
@@ -83,9 +83,8 @@ class ItemsController < ApplicationController
       @category_parent_array = ["---"] + Category.where(ancestry: nil).first(12).pluck(:name)
     end
     
-    def set_user_for_new_create
-      @user = current_user
-      @address = addressArrey(@user.user_address)
+    def set_user_address_for_new_create
+      @address = addressArrey(current_user.user_address)
     end
 
     def set_category_for_edit_update
@@ -103,7 +102,8 @@ class ItemsController < ApplicationController
     end
 
     def set_user_for_edit_update_destroy
-      @address = addressArrey(current_user.user_address)
+      @user = @item.user
+      @address = addressArrey(@user.user_address)
     end
 
     def check_login_user
