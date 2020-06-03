@@ -68,6 +68,7 @@ $opacity-black: rgba(0,0,0,0.1);
         p{
           padding: 5px 5px;
           margin-bottom: 30px;
+          font-weight: bold;
         }
         select{
           @include form-default;

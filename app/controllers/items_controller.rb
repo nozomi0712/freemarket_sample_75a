@@ -1,21 +1,18 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
   before_action :check_login_user, except: [:index,:show, :new, :create]
+  before_action :set_caegory_for_new_create, only: [:new, :create]
+  before_action :set_user_for_new_create, only: [:new, :create]
+  before_action :set_caegory_for_edit_update, only: [:edit, :update]
+  before_action :set_user_for_edit_update, only: [:edit, :update]
+  
+
   def index
   end
 
   def new
     @item = Item.new
     @images = @item.images.new
-    @user = current_user
-    @address = addressArrey(@user.user_address)
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each_with_index do |parent, index|
-      @category_parent_array << parent.name
-      if index == 12
-        break
-      end
-    end
   end
 
   def get_category_children
@@ -27,22 +24,13 @@ class ItemsController < ApplicationController
   end
   
   def create
-    @user = current_user
-    @address = addressArrey(@user.user_address)
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each_with_index do |parent, index|
-      @category_parent_array << parent.name
-      if index == 13
-        break
-      end
-    end
     @item = Item.create(items_params)
     if @item.save
       flash[:success] = "出品しました"
       redirect_to root_path
     else
       flash.now[:alert] = "内容を確認してください"
-      @images = @item.images.build
+      # @images = @item.images.build
       render new_item_path
     end
   end
@@ -53,42 +41,17 @@ class ItemsController < ApplicationController
   end
   
   def edit
-    @user = @item.user
-    @address = addressArrey(@user.user_address)
-    @category_grandchildren = Category.find(@item[:category_id])
-    @category_children = @category_grandchildren.parent
-    @category_parent_array = ["#{@category_children.parent.name}"]
-    @current_item_category = "#{@category_children.parent.name}/#{@category_children.name}/#{@category_grandchildren.name}"
-    Category.where(ancestry: nil).each_with_index do |parent, index|
-      index += 1
-      @category_parent_array << parent.name
-      if index == 13
-        break
-      end
-    end
+    @images = @item.images
   end
   
   def update
-    @user = @item.user
-    @address = addressArrey(@user.user_address)
-    @category_grandchildren = Category.find(@item[:category_id])
-    @category_children = @category_grandchildren.parent
-    @category_parent_array = ["#{@category_children.parent.name}"]
-    @current_item_category = "#{@category_children.parent.name}/#{@category_children.name}/#{@category_grandchildren.name}"
-    Category.where(ancestry: nil).each_with_index do |parent, index|
-      index += 1
-      @category_parent_array << parent.name
-      if index == 13
-        break
-      end
-    end
     if @item.update(items_params)
       flash[:success] = "内容を更新しました"
       redirect_to root_path
     else
       flash.now[:alert] = "編集内容を確認してください"
+      @images = @item.images
       render :edit
-      # redirect_to edit_item_path(@item)
     end
   end
 
@@ -101,6 +64,7 @@ class ItemsController < ApplicationController
   def purchase
   end
 
+
   private
     def items_params
       params.require(:item).permit(:item_name, :explanation, :price, :brand_id, :condition_id, :ship_date_id, :delivery_fee_id,:category_id,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id )
@@ -108,6 +72,37 @@ class ItemsController < ApplicationController
 
     def set_item
       @item = Item.find(params[:id])
+    end
+
+    def set_caegory_for_new_create
+      @category_parent_array = ["---"]
+      Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent.name
+      end
+    end
+    
+    def set_user_for_new_create
+      @user = current_user
+      @address = addressArrey(@user.user_address)
+    end
+
+    def set_caegory_for_edit_update
+      @category_grandchildren = Category.find(@item[:category_id])
+      @category_children = @category_grandchildren.parent
+      @category_parent_array = ["#{@category_children.parent.name}"]
+      @current_item_category = "#{@category_children.parent.name}/#{@category_children.name}/#{@category_grandchildren.name}"
+      Category.where(ancestry: nil).each_with_index do |parent, index|
+        index += 1
+        @category_parent_array << parent.name
+        if index == 13
+          break
+        end
+      end
+    end
+
+    def set_user_for_edit_update
+      @user = @item.user
+      @address = addressArrey(@user.user_address)
     end
 
     def check_login_user
