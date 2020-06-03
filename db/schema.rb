@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2020_05_26_030809) do
     t.string "delivery_fee", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
