@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_05_26_030809) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -94,5 +93,4 @@ ActiveRecord::Schema.define(version: 2020_05_26_030809) do
   add_foreign_key "trades", "items"
   add_foreign_key "trades", "users", column: "buyer_id"
   add_foreign_key "trades", "users", column: "seller_id"
-
 end
