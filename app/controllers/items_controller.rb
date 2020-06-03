@@ -92,13 +92,13 @@ class ItemsController < ApplicationController
       @category_children = @category_grandchildren.parent
       @category_parent_array =  ["#{@category_children.parent.name}"] + Category.where(ancestry: nil).first(12).pluck(:name)
       @current_item_category = "#{@category_children.parent.name}/#{@category_children.name}/#{@category_grandchildren.name}"
-      # Category.where(ancestry: nil).each_with_index do |parent, index|
-      #   index += 1
-      #   @category_parent_array << parent.name
-      #   if index == 13
-      #     break
-      #   end
-      # end
+      Category.where(ancestry: nil).each_with_index do |parent, index|
+        index += 1
+        @category_parent_array << parent.name
+        if index == 13
+          break
+        end
+      end
     end
 
     def set_user_for_edit_update_destroy
