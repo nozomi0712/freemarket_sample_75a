@@ -1,22 +1,38 @@
 .put-item-page
-  =form_with model: @item,url: items_path(@item), local: true do |f|
+  =form_with model: @item, local: true do |f|
     .put-item-page__topimage
       = image_tag "material/logo/logo.png", height: "50px", width: "200px"
     .put-item-page__form
+      =render "items/items_error_list", {item: @item}
       .form-data
-        .form-data__item
-          = f.fields_for :images do |img|
-            .form-title
-              =img.label "出品画像"
-              .form-title__required
-                %label 必須
-            .form-condition
-              %p 最大4枚までアップロードできます
-            .form-input-image
+        .form-data__item.form-data__image
+          .form-title
+            %label 出品画像
+            .form-title__required
+              %label 必須
+          .form-condition
+            %p 最大10枚までアップロードできます
+          #previews
+            -if @item.persisted? 
+              -@item.images.each_with_index do |image, i| 
+                =image_tag image.image.url, data: { index: i }, width: "100", height: '100' 
+          .form-input-image
+            = f.fields_for :images, @images do |img|
               %div{"data-index": "#{img.index}" ,class:"js-file_group"}
-              =img.file_field :image, class: 'js-file'
-              .js-remove
-                削除
+                %label
+                  =img.file_field :image, class: 'js-file'
+                  %span 画像選択
+                %span{class:"js-remove"}
+                  削除
+              - if @item.persisted?
+                = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'  
+            - if @item.persisted? 
+              %div{"data-index": "#{@item.images.count}", class:"js-file_group"}
+                %label
+                  = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]",id: "item_images_attributes_#{@item.images.count}_id", class: 'js-file'  
+                  %span 画像選択
+                %span{class:"js-remove"}
+                  削除
 
         .form-data__item
           .form-title
@@ -36,52 +52,51 @@
           .form-group
             %label 商品詳細
           .form-title
-            %label カテゴリ
+            =f.label "カテゴリ"
             .form-title__required
               %label 必須
           .form-input-select
-            %select
-              %option{value:""}
-                選択してください
+            - if @item.persisted?
+              %p
+                = "#{@current_item_category}"
+            = f.select :category_id3, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+          .listing-product-detail__category
+
           .form-title
             =f.label "ブランド"
             .form-title__any
               %label 任意
-          .form-input-text
-            =f.text_field :brand, placeholder:"ブランドを入力してください"
+          .form-input-select
+            =f.collection_select :brand_id, Brand.all, :id, :brand, include_blank: "選択してください"
           .form-title
             =f.label "商品の状態"
             .form-title__required
               %label 必須
           .form-input-select
-            =f.select :condition, {選択してください:"",傷あり:"傷あり",状態は良い:"状態はよい",未使用:"未使用",}
-
+            =f.collection_select :condition_id, Condition.all, :id, :condition, include_blank: "選択してください"
 
         .form-data__item
           .form-group
             %label 配送について
           .form-title
-            =f.label "配送元の地域"
-            .form-title__required
-              %label 必須
-          .form-input-select
-            %select
-              %option{value:""}
-                選択してください
-              %option{value:@address}
-                =@address
+            %label 配送元の地域
+          .form-input-select 
+            %p
+              =@address
           .form-title
             =f.label "発送までの日数"
             .form-title__required
               %label 必須
           .form-input-select
-            =f.select :ship_date,{選択してください:"",２日以内:"２日以内",５日以内:"５日以内",１週間程度:"１週間程度",}
+            =f.collection_select :ship_date_id, ShipDate.all, :id, :ship_date, include_blank: "選択してください"
           .form-title
-            =f.label "配送料"
+            =f.label "配送料の負担について"
             .form-title__required
               %label 必須
-          .form-input-text
-            =f.number_field :delivery_fee, value: 0
+          .form-input-select
+            =f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :delivery_fee, include_blank: "選択してください"
+
+            
         .form-data__item.form-data__price
           .form-group
             %label 価格(¥300 ~9,999,999)
@@ -91,11 +106,14 @@
               .form-title__required
                 %label 必須
             =f.number_field :price, value: 0
-          .form-price-flex
-            %label 販売手数料
-            %label 1000円
-          .form-price-flex
-            %label 販売利益
-            %label 4000円
+          -# .form-price-flex
+          -#   %label 販売手数料
+          -#   %label 1000円
+          -# .form-price-flex
+          -#   %label 販売利益
+          -#   %label 4000円
         .form-data__submit
           =f.submit value: "出品する"
+        - if @item.persisted?
+          .form-data__delete
+            =link_to "出品を取り消す",  item_path(@item), method: :delete, data: { confirm: "削除してよろしいですか？"}
