@@ -3,21 +3,24 @@
   padding: 5px 0 0 0;
   position:relative;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5);
-    &__top{
-      height: 60px;
-      width: 800px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      &--title{
-        margin: 10px 10px 0 0;
-      }
-      &--search{
-        .search-size{
-          width: 600px;
-          height: 35px;
-          padding-left: 5px;
+  &__top{
+    height: 60px;
+    width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--title{
+      margin: 10px 10px 0 0;
+    }
+    &--search{
+      .search-size{
+        width: 600px;
+        height: 35px;
+        padding-left: 5px;
+        }
+        .search-size:focus{
+          outline: solid 1px #67c5ff;
         }
       }
       &--search-image{
@@ -36,26 +39,154 @@
       align-items: center;
       &--left{
         display: flex;
+        margin-top: 30px;
+        padding-bottom: 15px;
         .category{
-          font-family: 'Kosugi Maru', sans-serif;
+          display: flex;
+          &__image{
+            margin-right: 3px;
+          }
+          &__text{
+            a {
+              color: black;
+              text-decoration: none;
+              display: block;
+              transition: 0.1s;
+              &:hover{
+                color: #00bfff;
+              }
+            }
+            ul {
+              li {
+                ul {
+                  z-index: 9;
+                  display: none;
+                }
+                li {
+                  &:hover{
+                    .level2{
+                      display: block;
+                    }
+                  }
+                  ul {
+                    display: none;
+                  }
+                  li {
+                    &:hover{
+                      .level3{
+                        display: block;
+                      }
+                    }
+                    ul {
+                      display: none;
+                    }
+                    li {
+                    }
+                      }
+                  }
+              }
+            }
+            .level1, .level2, .level3 {
+              .category-active {
+                color: white;
+                background: darken(#00bfff, 10%);
+              }
+            }
+            .position-setting{
+              position: relative;
+            }
+            .level1 {
+              font-size: 16px;
+              position: absolute;
+              margin-top: 10px;
+              top: 100%;
+              left: -28px;
+              width: 160%;
+              background: lighten(#00bfff, 45%);
+              a {
+                padding: 10px 10px;
+                background: lighten(#00bfff, 45%);
+              }
+            }
+            .level2 {
+              font-size: 14px;
+              position: absolute;
+              top: 0;
+              left: 100%;
+              border-left: 1px solid white;
+              width: 100%;
+              height: 100%;
+              background: lighten(#00bfff, 45%);
+              a {
+                padding: 1px 10px;
+                background: lighten(#00bfff, 45%);
+              }
+            }
+            .level3 {
+              position: absolute;
+              top: 0;
+              left: 100%;
+              border-left: 1px solid white;
+              width: 120%;
+              height: 100%;
+              background: lighten(#00bfff, 45%);
+            }
+          }
         }
-        .category:hover{
-          color: #00bfff;
+          &:hover{
+            .level1{
+              display: block;
+            }
         }
         .brand{
-          margin: 0 0 0 20px;
-          font-family: 'Kosugi Maru', sans-serif;
-        }
-        .brand:hover{
-          color: #00bfff;
+          display: flex;
+          margin-left: 20px;
+          &__image{
+            margin-right: 3px;
+          }
+          &__text{
+            font-family: 'Kosugi Maru', sans-serif;
+            line-height: 24px;
+          }
         }
       }
       &--right{
         display: flex;
+        .user-name{
+          .user-name-btn {
+            display: inline-block;
+            padding: 4px 18px 6px 18px;
+            text-decoration: none;
+            color: #fff;
+            border: solid 2px darken(#67c5ff, 5%);
+            border-radius: 3px;
+            transition: .4s;
+            background: darken(#67c5ff, 5%);
+            margin: 0 5px 0 0;
+          }
+          .user-name-btn:hover {
+            opacity: 0.8;
+          }
+        }
+        .logout{
+          .logout-btn {
+            display: inline-block;
+            padding: 4px 18px 6px 18px;
+            text-decoration: none;
+            color: #67c5ff;
+            border: solid 2px #67c5ff;
+            border-radius: 3px;
+            transition: .4s;
+          }
+          .logout-btn:hover {
+            background: #67c5ff;
+            color: white;
+          }
+        }
         .sign-up{
           .sign-up-btn {
             display: inline-block;
-            padding: 5px 18px;
+            padding: 4px 18px 6px 18px;
             text-decoration: none;
             color: #fff;
             border: solid 2px #b22222;
@@ -64,7 +195,6 @@
             background: #b22222;
             margin: 0 5px 0 0;
           }
-          
           .sign-up-btn:hover {
             opacity: 0.8;
           }
@@ -72,14 +202,13 @@
         .login{
           .login-btn {
             display: inline-block;
-            padding: 5px 18px;
+            padding: 4px 18px 6px 18px;
             text-decoration: none;
             color: #67c5ff;
             border: solid 2px #67c5ff;
             border-radius: 3px;
             transition: .4s;
           }
-          
           .login-btn:hover {
             background: #67c5ff;
             color: white;

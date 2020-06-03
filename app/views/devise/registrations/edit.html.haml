@@ -1,36 +1,49 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-    - if @minimum_password_length
-      %br/
-      %em
-        = @minimum_password_length
-        characters minimum
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+- if user_signed_in? && current_user.id == @user.id
+  .account-page
+    .account-page__topimage
+      = image_tag "material/logo/logo.png",height: "50px", width: "200px"
+    .account-page__form
+      = form_for @user, url: user_registration_path do |f|
+        .account-page__form__title
+          個人情報変更
+        .error_explanation
+          = render "devise/shared/error_messages", resource: @user
+        .field
+          .field__title
+            = f.label :ニックネーム
+            %p 必須
+          .field__input
+            = f.text_field :nickname, placeholder: "  例）フリマ太郎" 
+        .field
+          .field__title
+            = f.label :メールアドレス
+            %p 必須
+          .field__input
+            = f.email_field :email, placeholder: "  PC,スマホどちらでも可"
+        .field
+          .field__title
+            = f.label :生年月日
+            %p 必須
+          .field__input
+            = f.number_field :birthday, placeholder: "  例）20200101"
+        .field
+          .field__title
+            = f.label :お名前：（全角）
+            %p 必須
+          .field__input
+            = f.text_field :first_name, placeholder: "  例）田中"
+        .field
+          .field__input
+            = f.text_field :last_name, placeholder: "  例）太郎"
+        .field
+          .field__title
+            = f.label :お名前：カナ（全角）
+            %p 必須
+          .field__input
+            = f.text_field :first_furigana, placeholder: "  例）タナカ"
+        .field
+          .field__input
+            = f.text_field :last_furigana, placeholder: "  例）タロウ"
+        .account-page__submit
+          = f.submit "変更する" 
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete

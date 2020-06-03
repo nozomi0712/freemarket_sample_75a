@@ -1,5 +1,6 @@
 *{
   box-sizing: border-box;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 @import 'reset';
@@ -14,3 +15,5 @@
 @import 'items-edit';
 @import 'items-purchase';
 @import 'users-show';
+@import "slick-theme"; 
+@import "slick";
