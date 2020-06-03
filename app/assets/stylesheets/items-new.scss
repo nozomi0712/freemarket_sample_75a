@@ -41,6 +41,15 @@ $opacity-black: rgba(0,0,0,0.1);
     width: 50%;
     margin: 0 auto;
     background-color: $default-bg-color;
+    #errors_list{
+      font-weight: bold;
+      color: red;
+      text-align: center;
+      padding-top: 20px;
+      p{
+        font-size: 20px;
+      }
+    }
     .form-data{
       padding: 30px;
       &__image{
