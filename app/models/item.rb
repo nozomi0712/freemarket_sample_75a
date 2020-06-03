@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :ship_date
   belongs_to_active_hash :brand
   has_many :images
+  has_one :trade
   accepts_nested_attributes_for :images, allow_destroy: true
 
   validates :images, length: { minimum: 1, maximum: 10 }
@@ -18,4 +19,5 @@ class Item < ApplicationRecord
   validates :delivery_fee, presence: true
   validates :user_id, presence: true
   validates :category_id, presence: true, allow_nil: true
+
 end

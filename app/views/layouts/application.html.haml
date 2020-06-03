@@ -5,9 +5,12 @@
     %title FreemarketSample75a
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag 'application', media: 'all'
+
     = javascript_include_tag 'application'
-    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    %link{:href => "https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap", :rel => "stylesheet"}/
+
+
   %body
     =render 'shared/flash'
     = yield

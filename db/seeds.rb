@@ -1,6 +1,6 @@
 User.create(
   nickname: "makonari", 
-  email: Faker::Internet.email,
+  email: "aaa@gmail.com",
   password: "aaaaaaaa",
   birthday: "2000/03/01",
   first_name: "成",
@@ -17,6 +17,10 @@ UserAddress.create(
   building: "フォンティスビル7F",
   tell_number: "05031873522",
   user_id: 1,
+  first_name: "成",
+  first_furigana: "なり",
+  last_name: "真子",
+  last_furigana: "まこ",
 )
 
 
@@ -347,4 +351,3 @@ others_7.children.create([{name: "筆記具"},{name: "ノート/メモ帳"},{nam
 others_8 = others.children.create(name: "事務/店舗用品")
 others_8.children.create([{name: "オフィス用品一般"},{name: "オフィス家具"},{name: "店舗用品"},{name: "OA機器"},{name: "ラッピング/包装"},{name: "その他"}])
 others_9 = others.children.create(name: "その他")
-others_9.children.create([{name: "すべて"}])
