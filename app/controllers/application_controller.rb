@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_category
-  after_action  :store_location
+  before_action  :store_location
 
   protected 
 
