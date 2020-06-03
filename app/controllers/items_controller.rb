@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :check_correct_user, only: [:edit, :update, :destroy]
   before_action :set_caegory_for_new_create, only: [:new, :create]
   before_action :set_user_for_new_create, only: [:new, :create]
-  before_action :set_caegory_for_edit_update, only: [:edit, :update]
+  before_action :set_category_for_edit_update, only: [:edit, :update]
   before_action :set_user_for_edit_update_destroy, only: [:edit, :update, :destroy]
   
 
@@ -80,10 +80,7 @@ class ItemsController < ApplicationController
     end
 
     def set_caegory_for_new_create
-      @category_parent_array = ["---"]
-      Category.where(ancestry: nil).each do |parent|
-        @category_parent_array << parent.name
-      end
+      @category_parent_array = ["---"] + Category.where(ancestry: nil).first(12).pluck(:name)
     end
     
     def set_user_for_new_create
@@ -91,18 +88,18 @@ class ItemsController < ApplicationController
       @address = addressArrey(@user.user_address)
     end
 
-    def set_caegory_for_edit_update
+    def set_category_for_edit_update
       @category_grandchildren = Category.find(@item[:category_id])
       @category_children = @category_grandchildren.parent
-      @category_parent_array = ["#{@category_children.parent.name}"]
+      @category_parent_array =  ["#{@category_children.parent.name}"] + Category.where(ancestry: nil).first(12).pluck(:name)
       @current_item_category = "#{@category_children.parent.name}/#{@category_children.name}/#{@category_grandchildren.name}"
-      Category.where(ancestry: nil).each_with_index do |parent, index|
-        index += 1
-        @category_parent_array << parent.name
-        if index == 13
-          break
-        end
-      end
+      # Category.where(ancestry: nil).each_with_index do |parent, index|
+      #   index += 1
+      #   @category_parent_array << parent.name
+      #   if index == 13
+      #     break
+      #   end
+      # end
     end
 
     def set_user_for_edit_update_destroy
