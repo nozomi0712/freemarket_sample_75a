@@ -4,6 +4,7 @@ describe Item do
 
   describe "#create" do
     it "全ての項目が入力された場合に登録できること" do
+      item = build(:item)
       expect(create(:item)).to be_valid 
     end
 
@@ -70,7 +71,7 @@ describe Item do
     end
 
     it "imagesがないと登録できないこと" do
-      item = build(:item, images: [])
+      item = build(:item_no_image)
       item.valid?
       expect(item.errors[:images]).to include("は1文字以上で入力してください")
     end

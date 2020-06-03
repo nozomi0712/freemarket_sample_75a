@@ -1,10 +1,11 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
-  before_action :check_login_user, except: [:index,:show, :new, :create]
+  before_action :check_login_user, except: :index
+  before_action :check_correct_user, only: [:edit, :update, :destroy]
   before_action :set_caegory_for_new_create, only: [:new, :create]
   before_action :set_user_for_new_create, only: [:new, :create]
   before_action :set_caegory_for_edit_update, only: [:edit, :update]
-  before_action :set_user_for_edit_update, only: [:edit, :update]
+  before_action :set_user_for_edit_update_destroy, only: [:edit, :update, :destroy]
   
 
   def index
@@ -25,12 +26,12 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.create(items_params)
+    @images = @item.images.new
     if @item.save
       flash[:success] = "出品しました"
       redirect_to root_path
     else
       flash.now[:alert] = "内容を確認してください"
-      # @images = @item.images.build
       render new_item_path
     end
   end
@@ -100,13 +101,20 @@ class ItemsController < ApplicationController
       end
     end
 
-    def set_user_for_edit_update
+    def set_user_for_edit_update_destroy
       @user = @item.user
       @address = addressArrey(@user.user_address)
     end
 
     def check_login_user
-      unless @user == @current_user
+      unless current_user
+        flash[:alert] = "アクセス権限がありません"
+        redirect_to root_path
+      end
+    end
+
+    def check_correct_user
+      unless @user = current_user
         flash[:alert] = "アクセス権限がありません"
         redirect_to root_path
       end
