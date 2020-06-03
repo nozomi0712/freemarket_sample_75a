@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @images = @item.images.new
+    @images = @item.images.build
   end
 
   def get_category_children
@@ -26,12 +26,12 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.create(items_params)
-    @images = @item.images
     if @item.save
       flash[:success] = "出品しました"
       redirect_to root_path
     else
       flash.now[:alert] = "内容を確認してください"
+      @images = @item.images.build
       render new_item_path
     end
   end

@@ -66,7 +66,7 @@
             =f.label "ブランド"
             .form-title__any
               %label 任意
-          .form-input-text
+          .form-input-select
             =f.collection_select :brand_id, Brand.all, :id, :brand, include_blank: "選択してください"
           .form-title
             =f.label "商品の状態"
@@ -106,12 +106,12 @@
               .form-title__required
                 %label 必須
             =f.number_field :price, value: 0
-          .form-price-flex
-            %label 販売手数料
-            %label 1000円
-          .form-price-flex
-            %label 販売利益
-            %label 4000円
+          -# .form-price-flex
+          -#   %label 販売手数料
+          -#   %label 1000円
+          -# .form-price-flex
+          -#   %label 販売利益
+          -#   %label 4000円
         .form-data__submit
           =f.submit value: "出品する"
         - if @item.persisted?
