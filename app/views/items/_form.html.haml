@@ -15,7 +15,6 @@
           #previews
             -if @item.persisted? 
               -@item.images.each_with_index do |image, i| 
-                = i
                 =image_tag image.image.url, data: { index: i }, width: "100", height: '100' 
           .form-input-image
             = f.fields_for :images, @images do |img|
