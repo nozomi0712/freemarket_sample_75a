@@ -103,8 +103,7 @@ class ItemsController < ApplicationController
     end
 
     def set_user_for_edit_update_destroy
-      @user = @item.user
-      @address = addressArrey(@user.user_address)
+      @address = addressArrey(current_user.user_address)
     end
 
     def check_login_user
