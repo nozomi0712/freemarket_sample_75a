@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
   def store_location
     if (request.fullpath != new_user_registration_path &&
         request.fullpath != new_user_session_path &&
-        # request.fullpath != "/users/password" &&
         request.fullpath !~ Regexp.new("\\A/users/password.*\\z") &&
         !request.xhr?)
       session[:previous_url] = request.fullpath 

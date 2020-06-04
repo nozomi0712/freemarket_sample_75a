@@ -38,6 +38,7 @@ $default-bg-color: rgb(255,255,255);
     width: 200px;
     margin: 0 auto;
     margin-bottom: 100px;
+    padding-top: 50px;
   }
   &__form{
     @include form-center;
