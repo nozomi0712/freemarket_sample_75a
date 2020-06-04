@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(items_params)
     if @item.save
-      flash[:success] = "出品しました"
+      flash[:notice] = "出品しました"
       redirect_to root_path
     else
       flash.now[:alert] = "内容を確認してください"
@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
   
   def update
     if @item.update(items_params)
-      flash[:success] = "内容を更新しました"
+      flash[:notice] = "内容を更新しました"
       redirect_to root_path
     else
       flash.now[:alert] = "編集内容を確認してください"
@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
 
   def destroy
     if @item.destroy
-      flash[:success] = "出品を取り消しました"
+      flash[:notice] = "出品を取り消しました"
       redirect_to root_path
     else
       flash[:alert] = "取り消しに失敗しました"

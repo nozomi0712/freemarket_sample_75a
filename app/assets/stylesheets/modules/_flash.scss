@@ -1,11 +1,14 @@
-.flash{
-  text-align: center;
-  .alert{
+.notification {
+  .notice {
+    background-color: #4ebbff;
     color: white;
-    background-color: red;
+    text-align: center;
+    z-index: 10;
   }
-  .success{
-    color:white;
-    background-color: skyblue;
+  .alert {
+    background-color: red;
+    color: white;
+    text-align: center;
+    z-index: 10;
   }
 }
