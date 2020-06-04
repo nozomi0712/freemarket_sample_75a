@@ -1,5 +1,4 @@
 .header{
-  // height: 120px;
   padding: 5px 0 0 0;
   position:relative;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5);
@@ -10,10 +9,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    &--title{
+    &__title{
       margin: 10px 10px 0 0;
     }
-    &--search{
+    &__search{
       .search-size{
         width: 600px;
         height: 35px;
@@ -23,7 +22,7 @@
           outline: solid 1px #67c5ff;
         }
       }
-      &--search-image{
+      &__search-image{
         width: 35px;
         height: 35px;
         padding: 5px 5px 5px 5px;
@@ -38,7 +37,7 @@
       justify-content: space-between;
       align-items: center;
       padding-bottom: 10px;
-      &--left{
+      &__left{
         display: flex;
         margin-top: 30px;
         padding-bottom: 15px;
@@ -151,7 +150,7 @@
           }
         }
       }
-      &--right{
+      &__right{
         display: flex;
         .user-name{
           .user-name-btn {
