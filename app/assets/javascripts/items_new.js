@@ -2,10 +2,7 @@ $(window).on('load', ()=> {
   // 画像用のinputを生成する関数
   const buildFileField = (num)=> {
     const html = `<div data-index="${num}" class="js-file_group">
-                    <label>
-                      <input class="js-file" type="file" name="item[images_attributes][${num}][image]" id="item_images_attributes_${num}_image">
-                      <span>画像選択</span>
-                      </label>
+                    <input class="js-file" type="file" name="item[images_attributes][${num}][image]" id="item_images_attributes_${num}_image">
                     <span class="js-remove">
                       削除
                     </span>

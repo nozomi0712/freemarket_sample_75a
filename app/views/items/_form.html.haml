@@ -19,18 +19,14 @@
           .form-input-image
             = f.fields_for :images, @images do |img|
               %div{"data-index": "#{img.index}" ,class:"js-file_group"}
-                %label
-                  =img.file_field :image, class: 'js-file'
-                  %span 画像選択
+                =img.file_field :image, class: 'js-file'
                 %span{class:"js-remove"}
                   削除
               - if @item.persisted?
                 = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy', checked: false
             - if @item.persisted? 
               %div{"data-index": "#{@item.images.count}", class:"js-file_group"}
-                %label
-                  = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]",id: "item_images_attributes_#{@item.images.count}_id", class: 'js-file'  
-                  %span 画像選択
+                = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]",id: "item_images_attributes_#{@item.images.count}_id", class: 'js-file'  
                 %span{class:"js-remove"}
                   削除
 
