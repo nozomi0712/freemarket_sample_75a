@@ -85,7 +85,7 @@ class ItemsController < ApplicationController
     end
     
     def set_user_address_for_new_create
-      @address = addressArrey(current_user.user_address)
+      @address = current_user.user_address.preficture
     end
 
     def set_category_for_edit_update
@@ -104,7 +104,7 @@ class ItemsController < ApplicationController
 
     def set_user_for_edit_update_destroy
       @user = @item.user
-      @address = addressArrey(@user.user_address)
+      @address = @user.user_address.preficture
     end
 
     def check_login_user
@@ -119,11 +119,6 @@ class ItemsController < ApplicationController
         flash[:alert] = "アクセス権限がありません"
         redirect_to root_path
       end
-    end
-
-    def addressArrey(user_address)
-      user_address_arrey = ["〒" +user_address.post + " ",user_address.preficture,user_address.city]
-      return user_address_arrey.join
     end
 
 end
