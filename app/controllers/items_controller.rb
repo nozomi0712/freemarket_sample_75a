@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @categories=Category.all 
+    @categories=Category.where(ancestry: nil)
   end
 
   def new
