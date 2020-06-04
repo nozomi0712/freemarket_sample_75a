@@ -1,1 +1,1 @@
-server '54.199.51.25', user: 'ec2-user', roles: %w{app db web}
+server '54.199.51.25', user: 'ec2-user', roles: %w{app db web}, forward_agent: false, auth_methods: %w(publickey)
