@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     post '/user_addresses/:id', to: 'users/registrations#update_user_addresses'
   end
   root to: 'items#index'
-  get 'items/purchase', to: 'items#purchase'
+  get 'items/purchase/:id', to: 'items#purchase'
 
   resources :items do
     collection do

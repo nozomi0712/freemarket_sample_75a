@@ -1,13 +1,13 @@
 .header
   .header__top
-    .header__top--title
+    .header__top__title
       = link_to image_tag("material/logo/logo.png", size: "170x50"),items_path
-    .header__top--search
+    .header__top__search
       %input.search-size{type: "text", placeholder: "キーワードから探す"}
-    .header__top--search-image
+    .header__top__search-image
       = image_tag "material/icon/icon-search 1.png", size: "25x25"
   .header__bottom
-    .header__bottom--left
+    .header__bottom__left
       .category
         .category__image
           = image_tag "material/icon/icon_category.png", size: "25x25"
@@ -39,7 +39,7 @@
           = image_tag "material/icon/icon_brand.png", size: "25x25"
         .brand__text
           ブランドから探す
-    .header__bottom--right
+    .header__bottom__right
       - if user_signed_in?
         .user-name
           = link_to "#{current_user.nickname}さんのマイページ", user_path(current_user.id), class: "user-name-btn"

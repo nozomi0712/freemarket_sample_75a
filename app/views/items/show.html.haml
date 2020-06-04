@@ -6,13 +6,13 @@
       %h1
         = @item.item_name
     .item-show-main__item-detail
-      .item-show-main__item-detail--images
+      .item-show-main__item-detail__images
         .slides
           - @item.images.each do |image|
             %ul
               %li
                 = image_tag image.image.to_s, size: "300x300"
-      .item-show-main__item-detail--item-info
+      .item-show-main__item-detail__item-info
         %table.item-info-table
           %tr
             %th 出品者
@@ -73,7 +73,7 @@
       .item-show-main__purchase
         %input{type: "submit", value: "購入画面に進む", class: "item-purchase-btn"}
     .item-show-main__explanation
-      = @item.explanation
+      =simple_format @item.explanation
   - if user_signed_in? && current_user.id == @item.user_id then
     .item-show-login
       %input{type: "submit",value: "商品の編集", class: "item-edit-btn"}
