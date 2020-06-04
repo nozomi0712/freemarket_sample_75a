@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_065059) do
     t.string "condition", null: false
     t.bigint "user_id", null: false
     t.string "ship_date", null: false
-    t.integer "delivery_fee", null: false
+    t.string "delivery_fee", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
@@ -70,6 +70,10 @@ ActiveRecord::Schema.define(version: 2020_06_02_065059) do
     t.string "block", null: false
     t.string "building"
     t.string "tell_number"
+    t.string "first_name", default: "", null: false
+    t.string "first_furigana", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "last_furigana", default: "", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
