@@ -73,7 +73,7 @@
       .item-show-main__purchase
         %input{type: "submit", value: "購入画面に進む", class: "item-purchase-btn"}
     .item-show-main__explanation
-      = @item.explanation
+      =simple_format @item.explanation
   - if user_signed_in? && current_user.id == @item.user_id then
     .item-show-login
       %input{type: "submit",value: "商品の編集", class: "item-edit-btn"}
