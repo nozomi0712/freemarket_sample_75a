@@ -41,16 +41,33 @@ $opacity-black: rgba(0,0,0,0.1);
     width: 50%;
     margin: 0 auto;
     background-color: $default-bg-color;
+    #errors_list{
+      font-weight: bold;
+      color: red;
+      text-align: center;
+      padding-top: 20px;
+      p{
+        font-size: 20px;
+      }
+    }
     .form-data{
+      padding: 30px;
+      &__image{
+        .js-file{
+          display: none;
+        }
+      }
       &__item{
         padding:30px 40px 40px 40px;
         border-bottom: 1px solid $opacity-black;
+        p{
+          padding: 5px 5px;
+          font-weight: bold;
+        }
         .form-group{
-          label{
-            color: grey;
-            padding: 10px 0 30px 0; 
-            font-weight: bold;
-          }
+          color: grey;
+          padding: 10px 0 30px 0; 
+          font-weight: bold;
         }
         .form-title{
           font-size: 13px;
@@ -70,17 +87,6 @@ $opacity-black: rgba(0,0,0,0.1);
           font-size: 15px;
           color: grey;
           margin: 10px 0;
-        }
-        .form-input-image{
-          .image-post-zone{
-            height: 150px;
-            width: 100%;
-            cursor: pointer;
-            border: 1px solid $opacity-black;
-            background-image: url("input-item-image.png");
-            background-size: 100%;
-            margin-bottom: 20px;
-          }
         }
         .form-input-text{
           input{
@@ -102,6 +108,10 @@ $opacity-black: rgba(0,0,0,0.1);
             @include form-default;
             height: 30px;
           }
+        }
+        .listing-select-wrapper__box--select {
+          @include form-default;
+          height: 30px;
         }
       }
       &__price{
@@ -136,6 +146,14 @@ $opacity-black: rgba(0,0,0,0.1);
           opacity: 0.6;
         }
       }
+    &__delete{
+      a{
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        color: black;
+      }
+    }
     }
   }
 }

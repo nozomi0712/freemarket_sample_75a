@@ -1,5 +1,5 @@
 .header{
-  height: 120px;
+  // height: 120px;
   padding: 5px 0 0 0;
   position:relative;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5);
@@ -37,6 +37,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-bottom: 10px;
       &--left{
         display: flex;
         margin-top: 30px;
@@ -133,10 +134,10 @@
             }
           }
         }
-        &:hover{
-          .level1{
-            display: block;
-          }
+          &:hover{
+            .level1{
+              display: block;
+            }
         }
         .brand{
           display: flex;
@@ -216,5 +217,23 @@
         }
       }
     }
-  
+    .breadcrumbs-frame{
+      border-top: solid 1px lighten(#00bfff,40%);
+      .breadcrumbs{
+        width: 800px;
+        height: 50px;
+        line-height: 50px;
+        margin: 0 auto;
+        background: #fff;
+        color: lighten(#000000,25%);
+        a{
+          text-decoration: none;
+          color: lighten(#000000,25%);
+        }
+        a:hover{
+          color: #00bfff;
+          border-bottom: solid 1px #00bfff;
+        }
+      }
+  }
 }

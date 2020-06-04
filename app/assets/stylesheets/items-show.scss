@@ -82,6 +82,9 @@ $table-border-color: #f5f5f5;
               }
             }
             }
+            li:only-child {
+              display: none;
+          }          
           }
         }
       }
