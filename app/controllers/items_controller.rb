@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @categories = Category.find(@items.category_id)
+    @categories = Category.find(@item.category_id)
     @categories2 = @categories.parent
   end
   
