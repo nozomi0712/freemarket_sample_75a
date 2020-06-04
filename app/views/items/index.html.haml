@@ -85,22 +85,23 @@
         =category.name
     .contents--goods
       .contents--goods--list 
-        - @goods=Item.where(category_id: category.id).order("created_at DESC").limit(5)
+        - @goods=Item.where(category_id: category.id ).or(Item.where(category_id:category.child_ids)).or(Item.where(category_id: category.indirect_ids)).order("created_at DESC").limit(5)
         - @goods.each do |item|
-          .list1
-            =link_to item_path(item.id) ,class:'button1'do
-              .list1--top
-                -item.images.each do |image|
-                  =image_tag image.image.url,size:'200x200'
-                  - break
-              .list1--bottom
-                =item.item_name 
-                %br 
-                値段(税込)
-                %br
-              .list1--bottom--price
-                =item.price 
-                円
+          - if item.status==true then
+            .list1
+              =link_to item_path(item.id) ,class:'button1'do
+                .list1--top
+                  -item.images.each do |image|
+                    =image_tag image.image.url,size:'200x200'
+                    - break
+                .list1--bottom
+                  =item.item_name 
+                  %br 
+                  値段(税込)
+                  %br
+                .list1--bottom--price
+                  =item.price 
+                  円
 .contents18
   =image_tag "material/pict/bg-topMiddleDl-pict.jpg",class:"contents18"
   .contents18--top
