@@ -85,7 +85,7 @@ class ItemsController < ApplicationController
     end
     
     def set_user_address_for_new_create
-      @address = addressArrey(current_user.user_address)
+      @address = current_user.user_address.preficture
     end
 
     def set_category_for_edit_update
