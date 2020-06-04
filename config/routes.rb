@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   resources :users
   # あとで確認
   # memberにする
+  resources :cards, only: [:new, :create] do
+    # post 'pay', on: :collection
+  end
 end

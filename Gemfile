@@ -85,5 +85,6 @@ gem 'erb2haml'
 gem "font-awesome-sass"
 gem 'fog-aws'
 gem 'faker'
+gem 'payjp'
 
 
