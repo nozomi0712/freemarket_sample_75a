@@ -28,13 +28,17 @@ $default-bg-color: rgb(255,255,255);
 .account-page{
   height: 100%;
   width: 100%;
-  padding: 50px;
-  background-color: $form-bg-color;  
+  // padding: 50px;
+  background-color: $form-bg-color;
+  // .new_user{
+  //   height: ;
+  // }
   &__topimage{
     height: 20px;
     width: 200px;
     margin: 0 auto;
     margin-bottom: 100px;
+    padding-top: 50px;
   }
   &__form{
     @include form-center;
@@ -110,12 +114,14 @@ $default-bg-color: rgb(255,255,255);
       background-color: #FFC0CB;
     }
     ul{
-      width: 200px;
+      padding-top: 10px;
+      width: 300px;
       font-size: 15px;
       margin: 0 auto;
       color: red;
+      text-align: center;
       li{
-        padding-top: 10px;
+        padding-top: 5px;
         margin-bottom: 10px;
       }
     }
