@@ -19,18 +19,20 @@
           .form-input-image
             = f.fields_for :images, @images do |img|
               %div{"data-index": "#{img.index}" ,class:"js-file_group"}
-                %label
+                %label{"data-index": "#{img.index}" }
                   =img.file_field :image, class: 'js-file'
-                  %span 画像選択
+                  %span
+                    = "#{img.index + 1}: 画像選択"
                 %span{class:"js-remove"}
                   削除
               - if @item.persisted?
-                = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'  
+                = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy', checked: false
             - if @item.persisted? 
               %div{"data-index": "#{@item.images.count}", class:"js-file_group"}
-                %label
-                  = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]",id: "item_images_attributes_#{@item.images.count}_id", class: 'js-file'  
-                  %span 画像選択
+                %label{"data-index": "#{@item.images.count}" }
+                  = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]",id: "item_images_attributes_#{@item.images.count}_id", class: 'js-file' 
+                  %span
+                    = "#{@item.images.count + 1}: 画像選択"
                 %span{class:"js-remove"}
                   削除
 
@@ -114,6 +116,8 @@
           -#   %label 4000円
         .form-data__submit
           =f.submit value: "出品する"
+        =@categories
         - if @item.persisted?
           .form-data__delete
             =link_to "出品を取り消す",  item_path(@item), method: :delete, data: { confirm: "削除してよろしいですか？"}
+        
