@@ -84,6 +84,7 @@ gem 'active_hash'
 gem 'erb2haml'
 gem "font-awesome-sass"
 gem 'fog-aws'
+gem 'kaminari'
 gem 'faker'
 gem "gretel"
 

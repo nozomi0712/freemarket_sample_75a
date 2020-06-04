@@ -1,0 +1,23 @@
+=render"shared/header"
+.goods
+  .goods--category
+    =@category.name
+    の商品一覧
+  .goods--list
+    -@goods.each do |good|
+      .goods1
+        =link_to item_path(good.id),class:'goods-link'do
+          .goods1--image 
+            - good.images.each do |image|
+              =image_tag image.image.url,size:'200x200'
+              - break
+          .goods1--price-and-name 
+            =good.item_name
+            %br
+            値段(税込)
+            %br 
+            .goods1--price-and-name--price
+              =good.price
+              円
+.pagenation
+  = paginate @goods
