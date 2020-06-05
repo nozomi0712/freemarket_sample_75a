@@ -19,17 +19,17 @@
                 %ul.level1
                   - @parents.each do |parent|
                     %li
-                      %a{href: category_path(parent)}
+                      %a{href: category_path(parent.id)}
                         = parent.name
                       %ul.level2
                         - parent.children.each do |child|
                           %li
-                            %a{href: category_path(child)} 
+                            %a{href: category_path(child.id)} 
                               = child.name
                             %ul.level3
                               - child.children.each do |grandchild|
                                 %li
-                                  %a{href: category_path(grandchild)}
+                                  %a{href: category_path(grandchild.id)}
                                     = grandchild.name
                   %li
                     %a{href: ""}

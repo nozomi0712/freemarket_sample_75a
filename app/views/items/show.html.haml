@@ -24,14 +24,15 @@
               %ul
                 - if @categories2.has_parent?
                   %li
-                    = link_to category_path( @categories2.parent) do
+
+                    = link_to category_path(@categories2.parent.id) do
                       = @categories2.parent.name
                   %li
-                    = link_to category_path(@categories2) do
+                    = link_to category_path(@categories2.id) do
                       = icon("fas", "angle-right")
                       = @categories2.name
                   %li
-                    = link_to category_path(@categories) do
+                    = link_to category_path(@categories.id) do
                       = icon("fas", "angle-double-right")
                       = @categories.name
                 - else
@@ -45,7 +46,8 @@
           %tr
             %th ブランド
             %td 
-              = @item.brand.brand
+              -if @item.brand.present?
+                = @item.brand.brand
           %tr
             %th 商品の状態
             %td 
