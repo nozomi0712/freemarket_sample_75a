@@ -21,5 +21,5 @@ Rails.application.routes.draw do
     end
   end
   resources :users ,only: [:show]
-  resources :categories ,only: [:show] 
+  resources :categories ,only: [:index,:show] 
 end
