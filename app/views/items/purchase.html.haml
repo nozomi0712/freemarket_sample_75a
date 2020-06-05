@@ -44,8 +44,8 @@
               =@goods.user.user_address.building
           .single__container--contents__checkpage--3__btn2
             .btn-buy
-              /=form_with(action: :pay, method: :post) do
-              /  %button.btn-buy{type:"submit"}購入する
+              =form_with(action: :pay, method: :post) do
+                %button.btn-buy{type:"submit"}購入する
     .single__container--footer 
       .single__container--footer__clearfix
         =link_to "#",class: 'btn-1' do
