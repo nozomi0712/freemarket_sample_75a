@@ -8,32 +8,38 @@
           購入内容の確認
         .single__container--contents__checkpage--2
           .single__container--contents__checkpage--2__image
+            -@goods.images.each do |image|
+              =image_tag image.image.url,size:'200x200'
+              - break
           .single__container--contents__checkpage--2__text
-            %h カロリーメイト5箱　
+            =@goods.item_name
             %br
-            %h ¥850 (税込)送料込み
+            =@goods.price
+            円
         .single__container--contents__checkpage--3
           .single__container--contents__checkpage--3__fee
             .single__container--contents__checkpage--3__fee--1
               %h 支払い金額
             .single__container--contents__checkpage--3__fee--yen
-              %h ¥850
-              %br
+              =@goods.price
+              円
           .single__container--contents__checkpage--3__btn1
             .single__container--contents__checkpage--3__btn1--btn
-              %input{type: "radio",class: "btn1"}
-                ポイントを使用(所持ポイント:P0)
           .single__container--contents__checkpage--3__method
             %h 支払い方法
-            =link_to "#",class: 'link' do
-              ここをクリックして登録してください。
             
           .single__container--contents__checkpage--3__address
-            %h 配送先
-            =link_to "#",class: 'link' do
-              ここをクリックして登録してください。
+            配送先
+            .single__container--contents__checkpage--3__address--1
+              =@goods.user.user_address.preficture
+              =@goods.user.user_address.city
+              =@goods.user.user_address.block 
+              =@goods.user.user_address.building
+              
           .single__container--contents__checkpage--3__btn
             %input{type: "submit",class: "btn-buy",value: "購入する"}
+          .single__container--contents__checkpage--3__btn2
+            %input{type: "submit",class: "btn-edit1",value: "編集する"}
     .single__container--footer
        
       .single__container--footer__clearfix
