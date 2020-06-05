@@ -10,9 +10,6 @@ Rails.application.routes.draw do
   get 'items/purchase', to: 'items#purchase'
   resources :items
   resources :users
-  # あとで確認
-  # memberにする
-  resources :cards, only: [:new, :create] do
-    # post 'pay', on: :collection
+  resources :cards, only: [:new, :create, :show, :destroy] do
   end
 end
