@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
-  before_action :check_login_user, except: [:index, :show]
+  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :purchase, :pay]
+  before_action :check_login_user, except: [:index, :show, :purchase, :pay]
   before_action :check_correct_user, only: [:edit, :update, :destroy]
   before_action :set_caegory_for_new_create, only: [:new, :create]
   before_action :set_user_address_for_new_create, only: [:new, :create]
@@ -186,5 +186,5 @@ class ItemsController < ApplicationController
     def create_params
       params.require(:trade).merge(item_id: @item.id, buyer_id: @current_user.id, seller_id: @item.user_id)
     end
-
+  end
 end
