@@ -147,6 +147,10 @@
           &__text{
             font-family: 'Kosugi Maru', sans-serif;
             line-height: 24px;
+            a{
+              text-decoration: none;
+              color: black;
+            }
           }
         }
       }
