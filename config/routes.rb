@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
   root to: 'items#index'
 
+  get 'items/purchase/:id', to: 'items#purchase'
+  resources :items,only:[:action]
   resources :items do
     collection do
       get 'get_category_children', defaults: { format: 'json' }

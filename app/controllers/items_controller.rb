@@ -40,6 +40,7 @@ class ItemsController < ApplicationController
   def show
     @categories = Category.find(@item.category_id)
     @categories2 = @categories.parent
+    
   end
   
   def edit
@@ -68,6 +69,17 @@ class ItemsController < ApplicationController
   end
 
   def purchase
+    @goods=Item.find(params[:id])
+    @card = Card.find_by(user_id: current_user.id)
+    if @card.blank?
+    redirect_to "/cards/new"
+    else
+     Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY] 
+     customer = Payjp::Customer.retrieve(@card.customer_id)
+     @customer_card = customer.cards.retrieve(@card.card_id)
+     @exp_month = @customer_card.exp_month.to_s
+     @exp_year = @customer_card.exp_year.to_s.slice(2..4)
+    end
   end
 
   # # 購入確認処理
@@ -118,7 +130,6 @@ class ItemsController < ApplicationController
 
       @trade = Trade.create(create_params)
       item-status = Item.update(status: false)
-      end
     end
   end
 
