@@ -2,7 +2,6 @@
 .contents1{
   width:100vw;
   height:550px;
-  
   &--image{
   width:100vw;
   height:550px;
@@ -41,6 +40,7 @@
 .contents2{
   background-color:#EEEEEE;
   height:500px;
+  width: 100vw;
   &__top{
     text-align:center;
     padding-top:30px;
@@ -57,13 +57,14 @@
   }
   &__bottom{
     display:flex;
-  &__left{
-    &--top{
-      margin:20px 20px 0px 85px; 
+    justify-content: space-around;
+    &__left{
+      &--top{
+        margin:20px 0px; 
     }
     &--bottom{
       font-size:20px;
-      padding-left:124px;
+      text-align: center;
       margin-top:20px;
       &  span{
       color:#3CCACE;
@@ -72,10 +73,10 @@
   }
   &__middle{
     &--top{
-      margin:20px 20px 0px 100px;
+      margin:20px 0px; 
     }
     &--bottom{
-      margin-left:80px;
+      // margin-left:80px;
       font-size:20px;
       margin-top:20px;
       text-align:center;
@@ -86,10 +87,10 @@
   }
   &__right{
     &--top{
-      margin:20px 20px 0px 100px;
+      margin:20px 0px; 
     }
     &--bottom{
-      margin-left:90px;
+      // margin-left:90px;
       font-size:20px;
       margin-top:20px;
       text-align:center;
@@ -199,7 +200,7 @@
 }
 .senditem{
   position:fixed;
-  right:50px;
+  right:150px;
   bottom:50px;
   line-height: 40px;
   padding-top: 4px;
@@ -252,7 +253,6 @@
   background-size:100%; 
   width:100vw;
   height:400px;
-  bottom: 0;
   &--top{
     text-align:center;
     color:white;
@@ -311,39 +311,37 @@
 }
 .category-items{
   background-color: rgb(245,245,245);
+  padding-bottom: 50px;
   width:100vw;
   .contents{
-    // background-color: rgb(245,245,245);
-    height:450px;
-    width: 60%;
+    width: 1100px;
+    height: 400px;
     margin: 0 auto;
     &--category{
       padding:30px 0 15px 0;
       color:black;
-      font-size:25px;
+      font-size:30px;
       font-weight: bold;
-      width:100vw;
     }
     &--goods{
-      width: 100%;
       &--list{
         display:flex;
-        background-color: red;
         .list1{
           margin:10px 10px;
           position:relative;
           &--top{
-            width:150px;
-            height:150px;
+            width:200px;
+            height:200px;
             box-shadow:0 0 5px rgba(0, 0, 0, 0.4);
           }
           &--bottom{
-            height:65px;
-            width:150px;
+            height:60px;
+            width:200px;
             background-color:white;
             font-size:18px;
             box-shadow:0 0 5px rgba(0, 0, 0, 0.4);
             word-wrap: break-word;
+            overflow: hidden;
             &--price{
               align-items: center;
               background: rgba(0,0,0,.4);
@@ -358,9 +356,8 @@
               margin: 0;
               padding: 0 12px;
               position:absolute;
-              bottom: ;
               z-index: 2;
-              top:145px;
+              top:150px;
             }
           }
         }

@@ -19,11 +19,11 @@
   .contents2
     .contents2__top
       FURIMAが選ばれる３つの理由
-      .contents2__top--bottom
+      -# .contents2__top--bottom
     .contents2__bottom
       .contents2__bottom__left
         .contents2__bottom__left--top
-          =image_tag "material/pict/pict-reason-01.jpg",class:"contents2-image"
+          =image_tag "material/pict/pict-reason-01.jpg",class:"contents2-image",size: '150×150'
         .contents2__bottom__left--bottom
           %span<> 3分で   
           すぐに出品できる！
@@ -81,9 +81,10 @@
 
 - if current_user
   .top_image_after_login
-    = image_tag "material/logo/after-login", height: '300px'
+    = image_tag "material/logo/after-login", height: '300px', width: '100%'
 .top_message_after_login
-  %h2 新着商品一覧
+  %h2 カテゴリ別新着商品
+
 .category-items
   - @categories.each do |category|
     .contents 
@@ -99,13 +100,13 @@
                 =link_to item_path(item.id) ,class:'button1'do
                   .list1--top
                     -item.images.each do |image|
-                      =image_tag image.image.url,size:'150x150'
+                      =image_tag image.image.url,size:'200x200'
                       - break
                   .list1--bottom
                     =item.item_name 
                   .list1--bottom--price
                     ="#{item.price}円" 
--# - if current_user        
+
 .contents18
   =image_tag "material/pict/bg-topMiddleDl-pict.jpg",class:"contents18"
   .contents18--top
