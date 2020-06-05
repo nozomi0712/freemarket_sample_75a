@@ -9,29 +9,30 @@
     .user-page__main__user
       = image_tag "material/icon/member_photo_noimage_thumb.png", class: "user-page__main__user__img"
       .user-page__main__user__name
-        のぞみーる
+        =@user.nickname
       .user-page__main__user__status
-        .reviw.status
-          評価 
-          %span 12
-        .exhibition.status
-          出品数 
-          %span 12
+        出品数 
+        %span 
+          = @selling_items.count
+        %span /
+        売却済
+        %span
+          = @sold_items.count
 
     .user-page__main__info-tag
       %ul.title-tags
         %li.title-tag.selected-tag
-          お知らせ
+          出品中一覧
         %li.title-tag
-          やることリスト
+          売却済一覧
 
     .user-page__main__info-list.infomation.show-info
-      = render 'shared/user-page-dummy-info'
-      = link_to "#", class: "list__index-link" do
-        .list__index-link__card
-          一覧を見る
+      = render 'shared/user_show_item.html.haml', items: @selling_items
+      -# = link_to "#", class: "list__index-link" do
+        -# .list__index-link__card
+        -#   一覧を見る
 
     .user-page__main__info-list.doing
-      = render 'shared/user-page-nothing-img'
+      = render 'shared/user_show_item.html.haml', items: @sold_items
 
-
+=render partial: "items/senditem", items: @items

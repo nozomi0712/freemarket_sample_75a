@@ -132,11 +132,11 @@
               background: lighten(#00bfff, 45%);
             }
           }
-        }
           &:hover{
             .level1{
               display: block;
             }
+          }
         }
         .brand{
           display: flex;
@@ -147,6 +147,10 @@
           &__text{
             font-family: 'Kosugi Maru', sans-serif;
             line-height: 24px;
+            a{
+              text-decoration: none;
+              color: black;
+            }
           }
         }
       }

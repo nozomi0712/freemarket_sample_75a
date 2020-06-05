@@ -6,6 +6,24 @@ crumb :mypage do
   link "マイページ", user_path
   parent :root
 end
+
+crumb :categoryIndex do
+  link "カテゴリー一覧", categories_path
+  parent :root
+end
+
+crumb :category do |category|
+  if category.has_parent?
+    if category.parent.has_parent?
+      link category.parent.parent.name, category_path(category.parent.parent.id)
+    end
+    link category.parent.name, category_path(category.parent.id)
+    link category.name, category_path(category.id)
+  else
+    link category.name, category_path(category.id)
+  end
+  parent :categoryIndex
+end
   
 # crumb :projects do
 #   link "Projects", projects_path

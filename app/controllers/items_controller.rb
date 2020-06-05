@@ -143,7 +143,7 @@ class ItemsController < ApplicationController
     end
 
     def set_caegory_for_new_create
-      @category_parent_array = ["---"] + Category.where(ancestry: nil).first(12).pluck(:name)
+      @category_parent_array = ["---"] + Category.where(ancestry: nil).first(13).pluck(:name)
     end
     
     def set_user_address_for_new_create

@@ -58,7 +58,7 @@ $(window).on('load', ()=> {
     var childSelectHtml = '';
     childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
                         <div class='listing-select-wrapper__box'>
-                          <select class="listing-select-wrapper__box--select" id="child_category" name="item[category_id2]">
+                          <select class="listing-select-wrapper__box--select" id="child_category" name="item[category_id]">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           <select>
