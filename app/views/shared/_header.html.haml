@@ -38,7 +38,8 @@
         .brand__image
           = image_tag "material/icon/icon_brand.png", size: "25x25"
         .brand__text
-          ブランドから探す
+          %a{href:""}
+            ブランドから探す
     .header__bottom__right
       - if user_signed_in?
         .user-name
