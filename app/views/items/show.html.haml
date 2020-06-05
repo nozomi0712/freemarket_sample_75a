@@ -4,20 +4,20 @@
   .item-show-main
     .item-show-main__item-name
       %h1
-        = @items.item_name
+        = @item.item_name
     .item-show-main__item-detail
-      .item-show-main__item-detail--images
+      .item-show-main__item-detail__images
         .slides
-          - @items.images.each do |image|
+          - @item.images.each do |image|
             %ul
               %li
                 = image_tag image.image.to_s, size: "300x300"
-      .item-show-main__item-detail--item-info
+      .item-show-main__item-detail__item-info
         %table.item-info-table
           %tr
             %th 出品者
             %td 
-              = @items.user.nickname
+              = @item.user.nickname
           %tr
             %th カテゴリー
             %td 
@@ -45,36 +45,36 @@
           %tr
             %th ブランド
             %td 
-              = @items.brand
+              = @item.brand.brand
           %tr
             %th 商品の状態
             %td 
-              = @items.condition
+              = @item.condition.condition
           %tr
             %th 配送料の負担
             %td 
-              = @items.delivery_fee
+              = @item.delivery_fee.delivery_fee
           %tr
             %th 配送元地域
             %td 
-              = @items.user.user_address.preficture
+              = @item.user.user_address.preficture
           %tr
             %th 発送日の目安
             %td 
-              = @items.ship_date
+              = @item.ship_date.ship_date
 
     .item-show-main__price-box
       %span.item-price
-        = "¥#{@items.price}"
+        = "¥#{@item.price}"
       %span.item-tax (税込)
       %span.item-delivery-fee
-        = @items.delivery_fee
-    - unless user_signed_in? && current_user.id == @items.user_id then
+        = @item.delivery_fee.delivery_fee
+    - unless user_signed_in? && current_user.id == @item.user_id then
       .item-show-main__purchase
         %input{type: "submit", value: "購入画面に進む", class: "item-purchase-btn"}
     .item-show-main__explanation
-      = @items.explanation
-  - if user_signed_in? && current_user.id == @items.user_id then
+      =simple_format @item.explanation
+  - if user_signed_in? && current_user.id == @item.user_id then
     .item-show-login
       %input{type: "submit",value: "商品の編集", class: "item-edit-btn"}
       %p or

@@ -1,0 +1,14 @@
+.notification {
+  .notice {
+    background-color: #4ebbff;
+    color: white;
+    text-align: center;
+    z-index: 10;
+  }
+  .alert {
+    background-color: red;
+    color: white;
+    text-align: center;
+    z-index: 10;
+  }
+}

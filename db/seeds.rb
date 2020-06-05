@@ -8,7 +8,6 @@ User.create(
   last_name: "真子",
   last_furigana: "まこ",
 )
-
 UserAddress.create(
   post: "1112111",
   preficture: "東京都",
@@ -17,23 +16,10 @@ UserAddress.create(
   building: "フォンティスビル7F",
   tell_number: "05031873522",
   user_id: 1,
-)
-
-Item.create(
-  item_name: "まこなりのバッグ",
-  explanation: "１０年間使っていたバッグです。思い出がたくさん詰まっていますが、容量はいっぱい入ると思います。",
-  price: 200,
-  brand: "MakoStyle",
-  condition: "中古",
-  user_id: 1,
-  ship_date: "1〜2日で発送",
-  delivery_fee: "送料込み(出品者負担)",
-  category_id: 268,
-)
-
-Image.create(
-  item_id: 1,
-  image: "https://images-na.ssl-images-amazon.com/images/I/61acr0glFHL._AC_UY500_.jpg",
+  first_name: "成",
+  first_furigana: "なり",
+  last_name: "真子",
+  last_furigana: "まこ",
 )
 
 
@@ -364,4 +350,3 @@ others_7.children.create([{name: "筆記具"},{name: "ノート/メモ帳"},{nam
 others_8 = others.children.create(name: "事務/店舗用品")
 others_8.children.create([{name: "オフィス用品一般"},{name: "オフィス家具"},{name: "店舗用品"},{name: "OA機器"},{name: "ラッピング/包装"},{name: "その他"}])
 others_9 = others.children.create(name: "その他")
-others_9.children.create([{name: "すべて"}])

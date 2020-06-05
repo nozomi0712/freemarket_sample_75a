@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_06_02_065059) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -40,14 +41,15 @@ ActiveRecord::Schema.define(version: 2020_06_02_065059) do
     t.string "item_name", null: false
     t.string "explanation", null: false
     t.integer "price", null: false
-    t.string "brand"
-    t.string "condition", null: false
+    t.integer "brand_id"
+    t.integer "condition_id", null: false
     t.bigint "user_id", null: false
-    t.string "ship_date", null: false
-    t.integer "delivery_fee", null: false
+    t.integer "ship_date_id", null: false
+    t.integer "delivery_fee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
+    t.boolean "status", default: true, null: false
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
@@ -70,6 +72,10 @@ ActiveRecord::Schema.define(version: 2020_06_02_065059) do
     t.string "block", null: false
     t.string "building"
     t.string "tell_number"
+    t.string "first_name", default: "", null: false
+    t.string "first_furigana", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "last_furigana", default: "", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

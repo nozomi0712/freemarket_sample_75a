@@ -25,8 +25,24 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+        nickname: ニックネーム
+        birthday: 誕生日
+        first_name: 苗字
+        first_furigana: 苗字(ふりがな)
+        last_name: お名前
+        last_furigana: お名前(ふりがな)
+      user_address: 
+        post: 郵便番号
+        preficture: 都道府県
+        city: 住所
+        block: 市区町村
+        first_name: 苗字
+        first_furigana: 苗字(ふりがな)
+        last_name: お名前
+        last_furigana: お名前(ふりがな)
     models:
-      user: ユーザ
+      user: お客様の情報
+      user_address: 住所情報
   devise:
     confirmations:
       confirmed: アカウントを登録しました。

@@ -1,0 +1,8 @@
+-if item.errors.any?
+  #errors_list
+    %p
+      = pluralize(item.errors.count, "error")
+    %ul
+      -item.errors.full_messages.each do |error|
+        %li
+          = error
