@@ -36,6 +36,7 @@ class ItemsController < ApplicationController
   def purchase
   end
 
+  # 購入確認処理
   def buy
     @item = Item.find(params[:id])
     @images = @item.image.all
@@ -49,8 +50,42 @@ class ItemsController < ApplicationController
         customer = Payjp::Customer.retrieve(@card.customer_id)
         @customer_card = customer.cards.retrieve(@card.card_id)
         @exp_month = @customer_card.exp_month.to_s
-        
+        @exp_year = @customer_card.exp_year.to_s.slice(2,3)
+      end
+    else
+      redirect_to root_path, alert: "ログインしてください"
+    end
+  end
 
+  # 購入処理
+  def pay
+    @item = Item.find(params[:id])
+    @images = @item.image.all
+
+    if @item.status == 2
+      redirect_to item_path(@item.id), alert: "売り切れています。"
+    else
+      @item.with_lock do
+        if current_user.card.present?
+          @card = Card.find_by(user_id: @user.id)
+          Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY] 
+          charge = Payjp::Charge.create(
+          amount: @item.price,
+          customer: Payjp::Customer.retrieve(@card.customer_id),
+          currency: 'jpy'
+          )
+        else
+          Payjp::charge.create(
+          amount: @item.price,
+          card: params['payjp-token'],
+          currency: 'jpy'
+          )
+        end 
+
+      @trade = Trade.create(create_params)
+      item-status = Item.update(status: 2)
+      end
+    end
   end
 
   private
@@ -61,6 +96,10 @@ class ItemsController < ApplicationController
     def addressArrey(user_address)
       user_address_arrey = ["〒" +user_address.post + " ",user_address.preficture,user_address.city]
       return user_address_arrey.join
+    end
+
+    def create_params
+      params.require(:trade).merge(item_id: @item.id, buyer_id: @current_user.id, seller_id: @item.user_id)
     end
 
 end
