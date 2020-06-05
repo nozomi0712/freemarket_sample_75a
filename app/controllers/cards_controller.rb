@@ -36,7 +36,7 @@ class CardsController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @customer_card = customer.cards.retrieve(@card.card_id)
       @exp_month = @customer_card.exp_month.to_s
-      @exp_year = @customer_card.exp_year.to_s.slice(2.3)
+      @exp_year = @customer_card.exp_year.to_s.slice(2..4)
     end
   end
 
@@ -51,11 +51,9 @@ class CardsController < ApplicationController
       @card.delete
 
       if @card.destroy
-        redirect_to user_path(current_user.id) 
-        flash[:alert] = "カード情報を削除しました。"
+        redirect_to user_path(current_user.id), alert: "カード情報を削除しました。"
       else
-        redirect_to card_path(current_user.id)
-        flash[:alert] = "削除できませんでした。"
+        redirect_to card_path(current_user.id), alert: "削除できませんでした。"
       end
     end
   end
