@@ -24,22 +24,22 @@
               %ul
                 - if @categories2.has_parent?
                   %li
-                    = link_to "" do
+                    = link_to category_path( @categories2.parent) do
                       = @categories2.parent.name
                   %li
-                    = link_to "" do
+                    = link_to category_path(@categories2) do
                       = icon("fas", "angle-right")
                       = @categories2.name
                   %li
-                    = link_to "" do
+                    = link_to category_path(@categories) do
                       = icon("fas", "angle-double-right")
                       = @categories.name
                 - else
                   %li
-                    = link_to "" do
+                    = link_to category_path(@categories2) do
                       = @categories2.name
                   %li
-                    = link_to "" do
+                    = link_to category_path(@categories) do
                       = icon("fas", "angle-right")
                       = @categories.name
           %tr
@@ -75,7 +75,7 @@
     .item-show-main__explanation
       =simple_format @item.explanation
   - if user_signed_in? && current_user.id == @item.user_id then
-    .item-show-login
-      %input{type: "submit",value: "商品の編集", class: "item-edit-btn"}
+    .item-show-btn
+      = link_to "商品の編集", edit_item_path(@item),  class: "item-edit-btn"
       %p or
-      %input{type: "submit",value: "この商品を削除する", class: "item-destroy-btn"}
+      = link_to "この商品を削除する", item_path(@item), method: :delete, class: "item-destroy-btn"

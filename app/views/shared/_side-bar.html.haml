@@ -15,13 +15,13 @@
         = icon("fas", "chevron-right", class: "right-icon")
 
     %li.content
-      = link_to "#", class: "content-link" do
+      = link_to  new_item_path, class: "content-link" do
         .content-link__tag
           出品する
         = icon("fas", "chevron-right", class: "right-icon")
 
     %li.content
-      = link_to "#", class: "content-link" do
+      = link_to user_addresses_edit_path, class: "content-link" do
         .content-link__tag
           発送・お届け先住所変更
         = icon("fas", "chevron-right", class: "right-icon")
@@ -33,13 +33,13 @@
         = icon("fas", "chevron-right", class: "right-icon")
 
     %li.content
-      = link_to "#", class: "content-link" do
+      = link_to  edit_user_registration_path, class: "content-link" do
         .content-link__tag
           本人情報変更
         = icon("fas", "chevron-right", class: "right-icon")
 
     %li.content
-      = link_to "#", class: "content-link" do
+      = link_to destroy_user_session_path, class: "content-link" do
         .content-link__tag
           ログアウト
         = icon("fas", "chevron-right", class: "right-icon")

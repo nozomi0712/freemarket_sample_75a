@@ -1,104 +1,111 @@
-//このファイル全体を変更しました。//
 = render "shared/header"
-.contents1 
-  .contents1--image
-    =image_tag "material/pict/bg-mainVisual-pict_pc.jpg",class:"top-image"
-    .contents1--image__text1
-      人生を変えるフリマアプリ
-    .contents1--image__text2
-      FURIMAはだれでもかんたんに出品・購入できる
-      %br フリマアプリです
-    .contents1--image__image
-      =link_to "#",class: 'link' do
-        .contents1--image__image--1
-          =image_tag "material/icon1/Apple Button.svg",class:"contents1--image__image--1"
-      =link_to "#",class: 'link' do
-        .contents1--image__image--2    
-          =image_tag "material/icon1/Google Button.svg",class:"contents1--image__image--2"
+- unless current_user
+  .contents1 
+    .contents1--image
+      =image_tag "material/pict/bg-mainVisual-pict_pc.jpg",class:"top-image"
+      .contents1--image__text1
+        人生を変えるフリマアプリ
+      .contents1--image__text2
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br フリマアプリです
+      .contents1--image__image
+        =link_to "#",class: 'link' do
+          .contents1--image__image--1
+            =image_tag "material/icon1/Apple Button.svg",class:"contents1--image__image--1"
+        =link_to "#",class: 'link' do
+          .contents1--image__image--2    
+            =image_tag "material/icon1/Google Button.svg",class:"contents1--image__image--2"
 
-.contents2
-  .contents2__top
-    FURIMAが選ばれる３つの理由
-    .contents2__top--bottom
-  .contents2__bottom
-    .contents2__bottom__left
-      .contents2__bottom__left--top
-        =image_tag "material/pict/pict-reason-01.jpg",class:"contents2-image"
-      .contents2__bottom__left--bottom
-        %span<> 3分で   
-        すぐに出品できる！
-      
-    .contents2__bottom__middle
-      .contents2__bottom__middle--top
-        =image_tag "material/pict/pict-reason-02.jpg",class:"contents2-image"
-      .contents2__bottom__middle--bottom
-        %span<> シンプル 
-        で使いやすい !
-    .contents2__bottom__right
-      .contents2__bottom__right--top
-        =image_tag "material/pict/pict-reason-03.jpg",class:"contents2-image"
-      .contents2__bottom__right--bottom
-        %span<> 手数料 
-        業界最安 !
+  .contents2
+    .contents2__top
+      FURIMAが選ばれる３つの理由
+      .contents2__top--bottom
+    .contents2__bottom
+      .contents2__bottom__left
+        .contents2__bottom__left--top
+          =image_tag "material/pict/pict-reason-01.jpg",class:"contents2-image"
+        .contents2__bottom__left--bottom
+          %span<> 3分で   
+          すぐに出品できる！
+        
+      .contents2__bottom__middle
+        .contents2__bottom__middle--top
+          =image_tag "material/pict/pict-reason-02.jpg",class:"contents2-image"
+        .contents2__bottom__middle--bottom
+          %span<> シンプル 
+          で使いやすい !
+      .contents2__bottom__right
+        .contents2__bottom__right--top
+          =image_tag "material/pict/pict-reason-03.jpg",class:"contents2-image"
+        .contents2__bottom__right--bottom
+          %span<> 手数料 
+          業界最安 !
 
-.contents3
-  =image_tag "material/pict/bg-topMiddleDl-pict.jpg",class:"contents3-image"
-  .contents3__image
-  .contents3__top
-    %h 会員数日本一位
-  .contents3__middle
-    %h FURIMAは、フリマアプリで最も人気。
-    %br 出品・購入回数も業界最多です！
-    ほしかったあの商品に出会えるかもしれません。
-  .contents3__bottom
-    .contents3__bottom--left
-      =link_to "#" do
-        =image_tag "material/icon1/Apple Button.svg",class:"contents3__bottom--left"
-    .contents3__bottom--right
-      =link_to "#" do
-        =image_tag "material/icon1/Google Button.svg",class:"contents3__bottom--right"
-=render "items/senditem"
-.contents4
-  .contents4__top
-    %h FURIMAの特徴
-    .contents4__top--bottom
-  .contents4__bottom
-    .contents4__bottom__left
-      .contents4__bottom__left--top
-        =image_tag "material/icon/icon-01.png",class:"contents4__bottom__left--top"
-      .contents4__bottom__left--bottom
-        %h 簡単に売り買いできる
-    .contents4__bottom__middle
-      .contents4__bottom__middle--top
-        =image_tag "material/icon/icon-03.png",class:"contents4__bottom__middle--top"
-      .contents4__bottom__middle--bottom
-        %h 売上金は即日振込みに対応
-    .contents4__bottom__right
-      .contents4__bottom__right--top
-        =image_tag "material/icon/icon-04.png",size: "306×306",class:"contents4-image"
-      .contents4__bottom__right--bottom
-        %h 様々な支払いに対応
-- @categories.each do |category|
-  .contents 
-    .contents--category
-      =link_to category_path(category.id),class:'category_name' do
-        =category.name
-    .contents--goods
-      .contents--goods--list 
-        - @goods=Item.where(category_id: category.id ).or(Item.where(category_id:category.child_ids)).or(Item.where(category_id: category.indirect_ids)).order("created_at DESC").limit(5)
-        - @goods.each do |item|
-          - if item.status==true then
-            .list1
-              =link_to item_path(item.id) ,class:'button1'do
-                .list1--top
-                  -item.images.each do |image|
-                    =image_tag image.image.url,size:'200x200'
-                    - break
-                .list1--bottom
-                  =item.item_name 
-                .list1--bottom--price
-                  =item.price 
-                  円
+  .contents3
+    =image_tag "material/pict/bg-topMiddleDl-pict.jpg",class:"contents3-image"
+    .contents3__image
+    .contents3__top
+      %h 会員数日本一位
+    .contents3__middle
+      %h FURIMAは、フリマアプリで最も人気。
+      %br 出品・購入回数も業界最多です！
+      ほしかったあの商品に出会えるかもしれません。
+    .contents3__bottom
+      .contents3__bottom--left
+        =link_to "#" do
+          =image_tag "material/icon1/Apple Button.svg",class:"contents3__bottom--left"
+      .contents3__bottom--right
+        =link_to "#" do
+          =image_tag "material/icon1/Google Button.svg",class:"contents3__bottom--right"
+
+  .contents4
+    .contents4__top
+      %h FURIMAの特徴
+      .contents4__top--bottom
+    .contents4__bottom
+      .contents4__bottom__left
+        .contents4__bottom__left--top
+          =image_tag "material/icon/icon-01.png",class:"contents4__bottom__left--top"
+        .contents4__bottom__left--bottom
+          %h 簡単に売り買いできる
+      .contents4__bottom__middle
+        .contents4__bottom__middle--top
+          =image_tag "material/icon/icon-03.png",class:"contents4__bottom__middle--top"
+        .contents4__bottom__middle--bottom
+          %h 売上金は即日振込みに対応
+      .contents4__bottom__right
+        .contents4__bottom__right--top
+          =image_tag "material/icon/icon-04.png",size: "306×306",class:"contents4-image"
+        .contents4__bottom__right--bottom
+          %h 様々な支払いに対応
+
+- if current_user
+  .top_image_after_login
+    = image_tag "material/logo/after-login", height: '300px'
+.top_message_after_login
+  %h2 新着商品一覧
+.category-items
+  - @categories.each do |category|
+    .contents 
+      .contents--category
+        =link_to category_path(category.id),class:'category_name' do
+          ="#{category.name}新着アイテム"
+      .contents--goods
+        .contents--goods--list 
+          - @goods=Item.where(category_id: category.id ).or(Item.where(category_id:category.child_ids)).or(Item.where(category_id: category.indirect_ids)).order("created_at DESC").limit(5)
+          - @goods.each do |item|
+            - if item.status==true then
+              .list1
+                =link_to item_path(item.id) ,class:'button1'do
+                  .list1--top
+                    -item.images.each do |image|
+                      =image_tag image.image.url,size:'150x150'
+                      - break
+                  .list1--bottom
+                    =item.item_name 
+                  .list1--bottom--price
+                    ="#{item.price}円" 
+-# - if current_user        
 .contents18
   =image_tag "material/pict/bg-topMiddleDl-pict.jpg",class:"contents18"
   .contents18--top
@@ -112,8 +119,7 @@
     =link_to '#' do
       .contents18--bottom--right
         =image_tag "material/icon1/Google Button.svg",class:"contents18--bottom--right"
-.contents19
+  .contents19
   .contents19--image
     =image_tag "material/logo/logo-white.png",class:"contents19--image"
-  
-          
+=render "items/senditem"
