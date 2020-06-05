@@ -21,7 +21,7 @@ $font-opacity: rgba(0,0,0,0.7);
 $selected-tag-border: solid 2px red;
 
 .user-page{
-  height: 100%;
+  height: 80vh;
   width: 100vw;
   padding: 50px 0 50px 0;
   display: flex;
@@ -133,6 +133,8 @@ $selected-tag-border: solid 2px red;
     }
     .show-info {
       display: block;
+      min-height: 300px;
+      overflow: scroll;
     }
   }
 }
