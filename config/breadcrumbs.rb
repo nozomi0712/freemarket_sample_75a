@@ -7,6 +7,11 @@ crumb :mypage do
   parent :root
 end
 
+crumb :categoryIndex do
+  link "カテゴリー一覧", categories_path
+  parent :root
+end
+
 crumb :category do |category|
   if category.has_parent?
     if category.parent.has_parent?
@@ -17,7 +22,7 @@ crumb :category do |category|
   else
     link category.name, category_path(category.id)
   end
-  parent :root
+  parent :categoryIndex
 end
   
 # crumb :projects do
