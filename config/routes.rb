@@ -22,4 +22,10 @@ Rails.application.routes.draw do
   end
   resources :users ,only: [:show]
   resources :categories ,only: [:show] 
+
+  # あとで確認
+  # memberにする
+  resources :cards, only: [:new, :create] do
+    # post 'pay', on: :collection
+  end
 end
