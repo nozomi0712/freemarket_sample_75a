@@ -71,6 +71,25 @@ class ItemsController < ApplicationController
     @goods=Item.find(params[:id])
   end
 
+<<<<<<< HEAD
+=======
+  def buy
+    @item = Item.find(params[:id])
+    @images = @item.image.all
+
+    if user_signed_in?
+      @user = current_user
+
+      if @user.card.present?
+        Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY] 
+        @card = Card.find_by(user_id: @user.id)
+        customer = Payjp::Customer.retrieve(@card.customer_id)
+        @customer_card = customer.cards.retrieve(@card.card_id)
+        @exp_month = @customer_card.exp_month.to_s
+        
+
+  end
+>>>>>>> create-card-registration-function
 
   private
     def items_params
