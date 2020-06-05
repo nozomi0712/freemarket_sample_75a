@@ -70,33 +70,33 @@ class ItemsController < ApplicationController
   def purchase
   end
 
-  # 購入確認処理
-  def buy
-    @item = Item.find(params[:id])
-    @images = @item.image.all
+  # # 購入確認処理
+  # def buy
+  #   @item = Item.find(params[:id])
+  #   @images = @item.image.all
 
-    if user_signed_in?
-      @user = current_user
+  #   if user_signed_in?
+  #     @user = current_user
 
-      if @user.card.present?
-        Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY] 
-        @card = Card.find_by(user_id: @user.id)
-        customer = Payjp::Customer.retrieve(@card.customer_id)
-        @customer_card = customer.cards.retrieve(@card.card_id)
-        @exp_month = @customer_card.exp_month.to_s
-        @exp_year = @customer_card.exp_year.to_s.slice(2,3)
-      end
-    else
-      redirect_to root_path, alert: "ログインしてください"
-    end
-  end
+  #     if @user.card.present?
+  #       Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY] 
+  #       @card = Card.find_by(user_id: @user.id)
+  #       customer = Payjp::Customer.retrieve(@card.customer_id)
+  #       @customer_card = customer.cards.retrieve(@card.card_id)
+  #       @exp_month = @customer_card.exp_month.to_s
+  #       @exp_year = @customer_card.exp_year.to_s.slice(2,3)
+  #     end
+  #   else
+  #     redirect_to root_path, alert: "ログインしてください"
+  #   end
+  # end
 
   # 購入処理
   def pay
     @item = Item.find(params[:id])
     @images = @item.image.all
 
-    if @item.status == 2
+    if @item.status == false
       redirect_to item_path(@item.id), alert: "売り切れています。"
     else
       @item.with_lock do
@@ -117,7 +117,7 @@ class ItemsController < ApplicationController
         end 
 
       @trade = Trade.create(create_params)
-      item-status = Item.update(status: 2)
+      item-status = Item.update(status: false)
       end
     end
   end
