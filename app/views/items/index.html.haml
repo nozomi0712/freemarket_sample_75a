@@ -1,5 +1,6 @@
 = render "shared/header"
-- unless current_user
+
+- unless user_signed_in?
   .contents1 
     .contents1--image
       =image_tag "material/pict/bg-mainVisual-pict_pc.jpg",class:"top-image"
@@ -79,9 +80,9 @@
         .contents4__bottom__right--bottom
           %h 様々な支払いに対応
 
-- if current_user
+- if user_signed_in?
   .top_image_after_login
-    = image_tag "material/logo/after-login", height: '300px', width: '100%'
+    = image_tag "material/logo/after-login.jpg", height: '300px', width: '100%'
 .top_message_after_login
   %h2 カテゴリ別新着商品
 
