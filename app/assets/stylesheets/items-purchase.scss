@@ -117,7 +117,7 @@
           &__btn2{
             height:70px;
             background-color:white;
-            margin-top:20px;
+            margin-top:12px;
           }
         }
       }
@@ -180,8 +180,29 @@
 .btn-2{
   text-decoration:none;
   color:black;
+  padding-top:20px;
 }
 .btn-3{
   text-decoration:none;
   color:black;
+}
+.single__container--contents__checkpage--3__btn2{
+  padding-top:27px;
+}
+.registration11{
+  text-decoration:none;
+  border:solid 1px #DDDDDD;
+  background-color:red;
+  color:white;
+  border-radius:10px;
+  padding-left:7px;
+}
+.btn-buy{
+  margin-left:290px;
+  text-decoration:none;
+  border:solid 1px #DDDDDD;
+  background-color:red;
+  color:white;
+  font-size:25px;
+  width:70px;
 }

@@ -86,10 +86,7 @@ gem "font-awesome-sass"
 gem 'fog-aws'
 gem 'kaminari'
 gem 'faker'
-<<<<<<< HEAD
 gem "gretel"
-=======
 gem 'payjp'
->>>>>>> create-card-registration-function
 
 

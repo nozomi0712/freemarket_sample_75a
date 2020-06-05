@@ -1,4 +1,4 @@
-.single
+.single 
   .single__container
     .single__container--header
       .single__container--header__image
@@ -27,7 +27,14 @@
             .single__container--contents__checkpage--3__btn1--btn
           .single__container--contents__checkpage--3__method
             %h 支払い方法
-            
+            %br
+            -# =render "shared/card-show"
+            -if @card.blank? 
+              =link_to "/cards/new",class:"registration11" do
+                ここをクリックしてクレジットカード登録を行ってください。
+            -else 
+              クレジットカードで番号は　
+              =@card.card_id
           .single__container--contents__checkpage--3__address
             配送先
             .single__container--contents__checkpage--3__address--1
@@ -35,13 +42,11 @@
               =@goods.user.user_address.city
               =@goods.user.user_address.block 
               =@goods.user.user_address.building
-              
-          .single__container--contents__checkpage--3__btn
-            %input{type: "submit",class: "btn-buy",value: "購入する"}
           .single__container--contents__checkpage--3__btn2
-            %input{type: "submit",class: "btn-edit1",value: "編集する"}
-    .single__container--footer
-       
+            .btn-buy
+              /=form_with(action: :pay, method: :post) do
+              /  %button.btn-buy{type:"submit"}購入する
+    .single__container--footer 
       .single__container--footer__clearfix
         =link_to "#",class: 'btn-1' do
           プライバシーポリシーについて

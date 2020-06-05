@@ -12,22 +12,16 @@ Rails.application.routes.draw do
     post '/user_addresses/:id', to: 'users/registrations#update_user_addresses'
   end
   root to: 'items#index'
-<<<<<<< HEAD
   get 'items/purchase/:id', to: 'items#purchase'
-
+  resources :items,only:[:action]
   resources :items do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
-  resources :users ,only: [:show]
   resources :categories ,only: [:show] 
-=======
-  get 'items/purchase', to: 'items#purchase'
-  resources :items
   resources :users
   resources :cards, only: [:new, :create, :show, :destroy] do
   end
->>>>>>> create-card-registration-function
 end
