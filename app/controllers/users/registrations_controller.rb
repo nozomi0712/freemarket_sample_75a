@@ -29,7 +29,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.save
     session["devise.regist_data"]["user"].clear
     sign_in(:user, @user)
-    redirect_to root_path, notice: "いらっしゃいませ、#{@user[:nickname]}様"
   end
 
   def edit_user_addresses

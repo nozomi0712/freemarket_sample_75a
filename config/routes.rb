@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     post '/user_addresses/:id', to: 'users/registrations#update_user_addresses'
   end
   root to: 'items#index'
-  
+
   resources :items do
     collection do
       get 'get_category_children', defaults: { format: 'json' }

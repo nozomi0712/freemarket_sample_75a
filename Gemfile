@@ -86,8 +86,8 @@ gem "font-awesome-sass"
 gem 'fog-aws'
 gem 'kaminari'
 gem 'faker'
-gem 'payjp'
 gem "gretel"
+gem 'payjp'
 
 
 
