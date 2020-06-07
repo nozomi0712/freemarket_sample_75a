@@ -83,7 +83,7 @@
           .form-title
             %label 配送元の地域
           .form-input-select 
-            =f.select :user_address, @addresses, include_blank: "選択してください"  
+            =f.select :user_address_id, @addresses,include_blank: "選択してください"  
           .form-title
             =f.label "発送までの日数"
             .form-title__required
@@ -119,4 +119,4 @@
         - if @item.persisted?
           .form-data__delete
             =link_to "出品を取り消す",  item_path(@item), method: :delete, data: { confirm: "削除してよろしいですか？"}
-        
+=@a
