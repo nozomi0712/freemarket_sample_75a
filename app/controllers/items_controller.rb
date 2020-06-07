@@ -85,26 +85,22 @@ class ItemsController < ApplicationController
     end
     
     def set_user_address_for_new_create
-      @address = current_user.user_address.preficture
+      @user_address = current_user.user_address
+      @addresses = [] + ["〒#{@user_address.post}" + "/"+ "#{@user_address.preficture}" + "#{@user_address.city}"+ "#{@user_address.block}" + "#{@user_address.building}"]
     end
 
     def set_category_for_edit_update
       @category_grandchildren = Category.find(@item[:category_id])
       @category_children = @category_grandchildren.parent
-      @category_parent_array =  ["#{@category_children.parent.name}"] + Category.where(ancestry: nil).first(12).pluck(:name)
+      @category_parent_array =  ["#{@category_children.parent.name}"] + Category.where(ancestry: nil).first(13).pluck(:name)
       @current_item_category = "#{@category_children.parent.name}/#{@category_children.name}/#{@category_grandchildren.name}"
-      Category.where(ancestry: nil).each_with_index do |parent, index|
-        index += 1
-        @category_parent_array << parent.name
-        if index == 13
-          break
-        end
-      end
     end
 
     def set_user_for_edit_update_destroy
       @user = @item.user
-      @address = @user.user_address.preficture
+      @user_address = @user.user_address
+      @addresses = [] + ["〒#{@user_address.post}" + "/"+ "#{@user_address.preficture}" + "#{@user_address.city}"+ "#{@user_address.block}" + "#{@user_address.building}"]
+      # @address = @user
     end
 
     def check_login_user

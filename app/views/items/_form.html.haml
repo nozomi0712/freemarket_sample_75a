@@ -83,8 +83,7 @@
           .form-title
             %label 配送元の地域
           .form-input-select 
-            %p
-              =@address
+            =f.select :user_address, @addresses, include_blank: "選択してください"  
           .form-title
             =f.label "発送までの日数"
             .form-title__required
