@@ -85,7 +85,7 @@ class ItemsController < ApplicationController
       @user_address = UserAddress.where(user_id: current_user.id)
       @addresses = [] 
       @user_address.each do |user_address|
-        address = ["#{user_address.id}" + "#{user_address.post}" + "/" + "#{user_address.preficture}" + "#{user_address.city}" + "#{user_address.block}" + "#{user_address.building}", "#{user_address.id}"]
+        address = ["〒#{user_address.post}" + "  /  " + "#{user_address.preficture}" + "#{user_address.city}" + "#{user_address.block}" + "#{user_address.building}", "#{user_address.id}"]
         @addresses << address
       end
     end
