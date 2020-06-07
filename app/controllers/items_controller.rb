@@ -5,9 +5,7 @@ class ItemsController < ApplicationController
   before_action :set_caegory_for_new_create, only: [:new, :create]
   before_action :set_user_addresses, only: [:new, :create,:edit, :update, :destroy]
   before_action :set_category_for_edit_update, only: [:edit, :update]
-  # before_action :set_user_for_edit_update_destroy, only: [:edit, :update, :destroy]
   
-
   def index
     @categories=Category.where(ancestry: nil)
   end
@@ -70,7 +68,6 @@ class ItemsController < ApplicationController
   def purchase
   end
 
-
   private
     def items_params
       params.require(:item).permit(:item_name, :explanation, :price, :brand_id, :condition_id, :ship_date_id, :delivery_fee_id,:category_id,:user_address_id,images_attributes: [:image,:_destroy, :id]).merge(user_id: current_user.id )
@@ -99,15 +96,6 @@ class ItemsController < ApplicationController
       @category_parent_array =  ["#{@category_children.parent.name}"] + Category.where(ancestry: nil).first(13).pluck(:name)
       @current_item_category = "#{@category_children.parent.name}/#{@category_children.name}/#{@category_grandchildren.name}"
     end
-
-    # def set_user_for_edit_update_destroy
-    #   @user_address = UserAddress.where(user_id: current_user.id)
-    #   @addresses = [] 
-    #   @user_address.each do |user_address|
-    #     address = ["#{user_address.id}" + "#{user_address.post}" + "/" + "#{user_address.preficture}" + "#{user_address.city}" + "#{user_address.block}" + "#{user_address.building}", "#{user_address.id}"]
-    #     @addresses << address
-    #   end
-    # end
 
     def check_login_user
       unless current_user
