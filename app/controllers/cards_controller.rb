@@ -3,7 +3,7 @@ class CardsController < ApplicationController
 
   def new
     @card = Card.where(user_id: current_user.id)
-    redirect_to credit_card_path(current_user.id) if @card.exists?
+    redirect_to card_path(current_user.id) if @card.exists?
   end
 
   def create
@@ -51,7 +51,7 @@ class CardsController < ApplicationController
       @card.delete
 
       if @card.destroy
-        redirect_to new_card_path, alert: "カード情報を削除しました。"
+        redirect_back fallback_location: root_path, alert: "カード情報を削除しました。"
       else
         redirect_to card_path(current_user.id), alert: "削除できませんでした。"
       end

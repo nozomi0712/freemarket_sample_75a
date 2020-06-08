@@ -69,17 +69,21 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    @item = Item.find(params[:id])
-    @trade = Trade.new
 
-    @card = Card.find_by(user_id: current_user.id)
-    if @card.blank?
+    unless user_signed_in?
+      redirect_to new_user_session_path
     else
-      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
-      customer = Payjp::Customer.retrieve(@card.customer_id)
-      @customer_card = customer.cards.retrieve(@card.card_id)
-      @exp_month = @customer_card.exp_month.to_s
-      @exp_year = @customer_card.exp_year.to_s.slice(2..4)
+      @item = Item.find(params[:id])
+      @trade = Trade.new
+      @card = Card.find_by(user_id: current_user.id)
+
+      unless @card.blank?
+        Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
+        customer = Payjp::Customer.retrieve(@card.customer_id)
+        @customer_card = customer.cards.retrieve(@card.card_id)
+        @exp_month = @customer_card.exp_month.to_s
+        @exp_year = @customer_card.exp_year.to_s.slice(2..4)
+      end
     end
   end
 
