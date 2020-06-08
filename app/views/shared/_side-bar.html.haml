@@ -33,11 +33,6 @@
             支払い情報変更
           = icon("fas", "chevron-right", class: "right-icon")
 
-      %li.content
-        = link_to destroy_user_session_path, class: "content-link" do
-          .content-link__tag
-            ログアウト
-          = icon("fas", "chevron-right", class: "right-icon")
   - else
     .user-page__side__title
       ="#{@user.nickname}さんのページ"
@@ -54,9 +49,3 @@
             .content-link__tag
               自分のマイページ
             = icon("fas", "chevron-right", class: "right-icon")
-
-      %li.content
-        = link_to destroy_user_session_path, class: "content-link" do
-          .content-link__tag
-            ログアウト
-          = icon("fas", "chevron-right", class: "right-icon")
