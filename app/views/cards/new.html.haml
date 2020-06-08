@@ -3,7 +3,7 @@
     = image_tag "material/logo/logo.png",height: "50px", width: "200px"
   .card_add__form
     .title 支払い方法
-    = form_with model:@card, url:cards_path, method: :post, html:{ id: "charge-form", class: "details", name: "inputForm" } do |f|
+    = form_with model: @card, url: cards_path, method: :post, html:{ id: "charge-form", class: "details", name: "inputForm" } do |f|
       .number-details
         .card-number カード番号
         %span.must_check 必須

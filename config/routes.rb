@@ -12,15 +12,21 @@ Rails.application.routes.draw do
     post '/user_addresses/:id', to: 'users/registrations#update_user_addresses'
   end
   root to: 'items#index'
-  get 'items/purchase/:id', to: 'items#purchase'
 
+  get 'items/purchase/:id', to: 'items#purchase'
+  resources :items,only:[:action]
   resources :items do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
+    member do
+      get 'purchase'
+      post 'pay'
+    end
   end
+
   resources :users ,only: [:show]
-  resources :cards, only: [:new, :create] 
+  resources :cards, only: [:new, :create, :show, :destroy] 
   resources :categories ,only: [:index,:show] 
 end

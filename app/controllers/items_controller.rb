@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
-  before_action :check_login_user, except: [:index, :show]
+  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :purchase, :pay]
+  before_action :check_login_user, except: [:index, :show, :purchase, :pay]
   before_action :check_correct_user, only: [:edit, :update, :destroy]
   before_action :set_caegory_for_new_create, only: [:new, :create]
   before_action :set_user_addresses, only: [:new, :create,:edit, :update, :destroy]
@@ -38,6 +38,7 @@ class ItemsController < ApplicationController
   def show
     @categories = Category.find(@item.category_id)
     @categories2 = @categories.parent
+    
   end
   
   def edit
@@ -66,6 +67,48 @@ class ItemsController < ApplicationController
   end
 
   def purchase
+
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    else
+      @item = Item.find(params[:id])
+      @trade = Trade.new
+      @card = Card.find_by(user_id: current_user.id)
+
+      unless @card.blank?
+        Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
+        customer = Payjp::Customer.retrieve(@card.customer_id)
+        @customer_card = customer.cards.retrieve(@card.card_id)
+        @exp_month = @customer_card.exp_month.to_s
+        @exp_year = @customer_card.exp_year.to_s.slice(2..4)
+      end
+    end
+  end
+
+  def pay
+    @item = Item.find(params[:id])
+    @image = @item.images.first
+    @item.update(status: false)
+    @user = current_user
+    Trade.create(create_params)
+
+    @item.with_lock do
+      if current_user.card.present?
+        @card = Card.find_by(user_id: @user.id)
+        Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY] 
+        charge = Payjp::Charge.create(
+        amount: @item.price,
+        customer: Payjp::Customer.retrieve(@card.customer_id),
+        currency: 'jpy'
+        )
+      else
+        Payjp::charge.create(
+        amount: @item.price,
+        card: params['payjp-token'],
+        currency: 'jpy'
+        )
+      end 
+    end
   end
 
   private
@@ -111,4 +154,7 @@ class ItemsController < ApplicationController
       end
     end
 
+    def create_params
+      params.require(:trade).permit(:item_id, :buyer_id, :seller_id)
+    end
 end
