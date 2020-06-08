@@ -12,6 +12,18 @@
   color: white;
 }
 
+@mixin card-choice{
+  height: 80px;
+  width: 300px;
+  line-height: 80px;
+  font-weight: bold;
+  color: white;
+  background-color: red;
+  text-align: center;
+  font-size: 20px;
+  text-decoration: none;
+}
+
 $destroy-color: #FF0000;
 $edit-color: blue;
 
@@ -75,6 +87,57 @@ $edit-color: blue;
       .payment-details__btn {
         @include card-decoration;
       }
+    }
+  }
+}
+.pay{
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+  background-color: #F5F5F5;
+  .main_contents{
+    height: 75vh;
+    width: 50%;
+    margin: 0 auto;
+    background-color: white;
+  }
+  .main_details{
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 20px;
+    border-bottom: solid 1px;
+    margin: 0 auto;
+    &__check{
+      padding-top: 20px;
+    }
+  }
+  .main_contents__wrapper{
+    height: 200px;
+    width: 400px;
+    padding-top: 50px;
+    margin: 0 auto;
+    text-align: center;
+    &__item{
+      width: 300px;
+      margin: 0 auto;
+    }
+  }
+  .purchased__links{
+    height: 100px;
+    width: 100%;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+    &__TopPage__btn{
+      @include btn-display;
+      @include card-choice;
+    }
+    &__index__btn{
+      @include btn-display;
+      @include card-choice;
+      margin-left: 20px;
     }
   }
 }
