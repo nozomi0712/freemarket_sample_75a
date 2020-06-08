@@ -1,4 +1,4 @@
-.single
+.single 
   .single__container
     .single__container--header
       .single__container--header__image
@@ -8,40 +8,60 @@
           購入内容の確認
         .single__container--contents__checkpage--2
           .single__container--contents__checkpage--2__image
-          .single__container--contents__checkpage--2__text
-            %h カロリーメイト5箱　
-            %br
-            %h ¥850 (税込)送料込み
+            -@item.images.each do |image|
+              =image_tag image.image.url,size:'200x200'
+              - break
+          .single__container--contents__checkpage--2__name
+            .name
+              =@item.item_name
+            .explanation
+              =safe_join(@item.explanation.split("\n"), tag(:br))
         .single__container--contents__checkpage--3
           .single__container--contents__checkpage--3__fee
             .single__container--contents__checkpage--3__fee--1
               %h 支払い金額
             .single__container--contents__checkpage--3__fee--yen
-              %h ¥850
-              %br
+              =@item.price
+              円
           .single__container--contents__checkpage--3__btn1
             .single__container--contents__checkpage--3__btn1--btn
-              %input{type: "radio",class: "btn1"}
-                ポイントを使用(所持ポイント:P0)
-          .single__container--contents__checkpage--3__method
-            %h 支払い方法
-            =link_to "#",class: 'link' do
-              ここをクリックして登録してください。
-            
-          .single__container--contents__checkpage--3__address
-            %h 配送先
-            =link_to "#",class: 'link' do
-              ここをクリックして登録してください。
-          .single__container--contents__checkpage--3__btn
-            %input{type: "submit",class: "btn-buy",value: "購入する"}
-    .single__container--footer
-       
-      .single__container--footer__clearfix
-        =link_to "#",class: 'btn-1' do
-          プライバシーポリシーについて
-        =link_to "#" ,class: 'btn-2' do
-          FURIMA利用規約について
-        =link_to "#" ,class: 'btn-3' do
-          特定商取引に関する表記について
-        .single__container--footer__clearfix--image
+          .pay-method
+            -if @card.blank? 
+              .pay-method__title
+                支払い方法
+              .pay-method__card
+                =link_to "支払い方法が未設定です。", "/cards/new",class: "pay-method__card__add"
+            -else 
+              =render "shared/card-show"
+
+          .ship-address
+            .ship-address__title
+              配送先
+            .ship-address__adress
+              =@item.user.user_address.preficture
+              =@item.user.user_address.city
+              =@item.user.user_address.block 
+              =@item.user.user_address.building
+            =link_to "[変更する]", "/user_addresses/edit", method: :get, class: "ship-address__edit"
+
+          .single__container--contents__checkpage--3__btn2
+            .btn-buy
+              - if @card.blank?
+                =link_to "クレジットカードを登録する", "/cards/new", class:"purchase-btn"
+              - else
+                = form_with model: @trade, url: "/items/#{@item.id}/pay", method: :post, local: true do |f|
+                  = f.hidden_field :item_id, :value => @item.id
+                  = f.hidden_field :buyer_id, :value => @item.user_id
+                  = f.hidden_field :seller_id, :value => current_user.id
+                  = f.submit "購入する", class: "purchase-btn"
+
+  .single__container--footer 
+    .single__container--footer__clearfix
+      =link_to "#",class: 'btn-1' do
+        プライバシーポリシーについて
+      =link_to "#" ,class: 'btn-2' do
+        FURIMA利用規約について
+      =link_to "#" ,class: 'btn-3' do
+        特定商取引に関する表記について
+      .single__container--footer__clearfix--image
 

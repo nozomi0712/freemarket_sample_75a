@@ -1,0 +1,20 @@
+.pay
+  .main_contents
+    .main_details
+      .main_details__message
+        購入が完了しました。
+      .main_details__check
+        購入内容の確認
+    .main_contents__wrapper
+      .main_contents__wrapper__picture
+        = @item.images
+      .main_contents__wrapper__item
+        = @item.item_name
+        = @item.price
+        %br 円
+
+    %ul.purchased__links
+      %li.purchased__links__TopPage
+        = link_to "トップページに戻る", root_path, class: "purchased__links__TopPage__btn"
+      %li.purchased__links__index
+        = link_to "マイページに戻る", user_path(current_user), class: "purchased__links__index__btn"

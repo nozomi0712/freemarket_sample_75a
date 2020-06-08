@@ -1,6 +1,16 @@
 .account-page
   .account-page__topimage
     = image_tag "material/logo/logo.png",height: "50px", width: "200px"
+  %ul.cp_stepflow01
+    %li.complete
+      %span.bubble>
+      会員情報入力
+    %li.active
+      %span.bubble>
+      住所情報入力
+    %li.complete
+      %span.bubble>
+      登録完了
   .account-page__form
     = form_for @user_address, url:addresses_path do |f|
       .account-page__form__title
@@ -58,6 +68,6 @@
           = f.label :電話番号
           %a 任意
         .field__input
-          = f.number_field :tell_number, placeholder: "例）08011112222" 
+          = f.number_field :tell_number, placeholder: "例）080◯◯◯◯◯◯◯◯" 
       .account-page__submit
         = f.submit "会員登録"

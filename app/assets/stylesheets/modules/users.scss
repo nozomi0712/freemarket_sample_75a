@@ -28,11 +28,7 @@ $default-bg-color: rgb(255,255,255);
 .account-page{
   height: 100%;
   width: 100%;
-  // padding: 50px;
   background-color: $form-bg-color;
-  // .new_user{
-  //   height: ;
-  // }
   &__topimage{
     height: 20px;
     width: 200px;
@@ -44,7 +40,12 @@ $default-bg-color: rgb(255,255,255);
     @include form-center;
     font-size: 15px;
     background-color: $default-bg-color;
-    padding-bottom: 30px;
+    // padding-bottom: 30px;
+    .new_user{
+      height: 100%;
+      width: 100%;
+      // background-color: red;
+    }
     &__title{
       width: 200px;
       font-size: 30px;
@@ -63,7 +64,8 @@ $default-bg-color: rgb(255,255,255);
       justify-content: space-between;
       font-size: 20px;
       font-weight: bold;
-      padding-bottom: 20px;
+      padding-bottom: 10px;
+      text-align: center;
       a{
         @include any-or-require;
         background-color: skyblue;
@@ -126,4 +128,72 @@ $default-bg-color: rgb(255,255,255);
       }
     }
   }
+}
+
+
+.cp_stepflow01 {
+	font-size: 80%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin: 0 0 1em;
+  padding: 0;
+  margin-bottom: 50px;
+}
+.cp_stepflow01 > li {
+	position: relative;
+	display: block;
+	width: auto;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+	text-overflow: ellipsis;
+	color: gray;
+	 -ms-flex: 1;
+	-moz-flex: 1;
+	-webkit-box-flex: 1;
+	     flex: 1;
+}
+.cp_stepflow01 > li .bubble {
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin: 0 auto 0.5em;
+	border-radius: 1000px;
+	background-color: gray;
+}
+.cp_stepflow01 > li .bubble::after,
+.cp_stepflow01 > li .bubble::before {
+	position: absolute;
+	top: 9px;
+	display: block;
+	width: 100%;
+	height: 3px;
+	content: '';
+	background-color: gray;
+}
+.cp_stepflow01 > li.completed,
+.cp_stepflow01 > li.completed .bubble {
+	color: gray;
+}
+.cp_stepflow01 > li.completed .bubble,
+.cp_stepflow01 > li.completed .bubble::after,
+.cp_stepflow01 > li.completed .bubble::before {
+	background-color: gray;
+}
+.cp_stepflow01 > li:last-child .bubble::after,
+.cp_stepflow01 > li:last-child .bubble::before {
+	width: 0%;
+	margin-right: 50%;
+}
+.cp_stepflow01 > li.active,
+.cp_stepflow01 > li.active .bubble {
+	font-weight: bold;
+	color: #00acc1;
+}
+.cp_stepflow01 > li.active .bubble,
+.cp_stepflow01 > li.active .bubble::after,
+.cp_stepflow01 > li.active .bubble::before {
+	background-color: #4dd0e1;
 }

@@ -1,0 +1,63 @@
+.card_add 
+  .card_add__topimage
+    = image_tag "material/logo/logo.png",height: "50px", width: "200px"
+  .card_add__form
+    .title 支払い方法
+    = form_with model: @card, url: cards_path, method: :post, html:{ id: "charge-form", class: "details", name: "inputForm" } do |f|
+      .number-details
+        .card-number カード番号
+        %span.must_check 必須
+      .number
+        = f.text_field 'payment_card_no', class: 'cardnumber', id: "payment_card_no", placeholder: '半角数字のみ', type: "text", maxlength: "16"
+      .image
+        = image_tag(image_path('material/cards/visa.png'), class: 'visa')
+        = image_tag(image_path('material/cards/master.png'), class: 'master')
+        = image_tag(image_path('material/cards/jcb.png'), class: 'jcb')
+        = image_tag(image_path('material/cards/amex.png'), class: 'amex')
+        = image_tag(image_path('material/cards/diners.png'), class: 'diners')
+        = image_tag(image_path('material/cards/discover.png'), class: 'discover')
+
+      .expirationdate
+        .expirationdate__details
+          .date 有効期限
+          %span.must_check 必須
+        .expirationdate__choice
+          .month
+            %select#payment_card_month.card-default{name: "payment_card_month", type: "text"}
+              %option{value: "1"} 01
+              %option{value: "2"} 02
+              %option{value: "3"} 03
+              %option{value: "4"} 04
+              %option{value: "5"} 05
+              %option{value: "6"} 06
+              %option{value: "7"} 07
+              %option{value: "8"} 08
+              %option{value: "9"} 09
+              %option{value: "10"} 10
+              %option{value: "11"} 11
+              %option{value: "12"} 12
+          .month-details 月
+          .year
+            %select#payment_card_year.card-default{name: "payment_card_year", type: "text"}
+              %option{value: "2020"} 20
+              %option{value: "2021"} 21
+              %option{value: "2022"} 22
+              %option{value: "2023"} 23
+              %option{value: "2024"} 24
+              %option{value: "2025"} 25
+              %option{value: "2026"} 26
+              %option{value: "2027"} 27
+              %option{value: "2028"} 28
+              %option{value: "2029"} 29
+              %option{value: "2030"} 30
+          .year-details 年
+
+      .securitycode
+        .securitycode__details
+          .securitycode-details__title セキュリティコード
+          %span.must_check 必須
+        .securitycode__cardsecurity
+          = f.text_field "payment_card_cvc", type: 'text', class: 'securitycode__cardsecurity__form', id: "payment_card_cvc", maxlength: "4", placeholder: 'カード背面4桁もしくは3桁の番号'
+          .card-question カード裏面の番号とは？
+      .add 
+        = f.submit "登録する", class: "add__btn", id: "token_submit"
