@@ -38,10 +38,10 @@
             .title-main
               配送先
           .ship-address__adress
-            =@item.user.user_address.preficture
-            =@item.user.user_address.city
-            =@item.user.user_address.block 
-            =@item.user.user_address.building
+            =current_user.user_address.preficture
+            =current_user.user_address.city
+            =current_user.user_address.block
+            =current_user.user_address.building
           =link_to "[変更する]", "/user_addresses/edit", method: :get, class: "ship-address__edit"
 
         .single__container--contents__checkpage--3__btn2
