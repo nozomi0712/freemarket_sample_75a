@@ -1,7 +1,8 @@
 .put-item-page
-  =form_with model: @item, local: true do |f|
-    .put-item-page__topimage
+  .put-item-page__topimage
+    = link_to root_path do
       = image_tag "material/logo/logo.png", height: "50px", width: "200px"
+  =form_with model: @item, local: true do |f|
     .put-item-page__form
       =render "items/items_error_list", {item: @item}
       .form-data
@@ -83,8 +84,7 @@
           .form-title
             %label 配送元の地域
           .form-input-select 
-            %p
-              =@address
+            =f.select :user_address_id, @addresses,include_blank: "選択してください"  
           .form-title
             =f.label "発送までの日数"
             .form-title__required
@@ -120,4 +120,4 @@
         - if @item.persisted?
           .form-data__delete
             =link_to "出品を取り消す",  item_path(@item), method: :delete, data: { confirm: "削除してよろしいですか？"}
-        
+=@a

@@ -98,7 +98,7 @@
             .level1 {
               font-size: 16px;
               position: absolute;
-              margin-top: 10px;
+              margin-top: 5px;
               top: 100%;
               left: -28px;
               width: 160%;
@@ -132,10 +132,10 @@
               background: lighten(#00bfff, 45%);
             }
           }
-          &:hover{
-            .level1{
-              display: block;
-            }
+        }
+        .category:hover{
+          .level1{
+            display: block;
           }
         }
         .brand{
