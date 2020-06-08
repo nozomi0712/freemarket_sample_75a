@@ -13,4 +13,5 @@ class Item < ApplicationRecord
   validates :item_name, :explanation,:price,:condition,:ship_date,:delivery_fee,  presence: true
   validates :images, length: { minimum: 1, maximum: 10 }
   validates :price,numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+
 end
