@@ -53,7 +53,7 @@
                 = f.hidden_field :item_id, :value => @item.id
                 = f.hidden_field :buyer_id, :value => @item.user_id
                 = f.hidden_field :seller_id, :value => current_user.id
-                = f.submit "購入する", class: "purchase-btn"
+                = f.submit "購入する", class: "purchase-btn",data: { confirm: "購入でよろしいですか？"}
 
   .single__container--footer 
     .single__container--footer__clearfix
