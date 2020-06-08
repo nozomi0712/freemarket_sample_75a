@@ -1,10 +1,20 @@
 .account-page
   .account-page__topimage
     = image_tag "material/logo/logo.png",height: "50px", width: "200px"
+  %ul.cp_stepflow01
+    %li.active
+      %span.bubble>
+      会員情報入力
+    %li.completed
+      %span.bubble>
+      住所情報入力
+    %li.complete
+      %span.bubble>
+      登録完了
   .account-page__form
     = form_for @user, url: user_registration_path do |f|
       .account-page__form__title
-        会員情報入力
+        = "会員情報入力"
       .error_explanation
         = render "devise/shared/error_messages", resource: @user
       .field
@@ -24,24 +34,26 @@
           = f.label :パスワード
           %p 必須
         .field__input
-          = f.password_field :password, placeholder: "  ※英数字7文字以上"
+          = f.password_field :password, placeholder: "  7文字以上"
       .field
         .field__title
           = f.label :パスワード確認用
+          %p 必須
         .field__input
-          = f.password_field :password_confirmation
+          = f.password_field :password_confirmation, placeholder: "  7文字以上"
         .field__title
-          %br
-          ご本人様確認
-          %br
-          %br
-          ※プライバシーポリシー
-          %br
-          安心安全にご利用いただくために
-          %br
-          お客さまの本人情報の登録にご協力ください。
-          %br
-          他にお客様に公開されることはありません。
+          .account-page__form__title
+            ご本人様確認
+            %br
+            .field__title
+              プライバシーポリシー
+              %br
+              %br
+              ※安心安全にご利用いただくために
+              
+              お客さまの本人情報の登録にご協力ください。
+              %br
+              他にお客様に公開されることはありません。
       .field
         .field__title
           = f.label :生年月日
@@ -52,17 +64,16 @@
         .field__title
           = f.label :お名前：（全角）
           %p 必須
-        .field__input
-          = f.text_field :first_name, placeholder: "  例）田中"
-        .field__input
-          = f.text_field :last_name, placeholder: "  例）太郎"
+      .field__name
+        = f.text_field :first_name, placeholder: "  例）田中"
+        = f.text_field :last_name, placeholder: "  例）太郎"
       .field
         .field__title
           = f.label :お名前：カナ（全角）
           %p 必須
-        .field__input
-          = f.text_field :first_furigana, placeholder: "  例）タナカ"
-        .field__input
-          = f.text_field :last_furigana, placeholder: "  例）タロウ"
+      .field__name
+        = f.text_field :first_furigana, placeholder: "  例）タナカ"
+        = f.text_field :last_furigana, placeholder: "  例）タロウ"
       .account-page__submit
         = f.submit "次へ進む"
+        %h3 ©︎ 2020 FURIMA

@@ -87,5 +87,6 @@ gem 'fog-aws'
 gem 'kaminari'
 gem 'faker'
 gem "gretel"
+gem 'payjp'
 
 

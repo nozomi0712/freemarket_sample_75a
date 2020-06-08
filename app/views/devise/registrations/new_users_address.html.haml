@@ -1,28 +1,36 @@
 .account-page
   .account-page__topimage
     = image_tag "material/logo/logo.png",height: "50px", width: "200px"
+  %ul.cp_stepflow01
+    %li.active
+      %span.bubble>
+      会員情報入力
+    %li.active
+      %span.bubble>
+      住所情報入力
+    %li.complete
+      %span.bubble>
+      登録完了
   .account-page__form
     = form_for @user_address, url:addresses_path do |f|
       .account-page__form__title
-        住所情報入力
+        = "住所情報入力"
       .error_explanation
         = render "devise/shared/error_messages", resource: @user_address
       .field
         .field__title
           = f.label :お名前：（全角）
           %p 必須
-        .field__input
-          = f.text_field :first_name, placeholder: "  例）田中"
-        .field__input
-          = f.text_field :last_name, placeholder: "  例）太郎"
+      .field__name
+        = f.text_field :first_name, placeholder: "  例）田中"
+        = f.text_field :last_name, placeholder: "  例）太郎"
       .field
         .field__title
           = f.label :お名前：カナ（全角）
           %p 必須
-        .field__input
-          = f.text_field :first_furigana, placeholder: "  例）タナカ"
-        .field__input
-          = f.text_field :last_furigana, placeholder: "  例）タロウ"
+      .field__name
+        = f.text_field :first_furigana, placeholder: "  例）タナカ"
+        = f.text_field :last_furigana, placeholder: "  例）タロウ"
       .field
         .field__title
           = f.label "郵便番号（数字）"
@@ -58,6 +66,7 @@
           = f.label :電話番号
           %a 任意
         .field__input
-          = f.number_field :tell_number, placeholder: "例）08011112222" 
+          = f.number_field :tell_number, placeholder: "例）080◯◯◯◯◯◯◯◯" 
       .account-page__submit
         = f.submit "会員登録"
+        %h3 ©︎ 2020 FURIMA
