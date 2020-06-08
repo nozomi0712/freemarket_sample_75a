@@ -47,12 +47,13 @@
           .content-link__tag
             トップページ
           = icon("fas", "chevron-right", class: "right-icon")
-
-      %li.content
-        = link_to user_path(current_user), class: "content-link" do
-          .content-link__tag
-            自分のマイページ
-          = icon("fas", "chevron-right", class: "right-icon")
+          
+      -if current_user
+        %li.content
+          = link_to user_path(current_user), class: "content-link" do
+            .content-link__tag
+              自分のマイページ
+            = icon("fas", "chevron-right", class: "right-icon")
 
       %li.content
         = link_to destroy_user_session_path, class: "content-link" do
