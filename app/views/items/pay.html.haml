@@ -9,7 +9,7 @@
       .main_contents__wrapper__picture
         = @item.images
       .main_contents__wrapper__item
-        = @item.name
+        = @item.item_name
         = @item.price
         %br 円
 
@@ -17,4 +17,4 @@
       %li.purchased__links__TopPage
         = link_to "トップページに戻る", root_path, class: "purchased__links__TopPage__btn"
       %li.purchased__links__index
-        = link_to "購入商品一覧", "#", class: "purchased__links__index__btn"
+        = link_to "マイページに戻る", user_path(current_user), class: "purchased__links__index__btn"

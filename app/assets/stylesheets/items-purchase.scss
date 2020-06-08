@@ -1,7 +1,20 @@
+@mixin top-font {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align:center;
+}
+@mixin box-setting {
+  margin-top:20px;
+  padding-bottom: 15px;
+  border-bottom:0.8px solid;
+  border-color: #C0C0C0;
+}
+
 .single{
   &__container{
     &--header{
-      background-color:#DDDDDD;
+      background-color:#f5f5f5;
       width:100vw;
       height:150px;
       &__image{
@@ -15,7 +28,7 @@
       }
     }
     &--contents{
-      background-color:#DDDDDD;
+      background-color:#f5f5f5;
       width:100uw;
       height:800px;
       position:relative;
@@ -23,7 +36,7 @@
         position:absolute;
         left:calc(100vw / 3.92);
         width:calc(100vw / 2);
-        height:800px;
+        padding-bottom: 20px;
         background-color:white;
         &--1{
           font-size:25px;
@@ -35,20 +48,19 @@
         }
         &--2{
           display:flex;
-          height:250px;
+          padding: 5% 10%;
           &__image{
-            background-image:url("freemarket.jpg");
-            background-size:100%;
-            width:calc(100vw / 8);
-            height:150px;
-            margin-left:130px;
-            margin-top:20px;
-            margin-bottom:20px;
+            width: 50%;
           }
-          &__text{
-            margin-left:150px;
-            margin-top:90px;
-            font-size:20px;
+          &__name{
+            width: 50%;
+
+            .name {
+              @include top-font;
+            }
+            .explanation {
+              word-wrap: break-word;
+            }
           }
           border-bottom:0.8px solid;
           border-color: #C0C0C0;
@@ -68,13 +80,6 @@
               margin-top:55px;
               margin-left:200px;
             }
-            &__btn{
-              width:calc(100vw / 2);
-              border-bottom:0.8px solid;
-              border-color: #C0C0C0;
-              padding-left:150px;
-              padding:5px 0px 5px 150px;
-            }
           }
           &__btn1{
 
@@ -86,44 +91,43 @@
               padding-bottom:20px;
             }
           }
-          &__method{
-            text-align:center;
-            text-decoration: none ;
-            margin-top:20px;
-            border-bottom:0.8px solid;
-            border-color: #C0C0C0;
-            padding-bottom:20px;
-          }
-          &__address{
-            text-align:center;
-            text-decoration: none ;
-            margin-top:20px;
-            border-bottom:0.8px solid;
-            border-color: #C0C0C0;
-            padding-bottom:20px;
-            &--1{
-              margin-left:10px;
+          .pay-method{
+            @include box-setting;
+
+            &__title {
+              @include top-font;
             }
-          
-            
+            &__card__add {
+            display: block;
+            text-align: center;
+            color: black;
+            text-decoration: none ;
+            }
           }
-          &__btn{
-            text-align:center;
-            margin-top:20px;
-            height:70px;
-            border-bottom:0.8px solid;
-            border-color: #C0C0C0;
-          }
-          &__btn2{
-            height:70px;
-            background-color:white;
-            margin-top:12px;
+          .ship-address {
+            @include box-setting;
+            position: relative;
+
+            &__title {
+              @include top-font;
+            }
+            &__adress {
+              text-align: center;
+            }
+            &__edit {
+              position: absolute;
+              top: 10px;
+              right: 260px;
+              color: blue;
+              font-size: 12px;
+              text-decoration: none;
+            }
           }
         }
       }
     }
     &--footer{
-      background-color:#DDDDDD;
+      background-color:#f5f5f5;
       width:100vw;
       height:150px;
       &__clearfix{
@@ -158,20 +162,33 @@
   
 // }
 
-.single__container--contents__checkpage--3__btn,.single__container--contents__checkpage--3__btn2{
-  input{
-    @include btn-display;
-    height: 50px;
-    width: 400px;
-    color: white;
-    font-weight: bold;
-    background-color: red;
-    margin: 0 auto;
-  }
-  input:hover{
-    opacity: 0.6;
-  }
+// .single__container--contents__checkpage--3__btn,.single__container--contents__checkpage--3__btn2{
+//   input{
+//     @include btn-display;
+//     height: 50px;
+//     width: 400px;
+//     color: white;
+//     font-weight: bold;
+//     background-color: red;
+//     margin: 0 auto;
+//   }
+.purchase-btn {
+  display: block;
+  width: 350px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 20px;
+  text-decoration: none;
+  background-color: red;
+  text-align: center;
+  color: white;
+  margin: 20px auto 0;
+
 }
+//   input:hover{
+//     opacity: 0.6;
+//   }
+// }
 .btn-1{
   text-decoration:none;
   color:black;
@@ -186,23 +203,13 @@
   text-decoration:none;
   color:black;
 }
-.single__container--contents__checkpage--3__btn2{
-  padding-top:27px;
-}
-.registration11{
-  text-decoration:none;
-  border:solid 1px #DDDDDD;
-  background-color:red;
-  color:white;
-  border-radius:10px;
-  padding-left:7px;
-}
-.btn-buy{
-  margin-left:290px;
-  text-decoration:none;
-  border:solid 1px #DDDDDD;
-  background-color:red;
-  color:white;
-  font-size:25px;
-  width:70px;
-}
+
+// .btn-buy{
+//   margin-left:290px;
+//   text-decoration:none;
+//   border:solid 1px #DDDDDD;
+//   background-color:red;
+//   color:white;
+//   font-size:25px;
+//   width:70px;
+// }

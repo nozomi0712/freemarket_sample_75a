@@ -20,7 +20,7 @@ class CardsController < ApplicationController
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
 
       if @card.save
-        redirect_to root_path
+        redirect_to root_path, nortice: "カード情報を登録しました。"
       else
         redirect_to action: "create"
       end
@@ -51,7 +51,7 @@ class CardsController < ApplicationController
       @card.delete
 
       if @card.destroy
-        redirect_to user_path(current_user.id), alert: "カード情報を削除しました。"
+        redirect_to new_card_path, alert: "カード情報を削除しました。"
       else
         redirect_to card_path(current_user.id), alert: "削除できませんでした。"
       end

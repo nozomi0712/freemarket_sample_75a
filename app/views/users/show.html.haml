@@ -4,7 +4,6 @@
 
 .user-page
   = render "shared/side-bar"
-
   .user-page__main
     .user-page__main__user
       = image_tag "material/icon/member_photo_noimage_thumb.png", class: "user-page__main__user__img"
@@ -28,10 +27,6 @@
 
     .user-page__main__info-list.infomation.show-info
       = render 'shared/user_show_item.html.haml', items: @selling_items
-      -# = link_to "#", class: "list__index-link" do
-        -# .list__index-link__card
-        -#   一覧を見る
-
     .user-page__main__info-list.doing
       = render 'shared/user_show_item.html.haml', items: @sold_items
 

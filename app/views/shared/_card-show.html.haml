@@ -13,8 +13,8 @@
             有効期限
           .expiration_date__info
             = @exp_month + " / " + @exp_year
-      .destroy__function
-        = link_to card_path, method: :delete, class: "destroy__function__btn" do 
-          削除する
+      .edit__function
+        = link_to "変更する", "#", class: "edit__function__btn"
+        = link_to "削除する", card_path, method: :delete, class: "destroy__function__btn"
     .payment-details
       = link_to "支払い方法について >", "", class: "payment-details__btn"

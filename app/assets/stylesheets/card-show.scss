@@ -3,7 +3,17 @@
   color: black;
 }
 
+@mixin card-edit-btn {
+  @include card-decoration;
+  display: block;
+  margin-bottom: 15px;
+  padding: 10px 50px;
+  border-radius: 30px;
+  color: white;
+}
+
 $destroy-color: #FF0000;
+$edit-color: blue;
 
 .card-show {
   width:100%;
@@ -41,15 +51,15 @@ $destroy-color: #FF0000;
         }
       }
 
+      .edit__function__btn {
+        @include card-edit-btn;
+        border: solid 1px $edit-color;
+        background-color: $edit-color;
+      }
       .destroy__function__btn {
-        @include card-decoration;
-        display: block;
-        padding: 10px 50px;
+        @include card-edit-btn;
         border: solid 1px $destroy-color;
-        border-radius: 30px;
-        color: white;
         background-color: $destroy-color;
-
       }
     }
     .payment-details {

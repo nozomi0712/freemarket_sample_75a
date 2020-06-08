@@ -69,67 +69,43 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    @goods=Item.find(params[:id])
+    @item = Item.find(params[:id])
+    @trade = Trade.new
+
     @card = Card.find_by(user_id: current_user.id)
     if @card.blank?
-    redirect_to "/cards/new"
     else
-     Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY] 
-     customer = Payjp::Customer.retrieve(@card.customer_id)
-     @customer_card = customer.cards.retrieve(@card.card_id)
-     @exp_month = @customer_card.exp_month.to_s
-     @exp_year = @customer_card.exp_year.to_s.slice(2..4)
+      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @customer_card = customer.cards.retrieve(@card.card_id)
+      @exp_month = @customer_card.exp_month.to_s
+      @exp_year = @customer_card.exp_year.to_s.slice(2..4)
     end
   end
 
-  # # 購入確認処理
-  # def buy
-  #   @item = Item.find(params[:id])
-  #   @images = @item.image.all
-
-  #   if user_signed_in?
-  #     @user = current_user
-
-  #     if @user.card.present?
-  #       Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY] 
-  #       @card = Card.find_by(user_id: @user.id)
-  #       customer = Payjp::Customer.retrieve(@card.customer_id)
-  #       @customer_card = customer.cards.retrieve(@card.card_id)
-  #       @exp_month = @customer_card.exp_month.to_s
-  #       @exp_year = @customer_card.exp_year.to_s.slice(2,3)
-  #     end
-  #   else
-  #     redirect_to root_path, alert: "ログインしてください"
-  #   end
-  # end
-
-  # 購入処理
   def pay
     @item = Item.find(params[:id])
-    @images = @item.image.all
+    @images = @item.images.all
+    @item.update(status: false)
+    @user = current_user
+    Trade.create(create_params)
 
-    if @item.status == false
-      redirect_to item_path(@item.id), alert: "売り切れています。"
-    else
-      @item.with_lock do
-        if current_user.card.present?
-          @card = Card.find_by(user_id: @user.id)
-          Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY] 
-          charge = Payjp::Charge.create(
-          amount: @item.price,
-          customer: Payjp::Customer.retrieve(@card.customer_id),
-          currency: 'jpy'
-          )
-        else
-          Payjp::charge.create(
-          amount: @item.price,
-          card: params['payjp-token'],
-          currency: 'jpy'
-          )
-        end 
-
-      @trade = Trade.create(create_params)
-      item-status = Item.update(status: false)
+    @item.with_lock do
+      if current_user.card.present?
+        @card = Card.find_by(user_id: @user.id)
+        Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY] 
+        charge = Payjp::Charge.create(
+        amount: @item.price,
+        customer: Payjp::Customer.retrieve(@card.customer_id),
+        currency: 'jpy'
+        )
+      else
+        Payjp::charge.create(
+        amount: @item.price,
+        card: params['payjp-token'],
+        currency: 'jpy'
+        )
+      end 
     end
   end
 
@@ -184,7 +160,6 @@ class ItemsController < ApplicationController
     end
 
     def create_params
-      params.require(:trade).merge(item_id: @item.id, buyer_id: @current_user.id, seller_id: @item.user_id)
+      params.require(:trade).permit(:item_id, :buyer_id, :seller_id)
     end
-  end
 end
