@@ -21,6 +21,6 @@ Rails.application.routes.draw do
     end
   end
   resources :users ,only: [:show]
-  resources :cards, only: [:new, :create] do
+  resources :cards, only: [:new, :create] 
   resources :categories ,only: [:index,:show] 
 end
