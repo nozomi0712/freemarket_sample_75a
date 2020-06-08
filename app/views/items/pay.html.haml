@@ -1,4 +1,6 @@
 .pay
+  .account-page__topimage
+    = image_tag "material/logo/logo.png",height: "50px", width: "200px"
   .main_contents
     .main_details
       .main_details__message
@@ -7,7 +9,8 @@
         購入内容の確認
     .main_contents__wrapper
       .main_contents__wrapper__picture
-        = image_tag @image.image.url, alt: "商品イメージ", class: "item-image"
+        = image_tag @image.image.url, alt: "商品イメージ", class: "item-image",size: '120x120'
+
       .main_contents__wrapper__item
         = @item.item_name
         = @item.price
