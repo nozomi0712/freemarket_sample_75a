@@ -23,34 +23,6 @@ UserAddress.create(
   last_furigana: "まこ",
 )
 
-UserAddress.create(
-  post: "2222222",
-  preficture: "千葉県",
-  city: "千葉市",
-  block: "2-2-2",
-  building: "千葉ビル7F",
-  tell_number: "05031873522",
-  user_id: 1,
-  first_name: "成",
-  first_furigana: "なり",
-  last_name: "真子",
-  last_furigana: "まこ",
-)
-
-UserAddress.create(
-  post: "3333333",
-  preficture: "京都府",
-  city: "京都市",
-  block: "2-2-2",
-  building: "京都ビル7F",
-  tell_number: "05031873522",
-  user_id: 1,
-  first_name: "成",
-  first_furigana: "なり",
-  last_name: "真子",
-  last_furigana: "まこ",
-)
-
 # レディース
 lady = Category.create(name: "レディース")
 lady_1 = lady.children.create(name: "トップス")

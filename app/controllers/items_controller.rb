@@ -67,7 +67,6 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-
     unless user_signed_in?
       redirect_to new_user_session_path
     else
