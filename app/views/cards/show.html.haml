@@ -1,3 +1,7 @@
+.card-show-page
+  .card_add__topimage
+    = image_tag "material/logo/logo.png",height: "50px", width: "200px"
+  =render "shared/card-show"
 %label 登録クレジットカード情報
 %br
 = "**** **** ****" + @default_card_information.last4
@@ -10,3 +14,4 @@
   %input{ type: "hidden", name: "card_id", value: "" }
   = f.submit "削除する"
   
+
