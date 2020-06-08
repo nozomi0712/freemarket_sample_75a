@@ -112,6 +112,9 @@ $table-border-color: #f5f5f5;
               text-decoration: none;
               color: #00bfff;
             }
+            a:hover{
+              color: darken(#00bfff,10%);
+            }
           }
         }
       }
@@ -153,13 +156,14 @@ $table-border-color: #f5f5f5;
       }
     }
   }
-  .item-show-login{
-    width: 700px;
+  .item-show-btn{
+    width: 800px;
     padding: 24px 40px 24px 40px;
     margin: 20px auto;
     text-align: center;
     background: #fff;
     .item-edit-btn{
+      display: block;
       font-size: 24px;
       margin-top: 16px;
       padding: 20px 200px;
@@ -176,6 +180,7 @@ $table-border-color: #f5f5f5;
       margin:10px 0 10px 0;
     }
     .item-destroy-btn{
+      display: block;
       font-size: 24px;
       padding: 20px 200px;
       background: #808080;

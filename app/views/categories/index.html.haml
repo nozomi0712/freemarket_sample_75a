@@ -1,0 +1,19 @@
+- breadcrumb :categoryIndex
+
+= render "shared/header";
+
+.category-all-page
+  .category-all-page__main
+    - @categories.each do |parent|
+      .category-all-page__main__parent
+        = link_to parent.name, category_path(parent.id)
+      .category-all-page__main__parent__child
+        - parent.children.each do |child|
+          .category-all-page__main__parent__child--set
+            = link_to child.name, category_path(child.id)
+            .category-all-page__main__parent__child--set__grandchild
+              - child.children.each do |grandchild|
+                .category-all-page__main__parent__child--set__grandchild--set
+                  = link_to "・#{grandchild.name}", category_path(grandchild.id)
+
+= render "items/senditem";

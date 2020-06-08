@@ -1,0 +1,15 @@
+- items.each do |item|
+  .user-items-data
+    .user-items-data__image
+      =image_tag item.images[0].image.url, size: '70×70'
+    .user-items-data__flex
+      .items-name
+        =link_to "#{item.item_name}", item_path(item)
+      .items-price
+        %p
+          ="#{item.price}円"
+    .user-items-data__status
+      -if item.status == true
+        %p{class:"status-true"} 出品中
+      -else
+        %p{class:"status-false"} 売却済 

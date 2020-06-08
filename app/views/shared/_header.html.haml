@@ -1,7 +1,7 @@
 .header
   .header__top
     .header__top__title
-      = link_to image_tag("material/logo/logo.png", size: "170x50"),items_path
+      = link_to image_tag("material/logo/logo.png", size: "170x50"),root_path
     .header__top__search
       %input.search-size{type: "text", placeholder: "キーワードから探す"}
     .header__top__search-image
@@ -15,30 +15,31 @@
           %nav#dd
             %ul.level0
               %li.position-setting
-                %a{href: ""} カテゴリーから探す
+                %a{href: categories_path} カテゴリーから探す
                 %ul.level1
                   - @parents.each do |parent|
                     %li
-                      %a{href: ""}
+                      %a{href: category_path(parent.id)}
                         = parent.name
                       %ul.level2
                         - parent.children.each do |child|
                           %li
-                            %a{href: ""} 
+                            %a{href: category_path(child.id)} 
                               = child.name
                             %ul.level3
                               - child.children.each do |grandchild|
                                 %li
-                                  %a{href: ""}
+                                  %a{href: category_path(grandchild.id)}
                                     = grandchild.name
                   %li
-                    %a{href: ""}
+                    %a{href: categories_path}
                       カテゴリー一覧
       .brand
         .brand__image
           = image_tag "material/icon/icon_brand.png", size: "25x25"
         .brand__text
-          ブランドから探す
+          %a{href:""}
+            ブランドから探す
     .header__bottom__right
       - if user_signed_in?
         .user-name

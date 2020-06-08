@@ -1,3 +1,5 @@
+- breadcrumb :category,@category
+
 =render"shared/header"
 .goods
   .goods--category
@@ -19,3 +21,5 @@
             円
 .pagenation
   = paginate @goods
+
+= render "items/senditem"
