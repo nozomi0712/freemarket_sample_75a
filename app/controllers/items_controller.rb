@@ -85,7 +85,7 @@ class ItemsController < ApplicationController
 
   def pay
     @item = Item.find(params[:id])
-    @images = @item.images.all
+    @image = @item.images.first
     @item.update(status: false)
     @user = current_user
     Trade.create(create_params)

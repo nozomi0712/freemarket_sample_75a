@@ -7,7 +7,7 @@
         購入内容の確認
     .main_contents__wrapper
       .main_contents__wrapper__picture
-        = @item.images
+        = image_tag @image.image.url, alt: "商品イメージ", class: "item-image"
       .main_contents__wrapper__item
         = @item.item_name
         = @item.price
