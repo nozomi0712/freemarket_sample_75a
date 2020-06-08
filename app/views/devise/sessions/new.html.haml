@@ -1,16 +1,19 @@
-.account-page
-  .account-page__topimage
-    = image_tag "material/logo/logo.png",height: "50px", width: "200px"
-  .account-page__form
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .account-page__form__title
-        ログイン画面
-        = render "devise/shared/error_messages"
-      .field
-        .field__title
+.account-page__topimage
+  = image_tag "material/logo/logo.png",height: "50px", width: "200px"
+.account-page__newuser
+  = "アカウントをお持ちでない方は"
+  = link_to "こちら", new_user_registration_path, class: "account-page__newuser__btn"
+.account-page__form
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .login__form
+      .login__form__title
+        = "ログイン"
+        .login__form__field
           = f.email_field :email, placeholder: "  メールアドレス"
-      .field
-        .field__title
+        .login__form__field
           = f.password_field :password, autocomplete: "current-password", placeholder: "  パスワード"
       .account-page__submit
-        = f.submit "次へ進む"
+        = f.submit "ログイン"
+        %br/
+        %h3 会社規約｜利用規約｜プライバシーポリシー｜特定商取引法に基づく表示｜サービスガイド｜お問い合わせ
+        %h3 ©︎ 2020 FURIMA

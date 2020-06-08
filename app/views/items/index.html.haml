@@ -94,7 +94,8 @@
           ="#{category.name}新着アイテム"
       .contents--goods
         .contents--goods--list 
-          - @goods=Item.where(category_id: category.id ).or(Item.where(category_id:category.child_ids)).or(Item.where(category_id: category.indirect_ids)).order("created_at DESC").limit(5)
+          - @goods_list=(Item.where(category_id: category.id )).or(Item.where(category_id:category.child_ids)).or(Item.where(category_id: category.indirect_ids)).order("created_at DESC")
+          -@goods = @goods_list.where(status: 1).limit(5)
           - @goods.each do |item|
             - if item.status==true then
               .list1
