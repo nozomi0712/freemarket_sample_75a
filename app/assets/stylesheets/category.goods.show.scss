@@ -13,7 +13,7 @@
   &--list{
     flex-wrap:wrap;
     align-content: flex-start;
-    margin:20px auto;
+    margin: 20px auto 0;
     width:1100px;
   }
 }
@@ -55,9 +55,9 @@
   }
 }
 .pagenation{
-  background-color:#DDDDDD;
+  background-color:#f5f5f5;
   text-align:center;
-
+  padding-bottom: 30px;
 }
 .first,.prev,.page,.page.current{
   
